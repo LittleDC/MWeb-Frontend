@@ -137,8 +137,19 @@ result = falseValue &amp;&amp; true
 console.log(result) //false
 </code></pre>
 <ul>
-<li class="task-list-item"><input type="checkbox" disabled="" /> 转型函数Number() 和 原始值包装类型的构造函数new Number() 区别？</li>
+<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> 转型函数Number() 和 原始值包装类型的构造函数new Number() 区别？</li>
 </ul>
+<p>转型函数Number为window全局对象中的一个函数</p>
+<blockquote>
+<p>new关键字执行过程<br />
+1) new 构造函数在内存中创建了一个空的对象<br />
+2) this 指向刚才创建的空对象<br />
+3) 执行构造函数里面的代码--给这个空对象添加属性和方法<br />
+4) 返回这个对象(所以构造函数里不需要return)</p>
+</blockquote>
+<blockquote>
+<p><a href="https://blog.csdn.net/weixin_41604040/article/details/113775766">https://blog.csdn.net/weixin_41604040/article/details/113775766</a></p>
+</blockquote>
 
 
 </div>
@@ -150,15 +161,13 @@ console.log(result) //false
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16324082806062.html"  title="Previous Post: Frontend Learning!">&laquo; Frontend Learning!</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16325412705266.html" 
-	        title="Next Post: 烦😶‍🌫️">烦😶‍🌫️ &raquo;</a>
+	        <a href="16324082806062.html" 
+	        title="Next Post: Frontend Learning!">Frontend Learning! &raquo;</a>
 	    
 	</div>
   </div>
