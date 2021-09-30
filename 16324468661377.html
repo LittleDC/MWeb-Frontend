@@ -120,8 +120,19 @@
 <h4><a id="%E2%AD%90%EF%B8%8Fstring%E2%AD%90%EF%B8%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>⭐️ String ⭐️</h4>
 <ol>
 <li>String对象的方法可以在所有字符串原始值上调用<code>&quot;str&quot;.length</code></li>
-<li></li>
+<li>在以读模式访问字符串值的任意时候，后台都会执行以下3步：</li>
 </ol>
+<pre class="line-numbers"><code class="language-JavaScript">let s1 = &quot;some text&quot;
+let s2 = s1.substring(2)
+</code></pre>
+<p>上面第二条语句相当于以下3句：</p>
+<pre class="line-numbers"><code class="language-JavaScript">//1. 创建一个String类型的实例 -&gt; s1的String实例
+let s_tmp = new String(s1)
+//2. 调用实例上的特定方法
+let s2 = s_tmp.substring(2)
+//3. 销毁实例
+s_tmp = null
+</code></pre>
 <h3><a id="question" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>question</h3>
 <ol>
 <li>p114 原始值包装类型</li>
