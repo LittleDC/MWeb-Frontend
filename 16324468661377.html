@@ -125,7 +125,7 @@
 <pre class="line-numbers"><code class="language-JavaScript">let s1 = &quot;some text&quot;
 let s2 = s1.substring(2)
 </code></pre>
-<p>上面第二条语句相当于以下3句：</p>
+<p>上面第二条语句<code>let s2 = s1.substring(2)</code>相当于以下3句：</p>
 <pre class="line-numbers"><code class="language-JavaScript">//1. 创建一个String类型的实例 -&gt; s1的String实例
 let s_tmp = new String(s1)
 //2. 调用实例上的特定方法
@@ -133,6 +133,7 @@ let s2 = s_tmp.substring(2)
 //3. 销毁实例
 s_tmp = null
 </code></pre>
+<p><strong>s_tmp的生命周期（自动创建的原始值包装对象）只存在于访问它的那行代码执行期间</strong></p>
 <h3><a id="question" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>question</h3>
 <ol>
 <li>p114 原始值包装类型</li>
