@@ -121,6 +121,32 @@
 <h2><a id="tencent" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tencent</h2>
 <p><img src="media/16325412705266/16326647922022.jpg" alt="" /><br />
 <img src="media/16325412705266/16326648115226.jpg" alt="" /></p>
+<pre class="line-numbers"><code class="language-JavaScript">let [n, x, y] = line
+if (x &gt; y) {
+  let tmp = x
+  x = y
+  y = tmp
+}
+
+let i = 1
+let j = 1
+for (let k = 1; k &lt;= n; k++) {
+  if (i * x &lt; j * y) {
+    i++
+  } else if (j * y &lt; i * x) {
+    j++
+  } else {
+    i++
+    j++
+  }
+}
+console.log(i, j)
+if ((i - 1) * x &gt; (j - 1) * y) {
+  console.log((i - 1) * x)
+} else {
+  console.log((j - 1) * y)
+}
+</code></pre>
 
 
 </div>
@@ -132,13 +158,14 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16324082806062.html"  title="Previous Post: Frontend Learning!">&laquo; Frontend Learning!</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
+	        <a href="16324468075184.html" 
+	        title="Next Post: Vue CLI">Vue CLI &raquo;</a>
+	    
 	</div>
   </div>
 </div>
@@ -196,6 +223,8 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
+
+<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
