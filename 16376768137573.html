@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  红宝书之战 - 
+  计算机网络 - 
   
   </title>
  <meta name="description" content="">
@@ -130,68 +130,9 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>红宝书之战</h1>
+<h1>计算机网络</h1>
 
-<p>🤯🤡</p>
-<h2><a id="%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本引用类型</h2>
-<ul>
-<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> 1.Boolean</li>
-<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> 2.Number</li>
-<li class="task-list-item"><input type="checkbox" disabled="" /> 3.String</li>
-</ul>
-<h4><a id="%E2%AD%90%EF%B8%8Fstring%E2%AD%90%EF%B8%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>⭐️ String ⭐️</h4>
-<ol>
-<li>String对象的方法可以在所有字符串原始值上调用  eg:<code>&quot;str&quot;.length</code></li>
-<li>原因：在以读模式访问字符串值的任意时候，后台都会执行以下3步：</li>
-</ol>
-<pre class="line-numbers"><code class="language-JavaScript">let s1 = &quot;some text&quot;
-let s2 = s1.substring(2)
-</code></pre>
-<p>上面第二条语句<code>let s2 = s1.substring(2)</code>相当于以下3句：</p>
-<pre class="line-numbers"><code class="language-JavaScript">//1. 创建一个String类型的实例 -&gt; s1的String实例
-let s_tmp = new String(s1)
-//2. 调用实例上的特定方法
-let s2 = s_tmp.substring(2)
-//3. 销毁实例
-s_tmp = null
-</code></pre>
-<p><strong>s_tmp的生命周期（自动创建的原始值包装对象）只存在于访问它的那行代码执行期间</strong></p>
-<h3><a id="question" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>question</h3>
-<ol>
-<li>p114 原始值包装类型</li>
-</ol>
-<ul>
-<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> 所有原始值包装对象都会转换为布尔值true？</li>
-</ul>
-<pre class="line-numbers"><code class="language-JavaScript">let falseObject = new Boolean(false)
-let result = falseObject &amp;&amp; true
-console.log(result) //true
-
-let falseValue = false
-result = falseValue &amp;&amp; true
-console.log(result) //false
-</code></pre>
-<ul>
-<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> 转型函数Number() 和 原始值包装类型的构造函数new Number() 区别？</li>
-</ul>
-<p>转型函数Number为window全局对象中的一个函数</p>
-<blockquote>
-<p>new关键字执行过程<br />
-1) new 构造函数在内存中创建了一个空的对象<br />
-2) this 指向刚才创建的空对象<br />
-3) 执行构造函数里面的代码--给这个空对象添加属性和方法<br />
-4) 返回这个对象(所以构造函数里不需要return)</p>
-</blockquote>
-<blockquote>
-<p><a href="https://blog.csdn.net/weixin_41604040/article/details/113775766">https://blog.csdn.net/weixin_41604040/article/details/113775766</a></p>
-</blockquote>
-<ul>
-<li class="task-list-item"><input type="checkbox" disabled="" /> new关键字的执行过程？</li>
-</ul>
-<h3><a id="fun" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>fun</h3>
-<ul>
-<li>一个有趣的单例内置对象 Math</li>
-</ul>
+<h2><a id="%E7%AC%AC%E4%B8%80%E7%AB%A0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>第一章</h2>
 
 
 </div>
@@ -203,15 +144,13 @@ console.log(result) //false
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16344851791468.html"  title="Previous Post: 集合应用类型">&laquo; 集合应用类型</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16324468075184.html" 
-	        title="Next Post: Vue CLI">Vue CLI &raquo;</a>
+	        <a href="16325412705266.html" 
+	        title="Next Post: 烦😶‍🌫️">烦😶‍🌫️ &raquo;</a>
 	    
 	</div>
   </div>
@@ -224,7 +163,7 @@ console.log(result) //false
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16324468661377.html';
+		var currentURL = '16376768137573.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
@@ -270,8 +209,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
-
-<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
