@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  计算机网络 - 
+  eslint - vue - 
   
   </title>
  <meta name="description" content="">
@@ -134,52 +134,260 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>计算机网络</h1>
+<h1>eslint - vue</h1>
 
-<h2><a id="%E7%AC%AC%E4%B8%80%E7%AB%A0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>第一章</h2>
-<h3><a id="%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>标准化工作</h3>
-<p>RFC Request For Comments</p>
-<h3><a id="%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能指标</h3>
-<h4><a id="%E9%80%9F%E7%8E%87%E5%B8%A6%E5%AE%BD%E5%90%9E%E5%90%90%E9%87%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>速率 带宽 吞吐量</h4>
+<p>前端项目技巧<br />
+vscode配置eslint自动格式化代码</p>
 <ul>
-<li>速率：<br />
-比特 1/0 位<br />
-b/s kb/s Mb/s Gb/s</li>
+<li>重点：vscode，其余软件可能无效，，</li>
 </ul>
-<p>1Byte(字节) = 8bit(比特)<br />
-1KB = 2^10B = 1024B = 1024 * 8b</p>
-<ul>
-<li>
-<p>带宽：网络设备所支持的最高速度（理想发送）</p>
-</li>
-<li>
-<p>吞吐量：吞吐量受网络的宽带或网络的额定速率的限制（接收）</p>
-</li>
-</ul>
-<h4><a id="%E6%97%B6%E5%BB%B6%E6%97%B6%E5%BB%B6%E5%B8%A6%E5%AE%BD%E7%A7%AF%E5%BE%80%E8%BF%94%E6%97%B6%E5%BB%B6rtt%E5%88%A9%E7%94%A8%E7%8E%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>时延 时延带宽积 往返时延RTT 利用率</h4>
+<p>以下只代表基本步骤，可能会有些出入，建议多百度尝试尝试</p>
+<blockquote>
+<p>参考：<a href="https://github.com/vuejs/eslint-config-vue">https://github.com/vuejs/eslint-config-vue</a></p>
+</blockquote>
+<h2><a id="1-vscode%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%EF%BC%9A%E6%90%9C%E7%B4%A2%E4%B8%8B%E8%BD%BD%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%B3%E5%8F%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.vscode插件安装：搜索下载第一个即可</h2>
 <ol>
-<li>
-<p>时延：<br />
-发送时延 = 数据长度/信道带宽（发送速率）<br />
-传播时延 取决于电磁波传播速度和链路长度 = 信道长度/电磁波信道传播速率<br />
-排队时延<br />
-处理时延</p>
-</li>
-<li>
-<p>时延带宽积：容量（bit为单位）<br />
-时延带宽积（bit） = 传播时延（s） * 发送带宽（b/s）</p>
-</li>
-<li>
-<p>往返时延RTT：<br />
-RTT = 传播时延 * 2 + 末端处理时间</p>
-</li>
-<li>
-<p>利用率：<br />
-信道利用率 网络利用率</p>
-</li>
+<li>Vutur：vue文件的高亮，提示等作用</li>
+<li>ESLint：代码格式化 主要针对js格式</li>
+<li>prettier：代码格式化 主要针对html格式</li>
 </ol>
-<h3><a id="%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>分层结构</h3>
-<h4><a id="%E5%8D%8F%E8%AE%AE%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>协议 接口 服务</h4>
+<h2><a id="2%E7%A1%AE%E4%BF%9D%E9%A1%B9%E7%9B%AE%E6%9C%89-eslint" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.确保项目有eslint</h2>
+<p><code>npm install --save-dev eslint</code></p>
+<h2><a id="3-eslint%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.eslint配置文件</h2>
+<p>在根目录下生成.eslintrc.js文件<br />
+个人配置如下：</p>
+<pre class="line-numbers"><code class="language-JavaScript">// .eslintrc.js
+module.exports = {
+  root: true,
+  parserOptions: {
+    parser: 'babel-eslint',
+    sourceType: 'module'
+  },
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+  },
+  extends: ['plugin:vue/recommended', 'eslint:recommended'],
+
+  // add your custom rules here
+  //it is base on https://github.com/vuejs/eslint-config-vue
+  rules: {
+    &quot;vue/max-attributes-per-line&quot;: [2, {
+      &quot;singleline&quot;: 10,
+      &quot;multiline&quot;: {
+        &quot;max&quot;: 1,
+        &quot;allowFirstLine&quot;: false
+      }
+    }],
+    &quot;vue/singleline-html-element-content-newline&quot;: &quot;off&quot;,
+    &quot;vue/multiline-html-element-content-newline&quot;:&quot;off&quot;,
+    &quot;vue/name-property-casing&quot;: [&quot;error&quot;, &quot;PascalCase&quot;],
+    &quot;vue/no-v-html&quot;: &quot;off&quot;,
+    'accessor-pairs': 2,
+    'arrow-spacing': [2, {
+      'before': true,
+      'after': true
+    }],
+    'block-spacing': [2, 'always'],
+    'brace-style': [2, '1tbs', {
+      'allowSingleLine': true
+    }],
+    'camelcase': [0, {
+      'properties': 'always'
+    }],
+    'comma-dangle': [2, 'never'],
+    'comma-spacing': [2, {
+      'before': false,
+      'after': true
+    }],
+    'comma-style': [2, 'last'],
+    'constructor-super': 2,
+    'curly': [2, 'multi-line'],
+    'dot-location': [2, 'property'],
+    'eol-last': 2,
+    'eqeqeq': [&quot;error&quot;, &quot;always&quot;, {&quot;null&quot;: &quot;ignore&quot;}],
+    'generator-star-spacing': [2, {
+      'before': true,
+      'after': true
+    }],
+    'handle-callback-err': [2, '^(err|error)$'],
+    'indent': [2, 2, {
+      'SwitchCase': 1
+    }],
+    'jsx-quotes': [2, 'prefer-single'],
+    'key-spacing': [2, {
+      'beforeColon': false,
+      'afterColon': true
+    }],
+    'keyword-spacing': [2, {
+      'before': true,
+      'after': true
+    }],
+    'new-cap': [2, {
+      'newIsCap': true,
+      'capIsNew': false
+    }],
+    'new-parens': 2,
+    'no-array-constructor': 2,
+    'no-caller': 2,
+    'no-console': 'off',
+    'no-class-assign': 2,
+    'no-cond-assign': 2,
+    'no-const-assign': 2,
+    'no-control-regex': 0,
+    'no-delete-var': 2,
+    'no-dupe-args': 2,
+    'no-dupe-class-members': 2,
+    'no-dupe-keys': 2,
+    'no-duplicate-case': 2,
+    'no-empty-character-class': 2,
+    'no-empty-pattern': 2,
+    'no-eval': 2,
+    'no-ex-assign': 2,
+    'no-extend-native': 2,
+    'no-extra-bind': 2,
+    'no-extra-boolean-cast': 2,
+    'no-extra-parens': [2, 'functions'],
+    'no-fallthrough': 2,
+    'no-floating-decimal': 2,
+    'no-func-assign': 2,
+    'no-implied-eval': 2,
+    'no-inner-declarations': [2, 'functions'],
+    'no-invalid-regexp': 2,
+    'no-irregular-whitespace': 2,
+    'no-iterator': 2,
+    'no-label-var': 2,
+    'no-labels': [2, {
+      'allowLoop': false,
+      'allowSwitch': false
+    }],
+    'no-lone-blocks': 2,
+    'no-mixed-spaces-and-tabs': 2,
+    'no-multi-spaces': 2,
+    'no-multi-str': 2,
+    'no-multiple-empty-lines': [2, {
+      'max': 1
+    }],
+    'no-native-reassign': 2,
+    'no-negated-in-lhs': 2,
+    'no-new-object': 2,
+    'no-new-require': 2,
+    'no-new-symbol': 2,
+    'no-new-wrappers': 2,
+    'no-obj-calls': 2,
+    'no-octal': 2,
+    'no-octal-escape': 2,
+    'no-path-concat': 2,
+    'no-proto': 2,
+    'no-redeclare': 2,
+    'no-regex-spaces': 2,
+    'no-return-assign': [2, 'except-parens'],
+    'no-self-assign': 2,
+    'no-self-compare': 2,
+    'no-sequences': 2,
+    'no-shadow-restricted-names': 2,
+    'no-spaced-func': 2,
+    'no-sparse-arrays': 2,
+    'no-this-before-super': 2,
+    'no-throw-literal': 2,
+    'no-trailing-spaces': 2,
+    'no-undef': 2,
+    'no-undef-init': 2,
+    'no-unexpected-multiline': 2,
+    'no-unmodified-loop-condition': 2,
+    'no-unneeded-ternary': [2, {
+      'defaultAssignment': false
+    }],
+    'no-unreachable': 2,
+    'no-unsafe-finally': 2,
+    'no-unused-vars': [2, {
+      'vars': 'all',
+      'args': 'none'
+    }],
+    'no-useless-call': 2,
+    'no-useless-computed-key': 2,
+    'no-useless-constructor': 2,
+    'no-useless-escape': 0,
+    'no-whitespace-before-property': 2,
+    'no-with': 2,
+    'one-var': [2, {
+      'initialized': 'never'
+    }],
+    'operator-linebreak': [2, 'after', {
+      'overrides': {
+        '?': 'before',
+        ':': 'before'
+      }
+    }],
+    'padded-blocks': [2, 'never'],
+    'quotes': [2, 'single', {
+      'avoidEscape': true,
+      'allowTemplateLiterals': true
+    }],
+    'semi': [2, 'never'],
+    'semi-spacing': [2, {
+      'before': false,
+      'after': true
+    }],
+    'space-before-blocks': [2, 'always'],
+    'space-before-function-paren': [2, 'never'],
+    'space-in-parens': [2, 'never'],
+    'space-infix-ops': 2,
+    'space-unary-ops': [2, {
+      'words': true,
+      'nonwords': false
+    }],
+    'spaced-comment': [2, 'always', {
+      'markers': ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ',']
+    }],
+    'template-curly-spacing': [2, 'never'],
+    'use-isnan': 2,
+    'valid-typeof': 2,
+    'wrap-iife': [2, 'any'],
+    'yield-star-spacing': [2, 'both'],
+    'yoda': [2, 'never'],
+    'prefer-const': 2,
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'object-curly-spacing': [2, 'always', {
+      objectsInObjects: false
+    }],
+    'array-bracket-spacing': [2, 'never']
+  }
+}
+
+</code></pre>
+<p>不需要eslint检测可添加至根目录下的另一个.eslintignore文件中：</p>
+<pre class="line-numbers"><code class="language-plain_text">build/*.js
+src/assets
+public
+dist
+</code></pre>
+<h2><a id="vscode-setting" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>vscode setting</h2>
+<p>配置一下vscode的配置文件.vscode/settings.json<br />
+实现ctrl + s保存文件时自动格式化代码</p>
+<pre class="line-numbers"><code class="language-json">// .vscode/settings.json
+{
+    &quot;eslint.validate&quot;: [&quot;javascript&quot;, &quot;javascriptreact&quot;, &quot;vue&quot;],
+    &quot;editor.codeActionsOnSave&quot;: {
+        &quot;source.fixAll.eslint&quot;: true
+    },
+    &quot;vetur.format.defaultFormatter.html&quot;: &quot;prettyhtml&quot;,
+    &quot;vetur.format.defaultFormatter.js&quot;: &quot;none&quot;, // 禁用vetur的JS格式化，交给eslint处理
+    &quot;vetur.format.defaultFormatterOptions&quot;: {
+      &quot;js-beautify-html&quot;: {
+        &quot;wrap_attributes&quot;: &quot;auto&quot;
+      },
+      &quot;prettyhtml&quot;: {
+        &quot;printWidth&quot;: 150,
+        &quot;singleQuote&quot;: false,
+        &quot;wrapAttributes&quot;: false,
+        &quot;sortAttributes&quot;: false,
+      }
+    },
+}
+</code></pre>
+<h2><a id="done" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>done</h2>
 
 
 </div>
@@ -191,15 +399,13 @@ RTT = 传播时延 * 2 + 末端处理时间</p>
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16344851791468.html"  title="Previous Post: 集合应用类型">&laquo; 集合应用类型</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16325412705266.html" 
-	        title="Next Post: 烦😶‍🌫️">烦😶‍🌫️ &raquo;</a>
+	        <a href="16344851791468.html" 
+	        title="Next Post: 集合应用类型">集合应用类型 &raquo;</a>
 	    
 	</div>
   </div>
@@ -212,7 +418,7 @@ RTT = 传播时延 * 2 + 末端处理时间</p>
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16376768137573.html';
+		var currentURL = '16378340644786.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
@@ -258,6 +464,8 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
+
+<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
