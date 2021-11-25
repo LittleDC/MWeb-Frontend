@@ -135,13 +135,50 @@
 <h2><a id="object" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object</h2>
 <h2><a id="array" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array</h2>
 <h3><a id="%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>创建数组</h3>
+<ol>
+<li>
 <p>Array.from()<br />
 第一个参数是一个类/伪数组对象<br />
 第二个参数是映射函数参数（可选）</p>
+</li>
+<li>
 <p>Array.of()<br />
 可以把一组参数转换为数组</p>
+</li>
+</ol>
 <pre class="line-numbers"><code class="language-JavaScript">Array.of(1,2,3,4) // [1,2,3,4]
 </code></pre>
+<h3><a id="%E6%A3%80%E6%B5%8B%E6%95%B0%E7%BB%84value" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>检测数组 value</h3>
+<ol>
+<li>value instanceof Array（假定只有一个全局执行上下文）</li>
+<li>Array.isArray(value)</li>
+</ol>
+<h3><a id="%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>迭代器方法</h3>
+<p><code>let arr = ['foo', 'bar']</code></p>
+<ol>
+<li>arr.keys()    //[0, 1]</li>
+<li>arr.values()  //['foo', 'bar']</li>
+<li>arr.entries() //[[0, 'foo'], [1, 'bar']]</li>
+</ol>
+<h3><a id="%E5%A4%8D%E5%88%B6%E5%92%8C%E5%A1%AB%E5%85%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>复制和填充</h3>
+<ol>
+<li>arr.fill() 批量复制</li>
+<li>arr.copyWinthin() 填充</li>
+</ol>
+<h3><a id="%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>转换方法</h3>
+<ol>
+<li>arr.toLocaleString()</li>
+<li>arr.toString() 每个值调用toString()方法后','拼接 返回字符串</li>
+<li>arr.valueOf() 返回数组本身</li>
+<li>join(arg) 拼接字符串 arg分隔符</li>
+</ol>
+<h3><a id="tips" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tips</h3>
+<ol>
+<li>使用length属性可以方便的向数组末尾添加元素（length会自加一）<br />
+<code>colors[colors.length] = 'blue'</code></li>
+<li>数组最多可以包含 2^32-1 个元素</li>
+<li></li>
+</ol>
 <h2><a id="map-set" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Map &amp; Set</h2>
 <h2><a id="%E4%B8%8D%E5%B8%B8%E8%A7%81%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>不常见？</h2>
 <h3><a id="%E5%AE%9A%E5%9E%8B%E6%95%B0%E7%BB%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定型数组</h3>
@@ -158,15 +195,13 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16347422574488.html"  title="Previous Post: 我也不知道这一页该叫什么🧐">&laquo; 我也不知道这一页该叫什么🧐</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16324468661377.html" 
-	        title="Next Post: 红宝书之战">红宝书之战 &raquo;</a>
+	        <a href="16376768137573.html" 
+	        title="Next Post: 计算机网络">计算机网络 &raquo;</a>
 	    
 	</div>
   </div>
