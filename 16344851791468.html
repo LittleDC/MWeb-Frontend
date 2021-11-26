@@ -164,7 +164,7 @@
 <li>arr.values()  //['foo', 'bar']</li>
 <li>arr.entries() //[[0, 'foo'], [1, 'bar']]</li>
 </ol>
-<h3><a id="%E5%A4%8D%E5%88%B6%E5%92%8C%E5%A1%AB%E5%85%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>复制和填充</h3>
+<h3><a id="%E5%A4%8D%E5%88%B6%E5%92%8C%E5%A1%AB%E5%85%85%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>复制和填充方法</h3>
 <ol>
 <li>arr.fill() 批量复制</li>
 <li>arr.copyWinthin() 填充</li>
@@ -178,26 +178,75 @@
 </ol>
 <h3><a id="%E6%A0%88%E6%96%B9%E6%B3%95%E9%98%9F%E5%88%97%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>栈方法 队列方法</h3>
 <ol>
-<li>栈：arr.push()/arr.pop()</li>
+<li>栈：arr.push() / arr.pop()</li>
 <li>队列：
 <ol>
-<li>arr.push()/arr.shift()</li>
-<li>arr.pop()/arr.unshift()</li>
+<li>arr.push() / arr.shift()</li>
+<li>arr.pop() / arr.unshift()</li>
 </ol>
 </li>
 </ol>
 <h3><a id="%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95%E4%BC%9A%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84arr" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>排序方法 --- 会改变原数组arr</h3>
 <ol>
 <li>arr.reverse() 将数组反向</li>
-<li>arr.sort()</li>
+<li>arr.sort() 默认按照<strong>字符串</strong>升序重新排列数组元素</li>
+</ol>
+<h3><a id="%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>操作方法</h3>
+<ol>
+<li>arr.concat() 不改变原数组</li>
+<li>arr.slice() 不改变原数组</li>
+<li>arr.splice(起始位置，删除个数，插入元素...) 改变原数组 删除，插入，替换</li>
+</ol>
+<h3><a id="%E6%90%9C%E7%B4%A2%E5%92%8C%E4%BD%8D%E7%BD%AE%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>搜索和位置方法</h3>
+<ol>
+<li>严格相等搜索 arr.indexOf() / arr.lastIndexOf() / arr.includes()</li>
+<li>断言函数搜索 arr.find() / arr.findIndex()</li>
+</ol>
+<h3><a id="%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95%E9%83%BD%E4%B8%8D%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84arr" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>迭代方法 --- 都不改变原数组arr</h3>
+<p>对数组每一项都运行传入的函数</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arr.filter()</td>
+<td>函数返回true的项会组成数组之后返回</td>
+</tr>
+<tr>
+<td>arr.forEach()</td>
+<td>没有返回值，本质上相当于for循环遍历数组</td>
+</tr>
+<tr>
+<td>arr.map()</td>
+<td>返回由每次函数调用的结果构成的数组</td>
+</tr>
+<tr>
+<td>arr.every()</td>
+<td>如果对每一项函数都返回true，则该方法返回true</td>
+</tr>
+<tr>
+<td>arr.some()</td>
+<td>如果有一项函数返回true，则该方法返回true</td>
+</tr>
+</tbody>
+</table>
+<h3><a id="%E5%BD%92%E5%B9%B6%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>归并方法</h3>
+<ol>
+<li>arr.reduce()<br />
+<code>[1,2,3,4,5].reduce((prev, cur, index, array) =&gt; prev + cur)</code> //15</li>
+<li>arr.reduceRight()</li>
 </ol>
 <h3><a id="tips" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tips</h3>
 <ol>
 <li>使用length属性可以方便的向数组末尾添加元素（length会自加一）<br />
 <code>arr[arr.length] = 'blue'</code></li>
 <li>数组最多可以包含 2^32-1 个元素</li>
-<li></li>
 </ol>
+<h3><a id="%E5%AE%9A%E5%9E%8B%E6%95%B0%E7%BB%84%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定型数组？</h3>
 <h2><a id="map-set" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Map &amp; Set</h2>
 <h2><a id="%E4%B8%8D%E5%B8%B8%E8%A7%81%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>不常见？</h2>
 <h3><a id="%E5%AE%9A%E5%9E%8B%E6%95%B0%E7%BB%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定型数组</h3>
@@ -214,15 +263,13 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16378340644786.html"  title="Previous Post: eslint - vue">&laquo; eslint - vue</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16325412705266.html" 
-	        title="Next Post: 烦😶‍🌫️">烦😶‍🌫️ &raquo;</a>
+	        <a href="16376768137573.html" 
+	        title="Next Post: 计算机网络">计算机网络 &raquo;</a>
 	    
 	</div>
   </div>
