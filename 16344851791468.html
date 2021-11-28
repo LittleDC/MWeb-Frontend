@@ -199,7 +199,7 @@
 </ol>
 <h3><a id="%E6%90%9C%E7%B4%A2%E5%92%8C%E4%BD%8D%E7%BD%AE%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>搜索和位置方法</h3>
 <ol>
-<li>严格相等搜索 arr.indexOf() / arr.lastIndexOf() / arr.includes()</li>
+<li>严格相等搜索 arr.indexOf() / arr.lastIndexOf() / <u>arr.includes() es7新增</u></li>
 <li>断言函数搜索 arr.find() / arr.findIndex()</li>
 </ol>
 <h3><a id="%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95%E9%83%BD%E4%B8%8D%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84arr" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>迭代方法 --- 都不改变原数组arr</h3>
@@ -247,11 +247,33 @@
 <li>数组最多可以包含 2^32-1 个元素</li>
 </ol>
 <h3><a id="%E5%AE%9A%E5%9E%8B%E6%95%B0%E7%BB%84%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定型数组？</h3>
-<h2><a id="map-set" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Map &amp; Set</h2>
-<h2><a id="%E4%B8%8D%E5%B8%B8%E8%A7%81%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>不常见？</h2>
-<h3><a id="%E5%AE%9A%E5%9E%8B%E6%95%B0%E7%BB%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定型数组</h3>
-<h3><a id="weakmap-weakset" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>WeakMap &amp; WeakSet</h3>
-<h3><a id="" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a></h3>
+<h2><a id="map%E9%94%AE%E5%80%BC%E5%AD%98%E5%82%A8%E6%9C%BA%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Map 键/值存储机制</h2>
+<p>es6新增<br />
+Map可以使用任何JavaScript数据类型作为键，其内部使用SameValueZero比较操作。</p>
+<pre class="line-numbers"><code class="language-JavaScript">const m = new Map()
+
+const a = 0/&quot;&quot;, b = 0/&quot;&quot;, // NaN
+      pz = +0, nz = -0
+
+console.log(a === b) //false
+console.log(pz === nz) //true
+
+m.set(a, &quot;foo&quot;)
+m.set(pz, &quot;bar&quot;)
+
+alert(m.get(b)) //foo
+alert(m.get(nz)) //bar
+</code></pre>
+<h3><a id="%E5%9F%BA%E6%9C%ACapi" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本API</h3>
+<ol>
+<li>创建 <code>const m = new Map()</code></li>
+<li>m.set() 方法添加键/值对，返回映射实例，因此可以连缀使用</li>
+<li>m.get() / m.has() 方法进行查询</li>
+<li>m.delete() / m.clear() 方法删除值</li>
+<li>m.size属性获取映射中键值对的数量</li>
+</ol>
+<h3><a id="%E9%A1%BA%E5%BA%8F%E4%B8%8E%E8%BF%AD%E4%BB%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>顺序与迭代</h3>
+<h2><a id="set" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set</h2>
 
 
 </div>
