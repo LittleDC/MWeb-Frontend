@@ -273,6 +273,20 @@ alert(m.get(nz)) //bar
 <li>m.size属性获取映射中键值对的数量</li>
 </ol>
 <h3><a id="%E9%A1%BA%E5%BA%8F%E4%B8%8E%E8%BF%AD%E4%BB%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>顺序与迭代</h3>
+<ol>
+<li>m.entries() 默认迭代器 -&gt; 可以直接对映射实例使用扩展操作</li>
+<li>m.forEach() 回调方式</li>
+<li>m.keys() / m.values() 分别返回以插入顺序生成键和值的迭代器</li>
+</ol>
+<p><code>键和值在迭代器遍历时是可以修改的，但映射内部的引用则无法修改</code></p>
+<h3><a id="%E9%80%89%E6%8B%A9object%E8%BF%98%E6%98%AFmap" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>选择Object还是Map</h3>
+<ol>
+<li>内存占用 --- 给定固定大小的内存，Map大约可以比Object多存储50%的键值对</li>
+<li>插入性能 --- 涉及大量插入操作选Map的性能更佳</li>
+<li>查找速度 --- 涉及大量查找操作选Object更好一些（浏览器引擎可以进行优化）</li>
+<li>删除性能 --- 涉及大量删除操作选Map的性能更佳（Map的delete()操作都比插入和查找更快）</li>
+</ol>
+<h3><a id="weakmap%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>WeakMap？</h3>
 <h2><a id="set" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set</h2>
 
 
