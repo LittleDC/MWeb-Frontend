@@ -287,7 +287,27 @@ alert(m.get(nz)) //bar
 <li>删除性能 --- 涉及大量删除操作选Map的性能更佳（Map的delete()操作都比插入和查找更快）</li>
 </ol>
 <h3><a id="weakmap%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>WeakMap？</h3>
-<h2><a id="set" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set</h2>
+<h2><a id="set%E9%9B%86%E5%90%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set 集合数据结构</h2>
+<p>es6新增<br />
+类似加强的Map，可以包含任何JavaScript数据类型作为值，集合也使用SameValueZero操作。<br />
+键值相等？</p>
+<h3><a id="%E5%9F%BA%E6%9C%ACapi" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本API</h3>
+<ol>
+<li>创建 <code>const s = new Set()</code></li>
+<li>s.add() 方法增加值，返回集合实例，故可连缀使用</li>
+<li>s.has() 方法查询</li>
+<li>s.delete() / s.clear() 方法删除元素</li>
+<li>s.size 属性获取元素数量</li>
+</ol>
+<h3><a id="%E9%A1%BA%E5%BA%8F%E4%B8%8E%E8%BF%AD%E4%BB%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>顺序与迭代</h3>
+<ol>
+<li>s.values() / s.keys() 默认迭代器，后者为别名<br />
+<code>s.values === s[Symbol.iterator]</code> //true<br />
+<code>s.keys === s[Symbol.iterator]</code> //true</li>
+<li>s.forEach() 回调方式</li>
+</ol>
+<h3><a id="%E5%AE%9A%E4%B9%89%E6%AD%A3%E5%BC%8F%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C%EF%BC%9F%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定义正式集合操作？？</h3>
+<h3><a id="weakset%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>WeakSet？</h3>
 
 
 </div>
