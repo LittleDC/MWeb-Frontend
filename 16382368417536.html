@@ -148,6 +148,29 @@
 “迭代” 按照顺序反复多次执行一段程序<br />
 ES5新增<code>Array.prototype.forEach()</code>方法，向通用迭代需求迈进了一步</p>
 <h2><a id="%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>迭代器模式</h2>
+<pre class="line-numbers"><code class="language-JavaScript">class Counter {
+    constructor(limit) {
+        this.limit = limit
+    }
+    
+    [Symbol.iterator]() {
+        let count = 1, limit = this.limit
+        return {
+            next() {
+                if (count &lt;= limit) {
+                    return { done: false, value: count++ }
+                } else {
+                    return { done: true }
+                }
+            },
+            return() {
+                console.log('Exiting early')
+                return { done: true }
+            }
+        }
+    }
+}
+</code></pre>
 <h2><a id="%E7%94%9F%E6%88%90%E5%99%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>生成器</h2>
 <pre class="line-numbers"><code class="language-JavaScript">function* generatorFn(initial) {
     console.log(initial)
