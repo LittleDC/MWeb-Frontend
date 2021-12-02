@@ -149,6 +149,18 @@
 ES5新增<code>Array.prototype.forEach()</code>方法，向通用迭代需求迈进了一步</p>
 <h2><a id="%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>迭代器模式</h2>
 <h2><a id="%E7%94%9F%E6%88%90%E5%99%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>生成器</h2>
+<pre class="line-numbers"><code class="language-JavaScript">function* generatorFn(initial) {
+    console.log(initial)
+    console.log(yield)
+    console.log(yield)
+}
+
+let g = generatorFn('foo') // 现在是处于暂停执行状态(suspended)
+
+g.next('bar') // foo 第一次调用是为了开始执行生成器函数
+g.next('baz') // baz
+g.next('qux') // qux
+</code></pre>
 
 
 </div>
@@ -225,6 +237,8 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
+
+<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
