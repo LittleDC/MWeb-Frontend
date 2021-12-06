@@ -57,9 +57,9 @@
           
             <li><a title="迭代器与生成器" href="16382368417536.html">迭代器与生成器</a></li>
           
-            <li><a title="对象,类与面对对象编程" href="16382370352660.html">对象,类与面对对象编程</a></li>
-          
             <li><a title="集合应用类型" href="16344851791468.html">集合应用类型</a></li>
+          
+            <li><a title="对象,类与面对对象编程" href="16382370352660.html">对象,类与面对对象编程</a></li>
           
             <li><a title="红宝书之战" href="16324468661377.html">红宝书之战</a></li>
           
@@ -110,9 +110,9 @@
                         
                           <li><a title="迭代器与生成器" href="16382368417536.html">迭代器与生成器</a></li>
                         
-                          <li><a title="对象,类与面对对象编程" href="16382370352660.html">对象,类与面对对象编程</a></li>
-                        
                           <li><a title="集合应用类型" href="16344851791468.html">集合应用类型</a></li>
+                        
+                          <li><a title="对象,类与面对对象编程" href="16382370352660.html">对象,类与面对对象编程</a></li>
                         
                           <li><a title="红宝书之战" href="16324468661377.html">红宝书之战</a></li>
                         
@@ -207,6 +207,20 @@ ES5新增<code>Array.prototype.forEach()</code>方法，向通用迭代需求迈
 }
 </code></pre>
 <h2><a id="%E7%94%9F%E6%88%90%E5%99%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>生成器</h2>
+<p>ES6新增<br />
+拥有在一个函数块内暂停和恢复代码执行的能力</p>
+<h3><a id="%E7%94%9F%E6%88%90%E5%99%A8%E5%9F%BA%E7%A1%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>生成器基础</h3>
+<p>函数名称前加一个星号（*）表示它是一个生成器。</p>
+<p>调用生成函数会生成一个<strong>生成器对象</strong>，生成器对象<u>一开始处于暂停执行状态(suspended)。</u><br />
+与迭代器相似，生成器也实现了Iterator接口，因此具有next()方法。调用该方法会使生成器开始或恢复执行<br />
+生成器只会在初次调用next()方法后开始执行。</p>
+<h3><a id="yield%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%AD%E6%96%AD%E6%89%A7%E8%A1%8C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>yield关键字 --- 中断执行</h3>
+<p>类似函数的中间返回语句，它生成的值会出现在next()方法返回的对象里。<br />
+yield关键字只能在生成器函数内部使用，用在其他地方会抛出错误。必须直接位于生成器函数定义中。</p>
+<ul>
+<li>yield作为函数的中间参数使用<br />
+上一次生成器暂停的yield关键字会接收传给next()方法的第一个值。但第一次调用next()传入的值不会被使用，因为这一次调用是为了开始执行生成器函数</li>
+</ul>
 <pre class="line-numbers"><code class="language-JavaScript">function* generatorFn(initial) {
     console.log(initial)
     console.log(yield)
@@ -219,6 +233,12 @@ g.next('bar') // foo 第一次调用是为了开始执行生成器函数
 g.next('baz') // baz
 g.next('qux') // qux
 </code></pre>
+<h3><a id="%E6%8F%90%E5%89%8D%E7%BB%88%E6%AD%A2%E7%94%9F%E6%88%90%E5%99%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>提前终止生成器</h3>
+<ol>
+<li>return() 强制生成器进入关闭状态。提供给return()方法的值，就是终止迭代器对象的值。<br />
+for-of循环等内置语言结构会忽略状态为done:true的IteratorObject内部返回的值</li>
+<li>throw() 在暂停的时候将一个提供的错误注入到生成器对象中。如果错误未被处理，生成器就会关闭。</li>
+</ol>
 
 
 </div>
@@ -235,8 +255,8 @@ g.next('qux') // qux
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16382370352660.html" 
-	        title="Next Post: 对象,类与面对对象编程">对象,类与面对对象编程 &raquo;</a>
+	        <a href="16344851791468.html" 
+	        title="Next Post: 集合应用类型">集合应用类型 &raquo;</a>
 	    
 	</div>
   </div>
