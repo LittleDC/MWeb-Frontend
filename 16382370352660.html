@@ -217,6 +217,15 @@
 <li>默认情况下，所有<strong>直接定义</strong>在对象上的 configurable、enumerable 和 writable 属性都是<code>true</code></li>
 <li>访问器属性是不能直接定义的，必须使用Object.defineProperty().</li>
 </ul>
+<h3><a id="%E5%AE%9A%E4%B9%89%E6%8F%8F%E8%BF%B0%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定义描述符</h3>
+<h4><a id="object-defineproperty" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.defineProperty()</h4>
+<p><code>Object.defineProperty(obj, prop, descriptor)</code></p>
+<p>方法不指定属性时的默认值：</p>
+<ul>
+<li>拥有布尔值的键 configurable、enumerable 和 writable 的默认值都是 <code>false</code>。</li>
+<li>属性值和函数的键 value、get 和 set 字段的默认值为 <code>undefined</code>。</li>
+</ul>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty</a></p>
 <pre class="line-numbers"><code class="language-JavaScript">&quot;use strict&quot;;
 let book = {
 	year_: 2017,
@@ -239,14 +248,38 @@ Object.defineProperty(book, 'year', {
 book.year = 2018
 console.log(book.edition) //2
 </code></pre>
-<h4><a id="object-defineproperty" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.defineProperty()</h4>
-<p><code>Object.defineProperty(obj, prop, descriptor)</code></p>
-<p>方法不指定属性时的默认值：</p>
-<ul>
-<li>拥有布尔值的键 configurable、enumerable 和 writable 的默认值都是 <code>false</code>。</li>
-<li>属性值和函数的键 value、get 和 set 字段的默认值为 <code>undefined</code>。</li>
-</ul>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty</a></p>
+<h4><a id="object-defineproperties" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.defineProperties()</h4>
+<pre class="line-numbers"><code class="language-JavaScript">&quot;use strict&quot;;
+let book = {}
+Object.defineProperties(book, {
+	year_: {
+	   // writable: false,
+		value: 2017
+	},
+
+	edition: {
+	   // writable: false,
+		value: 1
+	},
+
+	year: {
+		get(){
+			return this.year_
+		},
+
+		set(newValue) {
+			if (newValue &gt; 2017) {
+				this.year_ = newValue
+				console.log(this.year, this.year_)
+				this.edition += newValue - 2017
+			}
+		}
+	}
+})
+
+book.year = 2018 // error!
+</code></pre>
+<h3><a id="%E8%AF%BB%E5%8F%96%E6%8F%8F%E8%BF%B0%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>读取描述符</h3>
 
 
 </div>
