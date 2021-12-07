@@ -55,11 +55,11 @@
         <li><label>JS Pro</label></li>
 
           
+            <li><a title="对象,类与面对对象编程" href="16382370352660.html">对象,类与面对对象编程</a></li>
+          
             <li><a title="迭代器与生成器" href="16382368417536.html">迭代器与生成器</a></li>
           
             <li><a title="集合应用类型" href="16344851791468.html">集合应用类型</a></li>
-          
-            <li><a title="对象,类与面对对象编程" href="16382370352660.html">对象,类与面对对象编程</a></li>
           
             <li><a title="红宝书之战" href="16324468661377.html">红宝书之战</a></li>
           
@@ -79,9 +79,9 @@
           
             <li><a title="eslint - vue" href="16378340644786.html">eslint - vue</a></li>
           
-            <li><a title="烦😶‍🌫️" href="16325412705266.html">烦😶‍🌫️</a></li>
-          
             <li><a title="我也不知道这一页该叫什么🧐" href="16347422574488.html">我也不知道这一页该叫什么🧐</a></li>
+          
+            <li><a title="烦😶‍🌫️" href="16325412705266.html">烦😶‍🌫️</a></li>
           
 
       
@@ -108,11 +108,11 @@
                     
                       <li class="side-title"><span>JS Pro</span></li>
                         
+                          <li><a title="对象,类与面对对象编程" href="16382370352660.html">对象,类与面对对象编程</a></li>
+                        
                           <li><a title="迭代器与生成器" href="16382368417536.html">迭代器与生成器</a></li>
                         
                           <li><a title="集合应用类型" href="16344851791468.html">集合应用类型</a></li>
-                        
-                          <li><a title="对象,类与面对对象编程" href="16382370352660.html">对象,类与面对对象编程</a></li>
                         
                           <li><a title="红宝书之战" href="16324468661377.html">红宝书之战</a></li>
                         
@@ -128,9 +128,9 @@
                         
                           <li><a title="eslint - vue" href="16378340644786.html">eslint - vue</a></li>
                         
-                          <li><a title="烦😶‍🌫️" href="16325412705266.html">烦😶‍🌫️</a></li>
-                        
                           <li><a title="我也不知道这一页该叫什么🧐" href="16347422574488.html">我也不知道这一页该叫什么🧐</a></li>
+                        
+                          <li><a title="烦😶‍🌫️" href="16325412705266.html">烦😶‍🌫️</a></li>
                         
 
                     
@@ -144,6 +144,109 @@
  <div class="markdown-body">
 <h1>对象,类与面对对象编程</h1>
 
+<h2><a id="%E7%90%86%E8%A7%A3%E5%AF%B9%E8%B1%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>理解对象</h2>
+<h3><a id="%E5%B1%9E%E6%80%A7%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%8F%8F%E8%BF%B0%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>属性的类型(描述符)</h3>
+<p>使用一些内部特性来描述属性的特征。表示：[[Enumerable]]</p>
+<ol>
+<li>数据属性(数据描述符)</li>
+<li>访问器属性(存取描述符)</li>
+</ol>
+<p>一个描述符只能是以上两者其中之一；不能同时是两者。</p>
+<p>描述符可拥有的键值：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center"></th>
+<th style="text-align: center">configurable</th>
+<th style="text-align: center">enumerable</th>
+<th style="text-align: center">value</th>
+<th style="text-align: center">writable</th>
+<th style="text-align: center">get</th>
+<th style="text-align: center">set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center">数据描述符</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✕</td>
+<td style="text-align: center">✕</td>
+</tr>
+<tr>
+<td style="text-align: center">存取描述符</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✕</td>
+<td style="text-align: center">✕</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>configurable<br />
+当且仅当该属性的 configurable 键值为 true 时，该属性的描述符才能够被改变，同时该属性也能从对应的对象上被删除。<br />
+<code>一个属性被定义为不可配置之后，就不能再变回可配置了。再次调用Object.defineProperty()并修改任何非 writable 属性会导致错误</code></p>
+</li>
+<li>
+<p>enumerable<br />
+当且仅当该属性的 enumerable 键值为 true 时，该属性才会出现在对象的枚举属性中。</p>
+</li>
+<li>
+<p>value<br />
+该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。</p>
+</li>
+<li>
+<p>writable<br />
+当且仅当该属性的 writable 键值为 true 时，属性的值，也就是上面的 value，才能被赋值运算符 改变。</p>
+</li>
+<li>
+<p>get<br />
+当访问该属性时，会调用此函数。执行时不传入任何参数，但是会传入 this 对象（由于继承关系，这里的this并不一定是定义该属性的对象）。该函数的返回值会被用作属性的值。</p>
+</li>
+<li>
+<p>set<br />
+当属性值被修改时，会调用此函数。该方法接受一个参数（也就是被赋予的新值），会传入赋值时的 this 对象。</p>
+</li>
+</ol>
+<ul>
+<li>默认情况下，所有<strong>直接定义</strong>在对象上的 configurable、enumerable 和 writable 属性都是<code>true</code></li>
+<li>访问器属性是不能直接定义的，必须使用Object.defineProperty().</li>
+</ul>
+<pre class="line-numbers"><code class="language-JavaScript">&quot;use strict&quot;;
+let book = {
+	year_: 2017,
+	edition: 1
+}
+Object.defineProperty(book, 'year', {
+	get(){
+		return this.year_
+	},
+
+	set(newValue) {
+		if (newValue &gt; 2017) {
+			this.year_ = newValue
+			console.log(this.year, this.year_)
+			this.edition += newValue - 2017
+		}
+	}
+})
+
+book.year = 2018
+console.log(book.edition) //2
+</code></pre>
+<h4><a id="object-defineproperty" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.defineProperty()</h4>
+<p><code>Object.defineProperty(obj, prop, descriptor)</code></p>
+<p>方法不指定属性时的默认值：</p>
+<ul>
+<li>拥有布尔值的键 configurable、enumerable 和 writable 的默认值都是 <code>false</code>。</li>
+<li>属性值和函数的键 value、get 和 set 字段的默认值为 <code>undefined</code>。</li>
+</ul>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty</a></p>
 
 
 </div>
@@ -155,15 +258,13 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16344851791468.html"  title="Previous Post: 集合应用类型">&laquo; 集合应用类型</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16376768137573.html" 
-	        title="Next Post: 计算机网络">计算机网络 &raquo;</a>
+	        <a href="16382368417536.html" 
+	        title="Next Post: 迭代器与生成器">迭代器与生成器 &raquo;</a>
 	    
 	</div>
   </div>
@@ -222,6 +323,8 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
+
+<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
