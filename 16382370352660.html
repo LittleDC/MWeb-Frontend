@@ -316,6 +316,47 @@ year_: {value: 2017, writable: false, enumerable: false, configurable: false}
 <h3><a id="%E5%90%88%E5%B9%B6%E5%AF%B9%E8%B1%A1mergemixin" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>合并对象 merge/mixin</h3>
 <p>把源对象所有的本地属性一起复制到目标对象上。使目标对象得到了增强</p>
 <p>方法：<code>Object.assign(target, ...sources)</code></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">assign</a></p>
+<p>该方法会使用源对象上的[[Get]]取得属性的值，然后使用目标对象上的[[Set]]设置属性的值</p>
+<pre class="line-numbers"><code class="language-JavaScript">dest = { 
+  set a(val) {
+    console.log(`Invoked dest setter with param ${val}`)
+  }
+}
+
+src = {
+  get a() {
+    console.log('Invoked src getter')
+    return 'foo'
+  }
+}
+
+Object.assign(dest, src)
+[Log] Invoked src getter
+[Log] Invoked dest setter with param foo
+
+console.log(dest) // { set a(val) {...} }
+
+</code></pre>
+<p>notice:</p>
+<ol>
+<li>对每个源对象执行的是浅复制</li>
+<li>如果多个源对象都有相同的属性，则使用最后一个复制的值。</li>
+<li>不能在两个对象间转换获取函数和设置函数</li>
+<li>没有‘回滚’操作，可能只会完成部分复制的方法（中途出错时，出错前的复制仍有效）</li>
+</ol>
+<h3><a id="%E5%AF%B9%E8%B1%A1%E6%A0%87%E8%AF%86%E5%8F%8A%E7%9B%B8%E7%AD%89%E5%88%A4%E5%AE%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>对象标识及相等判定</h3>
+<p>方法：<code>Object.is()</code></p>
+<pre class="line-numbers"><code class="language-JavaScript">console.log(NaN === NaN) // false
+console.log(Object.is(NaN, NaN)) // true
+
+//检验超过两个值 递归
+function recursivelyCheckEqual(x, ...rest){
+    return Object.is(x, rest[0]) &amp;&amp; 
+            (rest.length &lt; 2 || recursivelyCheckEqual(...rest))
+</code></pre>
+<h3><a id="%E5%A2%9E%E5%BC%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AF%AD%E6%B3%95%E8%AF%AD%E6%B3%95%E7%B3%96%F0%9F%8D%AC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>增强对象的语法 --- 语法糖🍬</h3>
+<h3><a id="%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>对象解构</h3>
 
 
 </div>
