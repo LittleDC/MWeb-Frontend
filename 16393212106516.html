@@ -156,6 +156,35 @@
  <div class="markdown-body">
 <h1>数据链路层</h1>
 
+<h2><a id="%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本概念</h2>
+<p>节点：主机，路由器<br />
+链路：物理通道<br />
+数据链路：逻辑通道<br />
+帧：链路层的协议数据单元，封装网络层数据报</p>
+<p>数据链路层负责通过一条链路从一个结点向另一个物理链路直接相连的相邻结点传送数据报。</p>
+<h3><a id="%E5%8A%9F%E8%83%BD" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>功能</h3>
+<ol>
+<li>为网络层提供服务。</li>
+<li>链路管理，即连接的建立，维持，释放（用于面向连接服务）</li>
+<li>组帧</li>
+<li>流量控制（限制发送方）</li>
+<li>差错控制（帧错/位错）</li>
+</ol>
+<h2><a id="%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7%E5%92%8C%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>封装成帧和透明传输</h2>
+<p><img src="media/16393212106516/16394881780519.jpg" alt="封装成帧" /></p>
+<p>帧同步：<strong>接收方</strong>应当能从接收到的二进制比特流中区分出帧的起始和终止。</p>
+<p>透明传输：不管所传数据是什么样的比特组合，都应当能够在链路上传送。 --- 隐藏控制信息</p>
+<h3><a id="%E7%BB%84%E5%B8%A7%E6%96%B9%E6%B3%95%EF%BC%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>组帧方法：</h3>
+<h4><a id="1%E5%AD%97%E7%AC%A6%E8%AE%A1%E6%95%B0%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. 字符计数法</h4>
+<p><img src="media/16393212106516/16394886163032.jpg" alt="字符计数法" /><br />
+缺点：容易出错</p>
+<h4><a id="2%E5%AD%97%E7%AC%A6%EF%BC%88%E8%8A%82%EF%BC%89%E5%A1%AB%E5%85%85%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. 字符（节）填充法</h4>
+<p><img src="media/16393212106516/16394887650231.jpg" alt="思路" /><br />
+<img src="media/16393212106516/16394890318396.jpg" alt="字符填充法" /></p>
+<h4><a id="3%E9%9B%B6%E6%AF%94%E7%89%B9%E5%A1%AB%E5%85%85%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. 零比特填充法</h4>
+<p><img src="media/16393212106516/16394896995216.jpg" alt="零比特填充法" /></p>
+<h4><a id="4%E8%BF%9D%E8%A7%84%E7%BC%96%E7%A0%81%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. 违规编码法</h4>
+<p><img src="media/16393212106516/16394898842865.jpg" alt="违规编码法" /></p>
 
 
 </div>
