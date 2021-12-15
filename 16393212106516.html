@@ -235,6 +235,41 @@
 <h5><a id="%E6%97%A0%E5%B7%AE%E9%94%99%E6%83%85%E5%86%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>无差错情况</h5>
 <p><img src="media/16393212106516/16395767478958.jpg" alt="无差错情况" /></p>
 <h5><a id="%E6%9C%89%E5%B7%AE%E9%94%99%E6%83%85%E5%86%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>有差错情况</h5>
+<p><img src="media/16393212106516/16395775366836.jpg" alt="有差错情况1" /><br />
+<img src="media/16393212106516/16395775983024.jpg" alt="有差错情况2" /><br />
+<img src="media/16393212106516/16395776757304.jpg" alt="有差错情况3" /></p>
+<h5><a id="%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E4%BF%A1%E9%81%93%E5%88%A9%E7%94%A8%E7%8E%87%E4%BD%8E" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能分析 --- 信道利用率低</h5>
+<p><img src="media/16393212106516/16395777731073.jpg" alt="性能分析" /></p>
+<h5><a id="%E4%BF%A1%E9%81%93%E5%88%A9%E7%94%A8%E7%8E%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>信道利用率</h5>
+<p><img src="media/16393212106516/16395779250608.jpg" alt="信道利用率" /></p>
+<h4><a id="%E5%90%8E%E9%80%80n%E5%B8%A7%E5%8D%8F%E8%AE%AE%EF%BC%88gbn%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>后退N帧协议（GBN）</h4>
+<ul>
+<li>流水线技术</li>
+<li>发送窗口多个，接收窗口只有一个</li>
+</ul>
+<h5><a id="%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>滑动窗口</h5>
+<p><img src="media/16393212106516/16395784238080.jpg" alt="滑动窗口" /></p>
+<ul>
+<li>发送窗口大小限制：若采用n个比特对帧编号，那么发送窗口的尺寸<code>W</code>应满足：<code>1&lt;=W&lt;= 2^n-1</code>。因为发送窗口尺寸过大，就会使得接收方无法区别新帧和旧帧。</li>
+</ul>
+<h5><a id="%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>注意事项</h5>
+<ol>
+<li>发送方<br />
+<img src="media/16393212106516/16395785488689.jpg" alt="note" /></li>
+</ol>
+<ul>
+<li>确认序列号最大的，按序到达的帧。 --- 累计确认</li>
+</ul>
+<ol start="2">
+<li>接收方<br />
+<strong>按序</strong>接收并返回ACK，不按序无情丢弃。</li>
+</ol>
+<h5><a id="%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E4%BC%A0%E9%80%81%E6%95%88%E7%8E%87%E4%BD%8E" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能分析 --- 传送效率低</h5>
+<ul>
+<li>好：因连续发送数据帧而提高了信道利用率</li>
+<li>坏：在重传时必须把原来已经正确传送的数据帧重传，是传送效率降低。</li>
+</ul>
+<h4><a id="%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AE%EF%BC%88sr%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>选择重传协议（SR）</h4>
 
 
 </div>
