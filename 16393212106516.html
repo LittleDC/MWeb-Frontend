@@ -170,10 +170,10 @@
 <li>流量控制（限制发送方）</li>
 <li>差错控制（帧错/位错）</li>
 </ol>
-<h2><a id="%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7%E5%92%8C%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>封装成帧和透明传输</h2>
+<h2><a id="%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>封装成帧</h2>
 <p><img src="media/16393212106516/16394881780519.jpg" alt="封装成帧" /></p>
 <p>帧同步：<strong>接收方</strong>应当能从接收到的二进制比特流中区分出帧的起始和终止。</p>
-<p>透明传输：不管所传数据是什么样的比特组合，都应当能够在链路上传送。 --- 隐藏控制信息</p>
+<p><strong>透明传输</strong>：不管所传数据是什么样的比特组合，都应当能够在链路上传送。 --- 隐藏控制信息</p>
 <h3><a id="%E7%BB%84%E5%B8%A7%E6%96%B9%E6%B3%95%EF%BC%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>组帧方法：</h3>
 <h4><a id="1%E5%AD%97%E7%AC%A6%E8%AE%A1%E6%95%B0%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. 字符计数法</h4>
 <p><img src="media/16393212106516/16394886163032.jpg" alt="字符计数法" /><br />
@@ -185,14 +185,14 @@
 <p><img src="media/16393212106516/16394896995216.jpg" alt="零比特填充法" /></p>
 <h4><a id="4%E8%BF%9D%E8%A7%84%E7%BC%96%E7%A0%81%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. 违规编码法</h4>
 <p><img src="media/16393212106516/16394900645110.jpg" alt="违规编码法" /></p>
-<h4><a id="%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结</h4>
+<h3><a id="%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结</h3>
 <p>由于字节计数法中Count字段的脆弱性（其值若有差错将导致灾难性后果）及字符填充实现<br />
 上的复杂性和不兼容性，目前较普遍使用的帧同步法是<strong>比特填充法</strong>和<strong>违规编码法</strong>。</p>
-<h3><a id="%E5%B7%AE%E9%94%99%E6%8E%A7%E5%88%B6%EF%BC%88%E6%AF%94%E7%89%B9%E9%94%99%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>差错控制（比特错）</h3>
+<h2><a id="%E5%B7%AE%E9%94%99%E6%8E%A7%E5%88%B6%EF%BC%88%E6%AF%94%E7%89%B9%E9%94%99%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>差错控制（比特错）</h2>
 <p>差错由来：<strong>噪声</strong><br />
 主要解决局部性造成的差错</p>
 <p><img src="media/16393212106516/16394904907471.jpg" alt="差错" /></p>
-<h4><a id="%E6%A3%80%E9%94%99%E7%BC%96%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>检错编码</h4>
+<h3><a id="%E6%A3%80%E9%94%99%E7%BC%96%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>检错编码</h3>
 <ol>
 <li>奇偶校验码<br />
 <img src="media/16393212106516/16394909522605.jpg" alt="奇偶校验码" /></li>
@@ -207,8 +207,34 @@
 <ul>
 <li>能够实现无比特差错的传输，但这还不是可靠传输。（错误的帧会被丢弃）</li>
 </ul>
-<h4><a id="%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>纠错编码</h4>
-<p>海明码</p>
+<h3><a id="%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81%E6%B5%B7%E6%98%8E%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>纠错编码 --- 海明码</h3>
+<p><strong>发现</strong>双比特错，<strong>纠正</strong>单比特错。<code>动一发而牵全身</code></p>
+<ol>
+<li>确定校验码位数r：海明不等式</li>
+<li>确定校验码和数据的位置</li>
+<li>求出校验码的值</li>
+<li>检错并纠正</li>
+</ol>
+<h3><a id="%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结</h3>
+<p><img src="media/16393212106516/16395740151603.jpg" alt="总结" /></p>
+<h2><a id="%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E6%9C%BA%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>流量控制与可靠传输机制</h2>
+<h3><a id="%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>流量控制</h3>
+<p><strong>较高的发送速度</strong>和<strong>较低的接收能力</strong>的不匹配，会造成传输出错。</p>
+<ul>
+<li>数据链路层的流量控制是<strong>点对点</strong>的，而传输层的流量控制是<strong>端到端</strong>的。</li>
+<li>数据链路层 流量控制手段：接收方收不下就不回复确认。<br />
+传输层 流量控制手段：接收端给发送端一个窗口公告。</li>
+</ul>
+<h3><a id="%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方法</h3>
+<p><img src="media/16393212106516/16395761708898.jpg" alt="方法" /></p>
+<ul>
+<li>发送窗口与接收窗口在传输过程中是固定的。</li>
+<li>发送方自动重传解决可靠传输</li>
+</ul>
+<h4><a id="%E5%81%9C%E6%AD%A2%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>停止-等待协议</h4>
+<h5><a id="%E6%97%A0%E5%B7%AE%E9%94%99%E6%83%85%E5%86%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>无差错情况</h5>
+<p><img src="media/16393212106516/16395767478958.jpg" alt="无差错情况" /></p>
+<h5><a id="%E6%9C%89%E5%B7%AE%E9%94%99%E6%83%85%E5%86%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>有差错情况</h5>
 
 
 </div>
