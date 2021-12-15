@@ -156,6 +156,41 @@
  <div class="markdown-body">
 <h1>⭐️函数</h1>
 
+<p>函数实际上是<strong>对象</strong>，每个函数又都是<code>Function</code>类型的实例。</p>
+<h2><a id="%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>创建函数</h2>
+<ol>
+<li>函数声明</li>
+</ol>
+<pre class="line-numbers"><code class="language-js">function sum (num1, num2) {
+    return num1 + num2
+}
+</code></pre>
+<ol start="2">
+<li>函数表达式</li>
+</ol>
+<pre class="line-numbers"><code class="language-js">let sum = function(num1, num2) {
+    return num1 + num2
+};
+</code></pre>
+<ol start="3">
+<li>箭头函数（arrow function）</li>
+</ol>
+<pre class="line-numbers"><code class="language-js">let sum = (num1, num2) =&gt; {
+    return num1 + num2
+}
+</code></pre>
+<ol start="4">
+<li>构造函数(不推荐)</li>
+</ol>
+<pre class="line-numbers"><code class="language-js">let sum = new Function('num1', 'num2', 'return num1 + num2')
+</code></pre>
+<h2><a id="%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>箭头函数</h2>
+<p>ES6新增语法糖</p>
+<ul>
+<li>箭头函数不能使用arguments，super和new.target，也不能用作构造函数。</li>
+<li>此外，箭头函数也没有prototype属性（指向Function构造函数）</li>
+</ul>
+<h2><a id="%E5%87%BD%E6%95%B0%E5%90%8D" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数名</h2>
 
 
 </div>
@@ -232,6 +267,8 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
+
+<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
