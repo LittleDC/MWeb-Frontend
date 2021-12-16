@@ -233,7 +233,7 @@ foo(5) // 5
 <p>ES6之前：默认为<code>undefined</code><br />
 ES6:支持显示定义默认参数。箭头函数也支持</p>
 <ul>
-<li>在使用默认参数时，arguments对象的值不反映参数的默认值，只反映传给函数的参数。</li>
+<li>在<strong>使用默认参数时</strong>，arguments对象的值不反映参数的默认值，只反映传给函数的参数。设定初始值后便同ES5严格模式，修改命名参数也不会影响arguments对象。</li>
 </ul>
 <pre class="line-numbers"><code class="language-js">function makeKing(name = 'Henry') {
     name = 'Louis'
@@ -242,6 +242,17 @@ ES6:支持显示定义默认参数。箭头函数也支持</p>
 console.log(makeKing()) // 'King undefined'
 console.log(makeKing('DC')) // 'King DC'
 </code></pre>
+<p>ES5普通模式:</p>
+<pre class="line-numbers"><code class="language-js">function makeKing(name) {
+    name = 'Louis'
+    return `King ${arguments[0]}`
+}
+
+console.log(makeKing('DC')) // 'King Louis'
+</code></pre>
+<ul>
+<li>默认参数值并不限于原始值或对象类型，也可以使用调用函数返回的值。计算默认值的函数只有在调用函数但未传相应参数时才会被调用。</li>
+</ul>
 <h3><a id="%E5%8F%82%E6%95%B0%E6%89%A9%E5%B1%95%E4%B8%8E%E6%94%B6%E9%9B%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参数扩展与收集</h3>
 <h2><a id="%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数声明与函数表达式</h2>
 
