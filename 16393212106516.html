@@ -264,12 +264,50 @@
 <li>接收方<br />
 <strong>按序</strong>接收并返回ACK，不按序无情丢弃。</li>
 </ol>
-<h5><a id="%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E4%BC%A0%E9%80%81%E6%95%88%E7%8E%87%E4%BD%8E" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能分析 --- 传送效率低</h5>
+<h5><a id="%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E6%89%B9%E9%87%8F%E9%87%8D%E4%BC%A0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能分析 --- 批量重传</h5>
 <ul>
 <li>好：因连续发送数据帧而提高了信道利用率</li>
 <li>坏：在重传时必须把原来已经正确传送的数据帧重传，是传送效率降低。</li>
 </ul>
 <h4><a id="%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AE%EF%BC%88sr%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>选择重传协议（SR）</h4>
+<ul>
+<li>设置单个确认，同时加大接收窗口，设置<strong>接收缓存</strong>，缓存乱序到达的帧。</li>
+<li>一般发送窗口和接收窗口设置大小相等。</li>
+</ul>
+<p><img src="media/16393212106516/16396636732989.jpg" alt="总览" /></p>
+<h5><a id="%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>注意事项</h5>
+<ol>
+<li>发送方<br />
+<img src="media/16393212106516/16396638329344.jpg" alt="note" /></li>
+</ol>
+<ul>
+<li>不在累计确认了，需每个都收到ACK</li>
+</ul>
+<ol start="2">
+<li>接收方<br />
+来者不拒（窗口内到帧）</li>
+</ol>
+<h5><a id="%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%95%BF%E5%BA%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>滑动窗口长度</h5>
+<p><code>Wmax = 2^(n-1)</code> n表示序号比特位</p>
+<h2><a id="%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>信道划分介质访问控制</h2>
+<h3><a id="%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E9%93%BE%E8%B7%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>传输数据使用的两种链路</h3>
+<ol>
+<li>
+<p>点对点链路：两个相邻节点通过一个链路相连，没有第三者。<br />
+应用：ppp协议，常用于<strong>广域网</strong></p>
+</li>
+<li>
+<p>广播式链路：所有主机共享通信介质。<br />
+应用：早期的总线以太网、无线局域网，常用于<strong>局域网</strong><br />
+典型拓扑结构：总线型，星型 （逻辑总线型）</p>
+</li>
+</ol>
+<h3><a id="preview" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preview</h3>
+<h4><a id="%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>介质访问控制</h4>
+<p>内容：采取一定的措施，使得两对节点之间的通信不会发生互相干扰的情况。<br />
+<img src="media/16393212106516/16396658655373.jpg" alt="all" /></p>
+<h4><a id="%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>信道划分介质访问控制</h4>
+<p>内容：将使用介质的每个设备与来自同一信道上的其它设备的<strong>通信隔离开</strong>，把<strong>时域和频域资源</strong>合理地分配给网络上的设备。</p>
 
 
 </div>

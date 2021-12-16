@@ -237,10 +237,10 @@ ES6:支持显示定义默认参数。箭头函数也支持</p>
 </ul>
 <pre class="line-numbers"><code class="language-js">function makeKing(name = 'Henry') {
     name = 'Louis'
-    return `King ${arguments[0]}`
+    return `King ${arguments[0]} Queen ${name}`
 }
-console.log(makeKing()) // 'King undefined'
-console.log(makeKing('DC')) // 'King DC'
+console.log(makeKing()) // 'King undefined Queen Louis'
+console.log(makeKing('DC')) // 'King DC Queen Louis'
 </code></pre>
 <p>ES5普通模式:</p>
 <pre class="line-numbers"><code class="language-js">function makeKing(name) {
@@ -248,11 +248,13 @@ console.log(makeKing('DC')) // 'King DC'
     return `King ${arguments[0]}`
 }
 
+console.log(makeKing()) // 'King undefined'
 console.log(makeKing('DC')) // 'King Louis'
 </code></pre>
 <ul>
 <li>默认参数值并不限于原始值或对象类型，也可以使用调用函数返回的值。计算默认值的函数只有在调用函数但未传相应参数时才会被调用。</li>
 </ul>
+<h4><a id="%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>默认参数作用域与暂时性死区</h4>
 <h3><a id="%E5%8F%82%E6%95%B0%E6%89%A9%E5%B1%95%E4%B8%8E%E6%94%B6%E9%9B%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参数扩展与收集</h3>
 <h2><a id="%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数声明与函数表达式</h2>
 
