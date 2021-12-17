@@ -269,7 +269,40 @@ console.log(makeKing()) // King Henry Henry
 <h3><a id="%E5%8F%82%E6%95%B0%E6%89%A9%E5%B1%95%E4%B8%8E%E6%94%B6%E9%9B%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参数扩展与收集</h3>
 <p>ES6新增了<code>...</code>扩展运算符</p>
 <h4><a id="%E6%89%A9%E5%B1%95%E5%8F%82%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>扩展参数</h4>
+<pre class="line-numbers"><code class="language-js">let values = [1, 2, 3, 4]
+
+function countArguments() {
+    console.log(arguments.length)
+}
+
+countArguments(...values, ...[5, 6, 7]) // 7
+countArguments(1, 2, 3, 4, 5, 6, 7) // 7
+</code></pre>
+<h4><a id="%E6%94%B6%E9%9B%86%E5%8F%82%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>收集参数</h4>
+<p>因为收集参数的结果可变，所以只能把它作为最后一个参数：</p>
+<pre class="line-numbers"><code class="language-js">function ignoreFirst(firstValue, ...values) {
+    console.log(values)
+}
+
+ignoreFirst() // []
+ignoreFirst(1) // []
+ignoreFirst(1, 2) // [1]
+ignoreFirst(1, 2, 3) // [1, 2]
+</code></pre>
 <h2><a id="%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数声明与函数表达式</h2>
+<p>函数声明提升：<strong>函数声明</strong>会在任何代码执行之前先被读取并添加到执行上下文中。</p>
+<pre class="line-numbers"><code class="language-js">// 没问题但不推荐，严格模式会报错
+console.log(sum(10, 10)) // 20
+function sum(num1, num2) {
+    return num1 + num2
+}
+</code></pre>
+<pre class="line-numbers"><code class="language-js">console.log(sum(10, 10)) // ReferenceError
+let sum = function(num1, num2) {
+    return num1 + num2
+}
+</code></pre>
+<h2><a id="%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%80%BC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数作为值</h2>
 
 
 </div>
