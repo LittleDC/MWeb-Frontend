@@ -255,7 +255,20 @@ console.log(makeKing('DC')) // 'King Louis'
 <li>默认参数值并不限于原始值或对象类型，也可以使用调用函数返回的值。计算默认值的函数只有在调用函数但未传相应参数时才会被调用。</li>
 </ul>
 <h4><a id="%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>默认参数作用域与暂时性死区</h4>
+<p>给多个参数定义默认值实际上跟使用let关键字<strong>顺序声明</strong>变量一样。</p>
+<pre class="line-numbers"><code class="language-js">function makeKing(name = 'Henry', numerals = name) {
+    return `King ${name} ${numerals}`
+}
+
+console.log(makeKing()) // King Henry Henry
+</code></pre>
+<ul>
+<li>参数初始化顺序遵循“暂时性死区”规则，即前面定义的参数不能引用后面定义的。</li>
+<li>参数也存在于自己的作用域中，它们不能引用函数体的作用域。</li>
+</ul>
 <h3><a id="%E5%8F%82%E6%95%B0%E6%89%A9%E5%B1%95%E4%B8%8E%E6%94%B6%E9%9B%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参数扩展与收集</h3>
+<p>ES6新增了<code>...</code>扩展运算符</p>
+<h4><a id="%E6%89%A9%E5%B1%95%E5%8F%82%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>扩展参数</h4>
 <h2><a id="%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数声明与函数表达式</h2>
 
 
