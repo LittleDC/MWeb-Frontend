@@ -436,7 +436,88 @@ new关键字调用：被调用的构造函数</p>
 <h2><a id="%E5%87%BD%E6%95%B0%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数属性与方法</h2>
 <p>函数是<strong>对象</strong>，所以也会有属性和方法。每个函数都有两个属性：<code>length</code>和<code>prototype</code></p>
 <h3><a id="length" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>length</h3>
+<blockquote>
+<p>length属性保存函数定义的命名参数的个数</p>
+</blockquote>
 <h3><a id="prototype" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>prototype</h3>
+<blockquote>
+<p>prototype是保存引用类型所有实例方法的地方，进而由所有实例共享。</p>
+</blockquote>
+<h4><a id="callapplybind" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>call/apply/bind</h4>
+<blockquote>
+<p>call/apply：都会以指定的this值<strong>调用函数</strong>。后者传数组。</p>
+</blockquote>
+<blockquote>
+<p>bind：创建一个新的函数实例，其this值会被<strong>绑定</strong>到传给bind()的对象。【不会调用函数】</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">window.color = 'red'
+let o = { color: 'blue' }
+function sayColor() {
+    console.log(this.color)
+}
+let objectSayColor = sayColor.bind(o)
+sayColor() // red
+objectSayColor() // blue
+</code></pre>
+<h2><a id="%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数表达式</h2>
+<p>函数声明会提升函数，而函数表达式只会进行变量提升，函数不会提升</p>
+<pre class="line-numbers"><code class="language-js">// 即使可运行也不推荐，严格模式会报错
+sayHi() // Hi!
+function sayHi() {
+    console.log('Hi!')
+}
+</code></pre>
+<pre class="line-numbers"><code class="language-js">sayHi() // Error: ...
+let sayHi = function() {
+    console.log('Hi!')
+}
+</code></pre>
+<h2><a id="%E9%80%92%E5%BD%92" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>递归</h2>
+<blockquote>
+<p>递归函数通常的形式是一个函数通过名称调用自己</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">// 正常
+function factorial(num) {
+    if (num &lt;= 1) {
+        return 1
+    } else {
+        return factorial(num - 1)
+    }
+}
+</code></pre>
+<pre class="line-numbers"><code class="language-js">let anotherFactorial = factorial
+factorial = null
+console.log(anotherFactorial(4)) // Error: ...
+</code></pre>
+<ul>
+<li>如果吧这个函数<code>factorial</code>赋值给别的变量，就会出现问题.</li>
+</ul>
+<hr />
+<pre class="line-numbers"><code class="language-js">// 优化1:通过arguments.callee
+function factorial(num) {
+    if (num &lt;= 1) {
+        return 1
+    } else {
+        return num * arguments.callee(num - 1)
+    }
+}
+</code></pre>
+<ul>
+<li>Warn：<strong>严格模式</strong>下运行的代码是不能访问arguments.callee的，因为访问会出错。</li>
+</ul>
+<pre class="line-numbers"><code class="language-js">// 优化2:使用命名函数表达式(named function expression)达到目的
+const factorial = (function f(num) {
+    if (num &lt;= 1) {
+        return 1
+    } else {
+        return num * f(num - 1)
+    }
+})
+</code></pre>
+<ul>
+<li>上方法在严格模式下也可使用</li>
+</ul>
+<h2><a id="%E5%B0%BE%E8%B0%83%E7%94%A8%E4%BC%98%E5%8C%96" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>尾调用优化</h2>
 
 
 </div>
