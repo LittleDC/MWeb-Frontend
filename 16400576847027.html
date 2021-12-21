@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  烦😶‍🌫️ - 
+  vue router - 
   
   </title>
  <meta name="description" content="">
@@ -158,68 +158,68 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>烦😶‍🌫️</h1>
+<h1>vue router</h1>
 
-<h2><a id="%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>输入输出</h2>
-<h2><a id="%E8%BD%AC%E8%BD%AC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>转转</h2>
-<h3><a id="1-css%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD%EF%BC%8C%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.CSS水平居中，垂直居中的实现方法</h3>
-<h3><a id="1%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%93%8D%E5%BA%94%E5%BC%8F%EF%BC%8C-rem%E7%9B%B8%E5%AF%B9%E5%93%AA%E4%B8%AA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1+.移动端布局 如何实现响应式，rem相对哪个</h3>
-<h3><a id="2-js%E7%9A%84%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98%EF%BC%8C%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.JS的精度问题，如何解决</h3>
-<h3><a id="3%E9%97%AD%E5%8C%85%EF%BC%81%EF%BC%81%EF%BC%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.闭包！！！</h3>
-<h3><a id="3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-vue%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3+.设计模式 Vue 观察者模式</h3>
-<h3><a id="4%E7%AE%97%E6%B3%95%E9%A2%98%EF%BC%9A%E6%9C%89%E4%B8%80%E5%8F%AA%E9%9D%92%E8%9B%99%EF%BC%8C%E6%AF%8F%E6%AC%A1%E5%8F%AA%E8%83%BD%E8%B7%B3-1%E6%A0%BC%E6%88%962%E6%A0%BC%EF%BC%8C%E3%80%82%E3%80%82%E3%80%82%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.算法题：有一只青蛙，每次只能跳1格或2格，。。。（动态规划）</h3>
-<h2><a id="tencent" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tencent</h2>
-<p><img src="media/16325412705266/16326647922022.jpg" alt="" /><br />
-<img src="media/16325412705266/16326648115226.jpg" alt="" /></p>
-<pre class="line-numbers"><code class="language-JavaScript">let [n, x, y] = line
-if (x &gt; y) {
-  let tmp = x
-  x = y
-  y = tmp
-}
-
-let i = 1
-let j = 1
-for (let k = 1; k &lt;= n; k++) {
-  if (i * x &lt; j * y) {
-    i++
-  } else if (j * y &lt; i * x) {
-    j++
-  } else {
-    i++
-    j++
-  }
-}
-console.log(i, j)
-if ((i - 1) * x &gt; (j - 1) * y) {
-  console.log((i - 1) * x)
-} else {
-  console.log((j - 1) * y)
+<p><a href="https://router.vuejs.org/zh/">vue router官方</a></p>
+<h2><a id="preview" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preview</h2>
+<p>随着前端应用的业务功能越来越复杂、用户对于使用体验的要求越来越高，<strong>单页面应用</strong>（SPA）成为前端应用的主流形式。大型单页应用最显著特点之一就是采用前端路由系统，通过改变URL，在<strong>不重新请求页面的情况下</strong>，更新页面视图。</p>
+<blockquote>
+<p>“<strong>更新视图但不重新请求页面</strong>”是前端路由原理的核心之一</p>
+</blockquote>
+<p>目前在浏览器环境中这一功能的实现主要有两种方式：</p>
+<ol>
+<li>利用URL中的<code>hash</code>（“#”）</li>
+<li>利用<code>History</code> interface在 HTML5中新增的方法</li>
+</ol>
+<pre class="line-numbers"><code class="language-js">// 根据mode确定history实际的类并实例化
+switch (mode) {
+  case 'history':
+    this.history = new HTML5History(this, options.base)
+    break
+  case 'hash':
+    this.history = new HashHistory(this, options.base, this.fallback)
+    break
+  case 'abstract':
+    this.history = new AbstractHistory(this, options.base)
+    break
+  default:
+    if (process.env.NODE_ENV !== 'production') {
+      assert(false, `invalid mode: ${mode}`)
+    }
 }
 </code></pre>
-<h2><a id="bank" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>bank</h2>
-<p>你对“朋友”的定义？</p>
-<h2><a id="duiba" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>duiba</h2>
-<p>js的异步机制</p>
-<p>vue的生命周期</p>
-<h2><a id="yici" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>yici</h2>
-<p>在学校最自豪的一件事</p>
-<p>全栈开发？</p>
-<p>实习过程中遇到的困难</p>
-<h2><a id="fuliaoyi" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>fuliaoyi</h2>
-<p>微信小程序中的组件有哪些不同的</p>
-<p>vue响应式布局原理</p>
-<p>说说你比较感兴趣的几个网页</p>
-<p>苹果官网特效</p>
-<h2><a id="baorong" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>baorong</h2>
-<p>你做项目中遇到的困难有哪些</p>
-<p>你在学校中最有成就感和最后悔的事？</p>
-<h2><a id="zhiyu" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>zhiyu</h2>
-<p>计网 tcp协议，udp协议</p>
-<p>操作系统</p>
-<p>linux cd目录权限</p>
-<h2><a id="%E4%BB%8A%E5%A4%A9%EF%BC%8C%E4%B9%9F%E6%98%AF%E4%B8%80%E4%B8%AA%E4%B8%8D%E5%A4%AA%E5%BC%80%E5%BF%83%E7%9A%84%E4%B8%80%E5%A4%A9%E5%91%A2%EF%BC%8C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>今天，也是一个不太开心的一天呢，</h2>
-<h2><a id="new-begin%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>new begin？</h2>
+<p><img src="media/16400576847027/16400662867356.jpg" alt="mode" /></p>
+<h2><a id="hashhistory" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HashHistory</h2>
+<blockquote>
+<p>两个方法：HashHistory.push() 和 HashHistory.replace()</p>
+</blockquote>
+<p><img src="media/16400576847027/16400664518289.jpg" alt="push" /></p>
+<p><img src="media/16400576847027/16400664765699.jpg" alt="replace" /></p>
+<p>从设置路由改变到视图更新的流程：<br />
+<code>$router.push() --&gt; HashHistory.push() --&gt; History.transitionTo() --&gt; History.updateRoute() --&gt; {app._route = route} --&gt; vm.render()</code></p>
+<pre class="line-numbers"><code class="language-js">1 $router.push() //调用方法
+
+2 HashHistory.push() //根据hash模式调用,设置hash并添加到浏览器历史记录（添加到栈顶）（window.location.hash= XXX）
+
+3 History.transitionTo() //监测更新，更新则调用History.updateRoute()
+
+4 History.updateRoute() //更新路由
+
+5 {app._route= route} //替换当前app路由
+
+6 vm.render() //更新视图
+</code></pre>
+<h2><a id="html5history" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML5History</h2>
+<blockquote>
+<p>History interface是浏览器历史记录栈提供的接口，通过back(), forward(), go()等方法，我们可以读取<strong>浏览器历史记录栈的信息</strong>，进行各种跳转操作。</p>
+</blockquote>
+<blockquote>
+<p>window.history.pushState(stateObject, title, URL)<br />
+window.history.replaceState(stateObject, title, URL)</p>
+</blockquote>
+<p>以上两个方法有个共同的特点：当调用他们修改浏览器历史记录栈后，虽然当前URL改变了，但<strong>浏览器不会立即发送请求该URL</strong>（the browser won't attempt to load this URL after a call to pushState()），这就为单页应用前端路由“更新视图但不重新请求页面”提供了基础。</p>
+<h2><a id="%E5%8F%82%E8%80%83%EF%BC%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考：</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/27588422">origin</a></p>
 
 
 </div>
@@ -231,15 +231,13 @@ if ((i - 1) * x &gt; (j - 1) * y) {
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16344851791468.html"  title="Previous Post: 集合应用类型">&laquo; 集合应用类型</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16324468661377.html" 
-	        title="Next Post: 红宝书之战">红宝书之战 &raquo;</a>
+	        <a href="16393591389076.html" 
+	        title="Next Post: ⭐️函数">⭐️函数 &raquo;</a>
 	    
 	</div>
   </div>
@@ -252,7 +250,7 @@ if ((i - 1) * x &gt; (j - 1) * y) {
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16325412705266.html';
+		var currentURL = '16400576847027.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
