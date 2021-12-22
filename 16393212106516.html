@@ -297,7 +297,12 @@
 </ol>
 <h5><a id="%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%95%BF%E5%BA%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>滑动窗口长度</h5>
 <p><code>Wmax = 2^(n-1)</code> n表示序号比特位</p>
-<h2><a id="%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>信道划分介质访问控制</h2>
+<hr />
+<h2><a id="%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>介质访问控制</h2>
+<blockquote>
+<p>采取一定的措施，使得两对节点之间的通信不会发生互相干扰的情况。</p>
+</blockquote>
+<p><img src="media/16393212106516/16396658655373.jpg" alt="all" /></p>
 <h3><a id="%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E9%93%BE%E8%B7%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>传输数据使用的两种链路</h3>
 <ol>
 <li>
@@ -310,15 +315,11 @@
 典型拓扑结构：总线型，星型 （逻辑总线型）</p>
 </li>
 </ol>
-<h3><a id="%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>介质访问控制</h3>
-<blockquote>
-<p>采取一定的措施，使得两对节点之间的通信不会发生互相干扰的情况。</p>
-</blockquote>
-<p><img src="media/16393212106516/16396658655373.jpg" alt="all" /></p>
 <h3><a id="%E9%9D%99%E6%80%81%E5%88%92%E5%88%86%E4%BF%A1%E9%81%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>静态划分信道</h3>
-<p>信道划分介质访问控制：</p>
+<p>MAC：Multiple Access Control</p>
+<p>信道划分介质访问控制(MAC)：</p>
 <blockquote>
-<p>将使用介质的每个设备与来自同一信道上的其它设备的<strong>通信隔离开</strong>，把<strong>时域和频域资源</strong>合理地<strong>事先分配</strong>给网络上的设备。</p>
+<p>将使用介质的每个设备与来自同一信道上的其它设备的<strong>通信隔离开</strong>，把<strong>时域和频域资源</strong>合理地<strong>事先分配</strong>给网络上的设备。 --- 主要基于<strong>多路复用</strong>技术实现</p>
 </blockquote>
 <ul>
 <li>多路复用技术：</li>
@@ -326,7 +327,6 @@
 <blockquote>
 <p>把多个信号组合在一条物理信道上进行传输，使得多个计算机或终端设备<strong>共享信道资源</strong>，提高信道利用率。 --- 实际就是把广播信道转变为点对点信道</p>
 </blockquote>
-<hr />
 <h4><a id="1-fdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.FDM</h4>
 <p><img src="media/16393212106516/16400075632177.jpg" alt="FDM" /></p>
 <h4><a id="2-tdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.TDM</h4>
@@ -351,39 +351,89 @@
 <p>所有用户可随机发送信息，发送信息时占用<strong>全部带宽</strong></p>
 </blockquote>
 <h5><a id="%E4%B8%80aloha%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>一.ALOHA协议</h5>
-<h6><a id="%E7%BA%AFaloha%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>纯ALOHA协议</h6>
+<ol>
+<li><code>纯ALOHA协议</code> ：</li>
+</ol>
 <blockquote>
 <p>思想：不监听信道，不按时间槽发送，随机重发。<strong>想发就发</strong></p>
 </blockquote>
 <p><img src="media/16393212106516/16400097882369.jpg" alt="pure" /></p>
-<h6><a id="%E6%97%B6%E9%9A%99aloha%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>时隙ALOHA协议</h6>
+<ol start="2">
+<li><code>时隙ALOHA协议</code> ：</li>
+</ol>
 <blockquote>
 <p>思想：把时间分成若干个相同的时间片，所有用户在时间片开始时刻同步接入网络信道，若发生冲突，则必须等到下一个时间片开始时刻再发送。<strong>控制想法就发的随意性</strong></p>
 </blockquote>
 <h5><a id="%E4%BA%8Ccsma%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二.CSMA协议</h5>
+<p><code>ALOHA协议效率低，非常容易产生冲突</code></p>
 <p>载波监听多路访问协议【carrier sense multiple access】</p>
 <blockquote>
-<p>思想： 发送帧之前，<strong>监听</strong>信道。</p>
+<p>发送帧之前，先<strong>监听</strong>信道。<br />
+信道空闲：发送完整帧；信道忙：推迟发送</p>
 </blockquote>
-<p>信道空闲：发送完整帧；信道忙：推迟发送</p>
-<h6><a id="1%E5%9D%9A%E6%8C%81-csma" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1-坚持CSMA</h6>
+<ol>
+<li><code>1-坚持CSMA</code> ：</li>
+</ol>
 <blockquote>
 <p>思想：空闲则直接传输，不必等待；<strong>忙则一直监听</strong>，直到空闲马上传输。</p>
 </blockquote>
-<h6><a id="%E9%9D%9E%E5%9D%9A%E6%8C%81csma" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>非坚持CSMA</h6>
+<ol start="2">
+<li><code>非坚持CSMA</code> ：</li>
+</ol>
 <blockquote>
 <p>思想：空闲则直接传输，不必等待；忙着等待一个<strong>随机</strong>的时间之后在进行监听。</p>
 </blockquote>
-<h6><a id="p%E5%9D%9A%E6%8C%81-csma" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>p-坚持CSMA</h6>
+<ol start="3">
+<li><code>p-坚持CSMA</code> ：</li>
+</ol>
 <blockquote>
 <p>思想：空闲则以<strong>p概率</strong>直接传输，不必等待；概率1-p等待到下一个时间槽再传输；忙则等待一个随机的时间之后在进行监听。</p>
 </blockquote>
 <h6><a id="3%E7%A7%8D%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3种方法总结对比</h6>
 <p><img src="media/16393212106516/16400114220020.jpg" alt="compare" /></p>
 <h5><a id="%E4%B8%89csmacd%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三.CSMA/CD协议</h5>
-<p><code>以上3种方法发生冲突后还是要坚持把数据帧发送完，需得到确认帧才可判断是否冲突</code></p>
-<h5><a id="%E5%9B%9Bcsmaac%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>四.CSMA/AC协议</h5>
+<p><code>以上3种方法发生冲突后还是要坚持把数据帧发送完，需得到接收端确认帧才可判断是否冲突 --- 浪费传输资源</code></p>
+<p>载波监听多点接入/碰撞检测【carrier sense multiple access with collision detection】</p>
+<blockquote>
+<p>发送数据前<strong>和</strong>发送数据时，先<strong>监听</strong>信道<br />
+碰撞检测：<strong>便发送边监听</strong></p>
+</blockquote>
+<h6><a id="%E4%BC%A0%E6%92%AD%E6%97%B6%E5%BB%B6%E5%AF%B9%E8%BD%BD%E6%B3%A2%E7%9B%91%E5%90%AC%E7%9A%84%E5%BD%B1%E5%93%8D%E7%A2%B0%E6%92%9E" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>传播时延对载波监听的影响 --- 碰撞</h6>
+<blockquote>
+<p>只要经过<strong>2倍单程传输时延</strong>就能判断不会发生碰撞。</p>
+</blockquote>
+<h6><a id="%E7%A1%AE%E5%AE%9A%E7%A2%B0%E6%92%9E%E5%90%8E%E7%9A%84%E9%87%8D%E4%BC%A0%E6%97%B6%E6%9C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>确定碰撞后的重传时机</h6>
+<p><img src="media/16393212106516/16401822752883.jpg" alt="截断二进制指数规避算法" /></p>
+<h6><a id="%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>最小帧长</h6>
+<blockquote>
+<p>帧在发送完毕后才检测到发生碰撞 --- 没法判断是否异常</p>
+</blockquote>
+<p><code>最小帧长 = 总线传播时延 * 数据传输速率 * 2</code></p>
+<p>以太网规定最短帧长为<code>64B</code>，凡是长度小于64B的都是由于冲突而异常终止的无效帧。</p>
+<h5><a id="%E5%9B%9Bcsmaca%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>四.CSMA/CA协议</h5>
+<p><code>CSMA/CA只能运用于无线局域网，CAMA/CD则常用于总线式以太网(有线网络)</code></p>
+<p>载波监听多点接入/碰撞避免【carrier sense multiple access with collision avoidance】</p>
+<ul>
+<li>CA只能避免碰撞但不能检测碰撞</li>
+</ul>
+<blockquote>
+<p>发送数据前，先检测信道是否空闲<br />
+空闲：发出<strong>RTS(request to send)</strong>,接收端收到后，响应<strong>CTS(clear to send)</strong></p>
+</blockquote>
+<ol>
+<li>预约信道</li>
+<li>ACK帧</li>
+<li>RTS/CTS帧（可选）</li>
+</ol>
 <h4><a id="%E8%BD%AE%E8%AF%A2%E8%AE%BF%E9%97%AE%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>轮询访问介质访问控制</h4>
+<blockquote>
+<p>既要不产生冲突，又要发送时占用全部带宽。</p>
+</blockquote>
+<h5><a id="%E4%B8%80%E8%BD%AE%E8%AF%A2%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>一.轮询协议</h5>
+<h5><a id="%E4%BA%8C%E4%BB%A4%E7%89%8C%E4%BC%A0%E9%80%92%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二.令牌传递协议</h5>
+<h3><a id="%E6%80%BB%E7%BB%933%E7%A7%8D%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结3种信道划分</h3>
+<p><img src="media/16393212106516/16401843227709.jpg" alt="all" /></p>
+<h2><a id="%E7%BD%91%E7%BB%9C%E5%88%92%E5%88%86%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>网络划分？</h2>
 
 
 </div>
