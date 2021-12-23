@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  计算机网络 - 
+  ⭐️期约与异步函数 - 
   
   </title>
  <meta name="description" content="">
@@ -166,91 +166,8 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>计算机网络</h1>
+<h1>⭐️期约与异步函数</h1>
 
-<h2><a id="%E7%AC%AC%E4%B8%80%E7%AB%A0%E6%A6%82%E8%A6%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>第一章 概要</h2>
-<h3><a id="%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>标准化工作</h3>
-<p>RFC Request For Comments</p>
-<h3><a id="%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能指标</h3>
-<h4><a id="%E9%80%9F%E7%8E%87%E5%B8%A6%E5%AE%BD%E5%90%9E%E5%90%90%E9%87%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>速率 带宽 吞吐量</h4>
-<ul>
-<li>速率：<br />
-比特 1/0 位<br />
-b/s kb/s Mb/s Gb/s</li>
-</ul>
-<p>1Byte(字节) = 8bit(比特)<br />
-1KB = 2^10B = 1024B = 1024 * 8b</p>
-<ul>
-<li>
-<p>带宽：网络设备所支持的最高速度（理想发送）</p>
-</li>
-<li>
-<p>吞吐量：吞吐量受网络的宽带或网络的额定速率的限制（接收）</p>
-</li>
-</ul>
-<h4><a id="%E6%97%B6%E5%BB%B6%E6%97%B6%E5%BB%B6%E5%B8%A6%E5%AE%BD%E7%A7%AF%E5%BE%80%E8%BF%94%E6%97%B6%E5%BB%B6rtt%E5%88%A9%E7%94%A8%E7%8E%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>时延 时延带宽积 往返时延RTT 利用率</h4>
-<ol>
-<li>
-<p>时延：<br />
-发送时延 = 数据长度/信道带宽（发送速率）<br />
-传播时延 取决于电磁波传播速度和链路长度 = 信道长度/电磁波信道传播速率<br />
-排队时延<br />
-处理时延</p>
-</li>
-<li>
-<p>时延带宽积：容量（bit为单位）<br />
-时延带宽积（bit） = 传播时延（s） * 发送带宽（b/s）</p>
-</li>
-<li>
-<p>往返时延RTT：<br />
-RTT = 传播时延 * 2 + 末端处理时间</p>
-</li>
-<li>
-<p>利用率：<br />
-信道利用率 网络利用率</p>
-</li>
-</ol>
-<h3><a id="%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>分层结构</h3>
-<p><img src="media/16376768137573/image_2021-11-25_22-57-07.png" alt="image_2021-11-25_22-57-07" /></p>
-<p>SDU(服务数据单元) + PCI(协议控制信息) = PDU(协议数据单元)</p>
-<ol>
-<li>7层OSI参考模型：法定标准<br />
-<code>物理层 -&gt; 数据链路层 -&gt; 网络层 -&gt; 传输层 -&gt; 会话层 -&gt; 表示层 -&gt; 应用层</code><br />
-通信子网(数据通信)  | 传输层 |  资源子网(数据处理)</li>
-</ol>
-<p>传输层功能：<br />
-可靠传输/不可靠传输，差错控制，流量控制，复用分用</p>
-<p>网络层（IP层）：<br />
-把分组从源端传到目的端，为分组交换网上的不同主机提供通信服务。<br />
-传输单位：数据包<br />
-功能：路由选择，流量控制，差错控制，拥塞控制</p>
-<p>数据链路层功能：<br />
-成帧，差错控制，流量控制，访问控制</p>
-<ol start="2">
-<li>
-<p>4层TCP/IP参考模型：事实标准<br />
-<code>网络接口层 -&gt; 网际层 -&gt; 传输层 -&gt; 应用层</code><br />
-<img src="media/16376768137573/16391441627430.jpg" alt="TCP/IP协议栈" /></p>
-</li>
-<li>
-<p>5层体系结构<br />
-<code>物理层 -&gt; 数据链路层 -&gt; 网络层 -&gt; 传输层 -&gt; 应用层</code><br />
-<img src="media/16376768137573/16391447522205.jpg" alt="5层模型" /><br />
-<img src="media/16376768137573/16391449223813.jpg" alt="5层参考模型的数据封装与解封装" /></p>
-</li>
-</ol>
-<h2><a id="%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%89%A9%E7%90%86%E5%B1%82" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>第二章 物理层</h2>
-<p>主要任务：确定于传输媒体<strong>接口</strong>有关的一些特性。</p>
-<p>码元：用一个固定时长的信号波形（数字脉冲）代表不同离散数值的基本波形。</p>
-<p>失真的一种现象 --- 码间串扰 ：高频信号无法通过</p>
-<p>编码与调制</p>
-<p>传输介质：数据传输系统中在发送设备和接收设备之间的物理通路。 <code>!= 物理层</code></p>
-<p>物理层设备：</p>
-<ol>
-<li>中继器：对信号进行<u>再生和还原</u></li>
-<li>集线器(多口中继器)：对信号进行再生<u>放大转发</u>，星形拓扑（广播）</li>
-</ol>
-<p><img src="media/16376768137573/16393215029254.jpg" alt="总结" /></p>
 
 
 </div>
@@ -262,15 +179,13 @@ RTT = 传播时延 * 2 + 末端处理时间</p>
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16378340644786.html"  title="Previous Post: eslint - vue">&laquo; eslint - vue</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16347422574488.html" 
-	        title="Next Post: 我也不知道这一页该叫什么🧐">我也不知道这一页该叫什么🧐 &raquo;</a>
+	        <a href="16401645826486.html" 
+	        title="Next Post: Webpack">Webpack &raquo;</a>
 	    
 	</div>
   </div>
@@ -283,7 +198,7 @@ RTT = 传播时延 * 2 + 末端处理时间</p>
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16376768137573.html';
+		var currentURL = '16402238078899.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

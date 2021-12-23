@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  ⭐️函数 - 
+  函数 - 
   
   </title>
  <meta name="description" content="">
@@ -57,7 +57,9 @@
         <li><label>JS Pro</label></li>
 
           
-            <li><a title="⭐️函数" href="16393591389076.html">⭐️函数</a></li>
+            <li><a title="⭐️期约与异步函数" href="16402238078899.html">⭐️期约与异步函数</a></li>
+          
+            <li><a title="函数" href="16393591389076.html">函数</a></li>
           
             <li><a title="代理与反射" href="16393584526044.html">代理与反射</a></li>
           
@@ -120,7 +122,9 @@
                     
                       <li class="side-title"><span>JS Pro</span></li>
                         
-                          <li><a title="⭐️函数" href="16393591389076.html">⭐️函数</a></li>
+                          <li><a title="⭐️期约与异步函数" href="16402238078899.html">⭐️期约与异步函数</a></li>
+                        
+                          <li><a title="函数" href="16393591389076.html">函数</a></li>
                         
                           <li><a title="代理与反射" href="16393584526044.html">代理与反射</a></li>
                         
@@ -162,7 +166,7 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>⭐️函数</h1>
+<h1>函数</h1>
 
 <p>函数实际上是<strong>对象</strong>，每个函数又都是<code>Function</code>类型的实例。</p>
 <h2><a id="%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>创建函数</h2>
@@ -537,6 +541,7 @@ const factorial = (function f(num) {
 <blockquote>
 <p>闭包：引用了另一个函数作用域中变量 的 <strong>函数</strong>，通常是在嵌套函数中实现的。</p>
 </blockquote>
+<p><code>TODO</code></p>
 <h3><a id="this%E5%AF%B9%E8%B1%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>this对象</h3>
 <h3><a id="%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>内存泄漏</h3>
 <h2><a id="%E7%AB%8B%E5%8D%B3%E8%B0%83%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>立即调用的函数表达式</h2>
@@ -549,6 +554,49 @@ const factorial = (function f(num) {
 })()
 </code></pre>
 <h3><a id="%E4%BD%9C%E7%94%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>作用</h3>
+<blockquote>
+<p>ES5尚未支持块级作用域，便可使用IIFE<strong>模拟块级作用域</strong></p>
+</blockquote>
+<ul>
+<li>var定义的变量没有块级作用域：</li>
+</ul>
+<pre class="line-numbers"><code class="language-js">let divs = document.querySelectorAll('div')
+
+// 达不到目的
+for (var i = 0; i &lt; divs.length; i++) {
+    divs[i].addEventListener('click', function() {
+        console.log(i) // divs.length
+    })
+}
+
+console.log(i) // divs.length
+</code></pre>
+<p><code>通过闭包改进</code>：</p>
+<pre class="line-numbers"><code class="language-js">for (var i = 0; i &lt; divs.length; i++) {
+    divs[i].addEventListener('click', (function(frozenCounter) {
+        return function() { console.log(frozenCounter) }
+    })(i))
+}
+</code></pre>
+<p><code>使用ES6 let定义块级作用域变量改进</code>：</p>
+<pre class="line-numbers"><code class="language-js">for (let i = 0; i &lt; divs.length; i++) {
+    divs[i].addEventListener('click', function() {
+        console.log(i)
+    })
+}
+
+console.log(i) // ReferenceError: i is not defined
+</code></pre>
+<h2><a id="%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>私有变量</h2>
+<blockquote>
+<p>任何定义在<code>函数或块</code>中的变量（<u>函数参数、局部变量，以及函数内部定义的其他函数</u>），都可以认为是私有的，因为在这个函数或块的外部无法访问其中的变量。</p>
+</blockquote>
+<ul>
+<li>特权方法（privileged method）：指能够访问函数私有变量（及私有函数）的<strong>公有方法</strong>。</li>
+</ul>
+<h3><a id="%E5%9C%A8%E5%AF%B9%E8%B1%A1%E4%B8%8A%E5%88%9B%E5%BB%BA%E7%89%B9%E6%9D%83%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>在对象上创建特权方法</h3>
+<h4><a id="%E5%9C%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>在构造函数中实现</h4>
+<h4><a id="%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用静态私有变量实现</h4>
 
 
 </div>
