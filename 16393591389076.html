@@ -302,7 +302,7 @@ ignoreFirst(1, 2) // [1]
 ignoreFirst(1, 2, 3) // [1, 2]
 </code></pre>
 <h2><a id="%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数声明与函数表达式</h2>
-<p>函数声明提升：<strong>函数声明</strong>会在任何代码执行之前先被读取并添加到执行上下文中。</p>
+<p>函数声明提升：<strong>函数声明</strong>会在任何代码执行之前先被读取并添加到执行上下文中。而函数表达式只会进行变量提升，函数不会提升</p>
 <pre class="line-numbers"><code class="language-js">// 没问题但不推荐，严格模式会报错
 console.log(sum(10, 10)) // 20
 function sum(num1, num2) {
@@ -471,19 +471,6 @@ let objectSayColor = sayColor.bind(o)
 sayColor() // red
 objectSayColor() // blue
 </code></pre>
-<h2><a id="%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数表达式</h2>
-<p>函数声明会提升函数，而函数表达式只会进行变量提升，函数不会提升</p>
-<pre class="line-numbers"><code class="language-js">// 即使可运行也不推荐，严格模式会报错
-sayHi() // Hi!
-function sayHi() {
-    console.log('Hi!')
-}
-</code></pre>
-<pre class="line-numbers"><code class="language-js">sayHi() // Error: ...
-let sayHi = function() {
-    console.log('Hi!')
-}
-</code></pre>
 <h2><a id="%E9%80%92%E5%BD%92" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>递归</h2>
 <blockquote>
 <p>递归函数通常的形式是一个函数通过名称调用自己</p>
@@ -529,25 +516,23 @@ const factorial = (function f(num) {
 <ul>
 <li>上方法在严格模式下也可使用</li>
 </ul>
-<h2><a id="%E5%B0%BE%E8%B0%83%E7%94%A8%E4%BC%98%E5%8C%96" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>尾调用优化</h2>
+<h2><a id="%E5%B0%BE%E8%B0%83%E7%94%A8%E4%BC%98%E5%8C%96todo" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>尾调用优化 TODO</h2>
 <p><code>ES6新增了一项内存管理优化机制，让JS引擎在满足条件时可以重用栈帧。--- 非常适合‘尾调用’</code></p>
 <blockquote>
 <p>尾调用：外部函数的返回值是一个内部函数的返回值。</p>
 </blockquote>
 <p>严格模式下才可进行尾调用优化。</p>
 <p>有点nb</p>
-<p><code>TODO</code></p>
-<h2><a id="%F0%9F%8C%9F%E9%97%AD%E5%8C%85closure" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>🌟闭包 closure</h2>
+<h2><a id="%F0%9F%8C%9F%E9%97%AD%E5%8C%85closure-todo" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>🌟闭包 closure TODO</h2>
 <blockquote>
 <p>闭包：引用了另一个函数作用域中变量 的 <strong>函数</strong>，通常是在嵌套函数中实现的。</p>
 </blockquote>
-<p><code>TODO</code></p>
 <h3><a id="this%E5%AF%B9%E8%B1%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>this对象</h3>
 <h3><a id="%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>内存泄漏</h3>
 <h2><a id="%E7%AB%8B%E5%8D%B3%E8%B0%83%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>立即调用的函数表达式</h2>
 <p>IIFE【Immediately Invoked Function Expression】</p>
 <blockquote>
-<p>立即调用的匿名函数，又被称为立即调用的函数表达式。它类似函数声明，但由于被包含在括号中，所以会被解释为函数表达式。</p>
+<p>立即调用的匿名函数，又被称为立即调用的函数表达式。它类似函数声明，但由于被包含在括号中，所以会被解释为<strong>函数表达式</strong>。 --- 不会函数提升</p>
 </blockquote>
 <pre class="line-numbers"><code class="language-js">;(function() {
     // 块级作用域
@@ -594,9 +579,121 @@ console.log(i) // ReferenceError: i is not defined
 <ul>
 <li>特权方法（privileged method）：指能够访问函数私有变量（及私有函数）的<strong>公有方法</strong>。</li>
 </ul>
-<h3><a id="%E5%9C%A8%E5%AF%B9%E8%B1%A1%E4%B8%8A%E5%88%9B%E5%BB%BA%E7%89%B9%E6%9D%83%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>在对象上创建特权方法</h3>
-<h4><a id="%E5%9C%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>在构造函数中实现</h4>
-<h4><a id="%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用静态私有变量实现</h4>
+<h3><a id="%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%A8%A1%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>构造函数模式</h3>
+<blockquote>
+<p>定义在构造函数中的特权方法其实是一个<strong>闭包</strong>，它具有访问构造函数中定义的所有变量和函数的能力。</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">function MyObject() {
+    // 私有变量和私有函数
+    let privateVariable = 10
+    function privateFunction() {
+        return false
+    }
+    
+    // 特权方法
+    this.publicMethod = function() {
+        privateVariable++
+        return privateFunction()
+    }
+    this.getMethod = function() {
+        return privateVariable
+    }
+}
+
+let test1 = new MyObject()
+let test2 = new MyObject()
+test1.publicMethod()
+console.log(test1.getMethod()) // 11
+console.log(test2.getMethod()) // 10
+</code></pre>
+<p>缺点：每个实例都会重新创建一遍新的特权方法。</p>
+<h3><a id="%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用静态私有变量实现</h3>
+<blockquote>
+<p>通过使用私有作用域定义私有变量和函数来实现</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">let MyObject
+(function() {
+    // 私有变量和私有函数
+    let privateVariable = 10
+    function privateFunction() {
+        return false
+    }
+    
+    //  构造函数
+    MyObject = function() {}
+    
+    // 公有和特权方法
+    MyObject.prototype.publicMethod = function() {
+        privateVariable++
+        return privateFunction()
+    }
+    MyObject.prototype.getMethod = function() {
+        return privateVariable
+    }
+})()
+
+let test1 = new MyObject()
+let test2 = new MyObject()
+test1.publicMethod()
+console.log(test1.getMethod()) // 11
+console.log(test2.getMethod()) // 11
+</code></pre>
+<p>特点：可以利用原型更好的重用代码(特权方法)，但每个实例没有了自己的私有变量，私有变量是共享的。</p>
+<h3><a id="%E6%A8%A1%E5%9D%97%E6%A8%A1%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>模块模式</h3>
+<blockquote>
+<p>在单例对象基础上加以扩展，使其通过作用域链来关联私有变量和特权方法。</p>
+</blockquote>
+<p>单例对象【singleton】：只有一个实例的对象。一般通过对象字面量来创建。</p>
+<pre class="line-numbers"><code class="language-js">let singleton = {
+    name: value,
+    method() {
+        // code...
+    }
+}
+</code></pre>
+<p>模块模式样板：</p>
+<pre class="line-numbers"><code class="language-js">let singleton = function() {
+    // 私有变量和私有函数
+    let privateVariable = 10
+    function privateFunction() {
+        return false
+    }
+    
+    // 特权/公有方法和属性
+    return {
+        publicProperty: true,
+        publicMethod() {
+            privateVariable++
+            return privateFunction()
+        }
+    }
+}
+</code></pre>
+<h3><a id="%E6%A8%A1%E5%9D%97%E5%A2%9E%E5%BC%BA%E6%A8%A1%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>模块增强模式</h3>
+<blockquote>
+<p>在返回对象之前先对其进行增强。这适合单例对象需要是某个特定类型的实例，但又必须给它添加额外属性或方法的场景。</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">// 需返回特定类型CustomType的实例
+let singleton = function() {
+    // 私有变量和私有函数
+    let privateVariable = 10
+    function privateFunction() {
+        return false
+    }
+    
+    // 创建对象
+    let object = new CustomType()
+    
+    // 添加特权/公有方法和属性
+    object.publicProperty = true
+    object.publicMethod = function() {
+        privateVariable++
+        return privateFunction()
+    }
+    
+    return object
+}
+</code></pre>
 
 
 </div>
