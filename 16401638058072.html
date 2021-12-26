@@ -223,6 +223,23 @@
   --mode    指定环境模式 (默认值：development)
 </code></pre>
 <h2><a id="%E5%BC%80%E5%8F%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>开发</h2>
+<h3><a id="html%E5%92%8C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML和静态资源</h3>
+<h4><a id="html" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h4>
+<blockquote>
+<p>public/index.html 文件是一个会被 <code>html-webpack-plugin</code> 处理的模板。在构建过程中，资源链接会被自动注入。</p>
+</blockquote>
+<h5><a id="%E6%8F%92%E5%80%BC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>插值</h5>
+<p>因为 index 文件被用作模板，所以你可以使用 <a href="https://lodash.com/docs/4.17.10#template">lodash template</a> 语法插入内容：</p>
+<ul>
+<li><code>&lt;%= VALUE %&gt;</code> 用来做不转义插值；</li>
+<li><code>&lt;%- VALUE %&gt;</code> 用来做 HTML 转义插值；</li>
+<li><code>&lt;% expression %&gt;</code> 用来描述 JavaScript 流程控制。</li>
+</ul>
+<p>除了<a href="https://github.com/jantimon/html-webpack-plugin#writing-your-own-templates">被 <code>html-webpack-plugin</code> 暴露的默认值</a>之外，所有<a href="./mode-and-env.md#using-env-variables-in-client-side-code">客户端环境变量</a>也可以直接使用。例如，<code>BASE_URL</code> 的用法：</p>
+<pre class="line-numbers"><code class="language-html">&lt;link rel=&quot;icon&quot; href=&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;&gt;
+</code></pre>
+<p>更多内容可以查阅：<code>publicpath</code></p>
+<h4><a id="%E5%A4%84%E7%90%86%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>处理静态资源</h4>
 
 
 </div>
