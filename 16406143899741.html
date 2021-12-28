@@ -205,8 +205,38 @@
 <li>无差错控制能力</li>
 </ol>
 <h3><a id="%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>报文交换</h3>
-<p>报文：源应用发送的信息整体。</p>
+<blockquote>
+<p>报文：源应用发送的信息<strong>整体</strong>。</p>
+</blockquote>
+<p>特点：存储转发</p>
+<p>优点：</p>
+<ol>
+<li>无需建立连接</li>
+<li>存储转发，动态分配线路</li>
+<li>线路可靠性较高</li>
+<li>线路利用率较高</li>
+<li>多目标服务</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>有存储转发时延</li>
+<li>报文大小不定，需要网络节点有较大缓存空间</li>
+</ol>
 <h3><a id="%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>分组交换</h3>
+<blockquote>
+<p>分组：把大的数据块<strong>分割</strong>成小的数据块。</p>
+</blockquote>
+<p>特点：分组存储转发</p>
+<p>优点：相对于报文交换，存储管理更容易 --- 对缓存要求更小</p>
+<p>缺点：</p>
+<ol>
+<li>有存储转发时延 --- 会比报文交换小</li>
+<li>需要传输额外的信息量</li>
+<li>乱序到目的主机时，需对主机排序重组</li>
+</ol>
+<p>tip：<code>1字节（Byte）=8比特（bit）</code><br />
+对比：<br />
+<img src="media/16406143899741/16407029014872.jpg" alt="总结" /></p>
 <h4><a id="%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据报方式</h4>
 <h4><a id="%E8%99%9A%E7%94%B5%E8%B7%AF%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>虚电路方式</h4>
 
