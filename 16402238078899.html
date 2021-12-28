@@ -190,6 +190,27 @@
 <blockquote>
 <p>期约（promise）是对尚不存在结果的一个替身。</p>
 </blockquote>
+<h3><a id="%E6%9C%9F%E7%BA%A6%E5%9F%BA%E7%A1%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>期约基础</h3>
+<blockquote>
+<p>ES6新增的引用类型<code>Promise</code>，可以通过new操作符实例化。创建新期约时必须传入<strong>执行器(executor)函数</strong>作为参数。</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">let p = new Promise(() =&gt; {})
+setTimeout(console.log, 0, p) // Promise &lt;pending&gt;
+</code></pre>
+<h4><a id="1%E6%9C%9F%E7%BA%A6%E7%8A%B6%E6%80%81%E6%9C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.期约状态机</h4>
+<ul>
+<li>待定（pending）</li>
+<li>兑现（fulfilled/resolved）</li>
+<li>拒绝（rejected）</li>
+</ul>
+<ol>
+<li>pending是期约的最初始状态。</li>
+<li>在pending状态下，期约可以<strong>落定（settled）</strong> 为代表成功的fulfilled状态，或者代表失败的rejected状态。</li>
+<li>落定是不可逆的。</li>
+<li>期约的状态是<strong>私有的</strong>，不能直接通过JavaScript检测到。故意将异步行为封装起来，从而隔离外部的同步代码。</li>
+</ol>
+<h4><a id="%E8%A7%A3%E5%86%B3%E5%80%BC%E3%80%81%E6%8B%92%E7%BB%9D%E7%90%86%E7%94%B1%E5%8F%8A%E6%9C%9F%E7%BA%A6%E7%94%A8%E4%BE%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>解决值、拒绝理由及期约用例</h4>
+<h2><a id="%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>异步函数</h2>
 
 
 </div>
@@ -268,6 +289,8 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
+
+<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
