@@ -184,7 +184,7 @@
 <li>拥塞控制 --- 全局性</li>
 </ol>
 <h2><a id="%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据交换方式</h2>
-<h3><a id="%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>电路交换</h3>
+<h3><a id="%E4%B8%80%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>一.电路交换</h3>
 <blockquote>
 <p>建立连接 =&gt; 通信 =&gt; 释放连接</p>
 </blockquote>
@@ -204,7 +204,7 @@
 <li>灵活性差</li>
 <li>无差错控制能力</li>
 </ol>
-<h3><a id="%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>报文交换</h3>
+<h3><a id="%E4%BA%8C%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二.报文交换</h3>
 <blockquote>
 <p>报文：源应用发送的信息<strong>整体</strong>。</p>
 </blockquote>
@@ -222,7 +222,7 @@
 <li>有存储转发时延</li>
 <li>报文大小不定，需要网络节点有较大缓存空间</li>
 </ol>
-<h3><a id="%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>分组交换</h3>
+<h3><a id="%E4%B8%89%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三.分组交换</h3>
 <blockquote>
 <p>分组：把大的数据块<strong>分割</strong>成小的数据块。</p>
 </blockquote>
@@ -234,11 +234,31 @@
 <li>需要传输额外的信息量</li>
 <li>乱序到目的主机时，需对主机排序重组</li>
 </ol>
-<p>tip：<code>1字节（Byte）=8比特（bit）</code><br />
-对比：<br />
-<img src="media/16406143899741/16407029014872.jpg" alt="总结" /></p>
-<h4><a id="%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据报方式</h4>
-<h4><a id="%E8%99%9A%E7%94%B5%E8%B7%AF%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>虚电路方式</h4>
+<p>tip：<code>1字节（Byte）=8比特（bit）</code></p>
+<h4><a id="1%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.数据报方式</h4>
+<blockquote>
+<p>数据报方式为网络层提供<strong>无连接服务</strong>。 --- 因特网</p>
+</blockquote>
+<p><code>无连接服务</code>：不事先为分组的传输确定传输路径，每个分组独立确定传输路径，不同分组传输路径可能不同。</p>
+<p>特点：</p>
+<ol>
+<li>无连接</li>
+<li>每个分组携带源和目的地址</li>
+<li>路由器根据分组的目的地址转发分组：<br />
+基于路由协议/算法构建转发表 =&gt; 检索转发表 =&gt; 每个分组独立选路</li>
+</ol>
+<h4><a id="2%E8%99%9A%E7%94%B5%E8%B7%AF%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.虚电路方式</h4>
+<blockquote>
+<p>虚电路方式为网络层提供<strong>连接服务</strong>。 --- 数据报方式和电路交换方式的结合</p>
+</blockquote>
+<p><code>连接服务</code>：首先为分组的传输确定传输路径（建立连接），然后沿改路径（连接）传输系列分组，系列分组传输路径相同，传输结束后拆除连接。</p>
+<p>虚电路：一条源主机到目的主机类似于电路的路径（逻辑连接），路径上所有结点都要维持这条虚电路的建立，都维持一张虚电路表，每一项纪录了一个打开的虚电路信息。</p>
+<p>建立连接（虚电路建立） =&gt; 数据传输 =&gt; 释放连接（虚电路释放）</p>
+<h4><a id="%E6%95%B0%E6%8D%AE%E6%8A%A5%E8%99%9A%E7%94%B5%E8%B7%AF%E5%AF%B9%E6%AF%94" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据报&amp;虚电路 对比</h4>
+<p><img src="media/16406143899741/16407862413167.jpg" alt="compare" /></p>
+<h3><a id="%E5%AF%B9%E6%AF%94" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>对比</h3>
+<p><img src="media/16406143899741/16407029014872.jpg" alt="总结" /></p>
+<h2><a id="%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E5%8F%8A%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>路由算法及路由协议</h2>
 
 
 </div>
