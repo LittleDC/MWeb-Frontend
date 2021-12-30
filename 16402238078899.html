@@ -239,7 +239,48 @@ setTimeout(console.log, 0, 'promise initialized')
 <li>无论resolve()和reject()中的哪个被调用，状态转换都不可撤销了，继续修改状态会静默失败（无效）。</li>
 </ul>
 <h4><a id="promise-resolve" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Promise.resolve()</h4>
+<blockquote>
+<p>实例化一个解决的期约。 =&gt; 使该实例一开始便处于兑现状态</p>
+</blockquote>
+<p><code>Promise.resolve()等价于new Promise((res, rej) =&gt; res())</code></p>
+<ul>
+<li><code>Promise.resolve()</code>如果传入的参数本身是一个期约，则该行为就类似一个空包装。 =&gt; 会<strong>保留传入期约的状态</strong>。可以说是<strong>幂等方法</strong>：执行多次产生的影响与执行一次相同。</li>
+</ul>
+<pre class="line-numbers"><code class="language-js">let p = new Promise(() =&gt; {})
+setTimeout(console.log, 0, p) // Promise &lt;pending&gt;
+setTimeout(console.log, 0, Promise.resolve(p)) // Promise &lt;pending&gt;
+
+setTimeout(console.log, 0, p === Promise.resolve(p)) // true
+</code></pre>
 <h4><a id="promise-reject" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Promise.reject()</h4>
+<blockquote>
+<p>类似<code>Promise.resolve()</code>，实例化一个拒绝的期约并抛出一个异步错误。（该错误不能通过try/catch捕获，而只能通过拒绝处理程序捕获）</p>
+</blockquote>
+<ul>
+<li><code>Promise.reject()</code>不是幂等逻辑。如果传一个期约对象，则这个期约对象会成为它返回拒绝期约的理由。</li>
+</ul>
+<pre class="line-numbers"><code class="language-js">setTimeout(console.log, 0, Promise.reject(Promise.resolve()))
+// Promise {status: &quot;rejected&quot;, result: Promise}
+// error: Unhandled Promise Rejection: [object Promise]
+</code></pre>
+<h4><a id="%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E4%BA%8C%E5%85%83%E6%80%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>同步/异步执行的二元性</h4>
+<blockquote>
+<p>期约真正的异步特性：是同步对象（在同步执行模式中使用），但也是异步执行模式的媒介。</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">try {
+    throw new Error('foo')
+} catch(e) {
+    console.log(e) // Error: foo
+}
+
+try {
+    Promise.reject(new Error('foo'))
+} catch(e) {
+    console.log(e)
+}
+// Unhandled Promise Rejection: Error: foo
+</code></pre>
+<p>第二个try/catch（同步代码）没有捕获到期约抛出的错误是因为它没有通过<strong>异步模式</strong>捕获错误。</p>
 <h2><a id="%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>异步函数</h2>
 
 
