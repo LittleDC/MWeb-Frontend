@@ -197,7 +197,7 @@
 <pre class="line-numbers"><code class="language-js">let p = new Promise(() =&gt; {})
 setTimeout(console.log, 0, p) // Promise &lt;pending&gt;
 </code></pre>
-<h4><a id="1%E6%9C%9F%E7%BA%A6%E7%8A%B6%E6%80%81%E6%9C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.期约状态机</h4>
+<h4><a id="%E6%9C%9F%E7%BA%A6%E7%8A%B6%E6%80%81%E6%9C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>期约状态机</h4>
 <ul>
 <li>待定（pending）</li>
 <li>兑现（fulfilled/resolved）</li>
@@ -281,6 +281,10 @@ try {
 // Unhandled Promise Rejection: Error: foo
 </code></pre>
 <p>第二个try/catch（同步代码）没有捕获到期约抛出的错误是因为它没有通过<strong>异步模式</strong>捕获错误。</p>
+<h3><a id="%E6%9C%9F%E7%BA%A6%E7%9A%84%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95prototype" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>期约的实例方法 --- prototype</h3>
+<blockquote>
+<p>连接外部同步代码与内部异步代码之间的桥梁。</p>
+</blockquote>
 <h2><a id="%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>异步函数</h2>
 
 
