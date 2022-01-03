@@ -292,7 +292,35 @@
 <h4><a id="%E5%A4%96%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AEegp" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>外部网关协议 EGP</h4>
 <p><strong>AS之间</strong>使用的 --- BGP</p>
 <h2><a id="ip%E6%95%B0%E6%8D%AE%E6%8A%A5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IP数据报</h2>
-<h3><a id="%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>格式</h3>
+<p><img src="media/16406143899741/16412129771863.jpg" alt="TCP/IP协议栈" /></p>
+<h3><a id="ip%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IP数据报格式</h3>
+<p><img src="media/16406143899741/16412134427117.jpg" alt="preview" /><br />
+<img src="media/16406143899741/16412149786986.jpg" alt="detail" /></p>
+<h3><a id="%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E5%8D%95%E5%85%83mtu" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>最大传输单元MTU</h3>
+<blockquote>
+<p>链路层数据帧可封装数据有上限。以太网的MTU是<code>1500字节</code> --- 网络层数据分片</p>
+</blockquote>
+<p>首部含义：</p>
+<ol>
+<li>标识：同一数据报的分片使用同一标识。</li>
+<li>标志：只有2位有意义<code>×__</code>
+<ul>
+<li>中间位DF (Don't Fragment)<br />
+DF=1，禁止分片<br />
+DF=0，允许分片</li>
+<li>最低位MF ( More Fragment) <code>DF=1时才有效</code><br />
+MF=1，后面“还有分片”<br />
+MF=0，代表最后一片/没分片</li>
+</ul>
+</li>
+<li>片偏移：指出较长分组分片后，某片在原分组中的相对位置。以<strong>8B</strong>为单位。</li>
+</ol>
+<p>除了最后一个分片，每个分片长度一定是<strong>8B的整数倍</strong>。</p>
+<h3><a id="ipv4%E5%9C%B0%E5%9D%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IPV4地址</h3>
+<p><img src="media/16406143899741/16412176940275.jpg" alt="分类" /></p>
+<p><img src="media/16406143899741/16412177234944.jpg" alt="特殊的IP地址" /></p>
+<p><img src="media/16406143899741/16412180575030.jpg" alt="私有IP地址" /></p>
+<p><img src="media/16406143899741/16412182453395.jpg" alt="数量" /></p>
 
 
 </div>
