@@ -178,6 +178,58 @@
 <pre class="line-numbers"><code class="language-js">&quot;use strict&quot;
 </code></pre>
 <h3><a id="%E5%8F%98%E9%87%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>变量</h3>
+<h4><a id="%E5%A3%B0%E6%98%8E" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>声明</h4>
+<ol>
+<li>var --- 变量提升（hoist）</li>
+<li>let/const --- 无提升（暂时性时区）</li>
+</ol>
+<ul>
+<li>使用let在全局作用域中声明的变量不会成为window对象的属性（varb声明的变量则会）</li>
+<li>var声明作用域无<code>块级作用域</code>，let/const则有。</li>
+</ul>
+<pre class="line-numbers"><code class="language-js">for (var i = 0; i &lt; 5; ++i) {
+    // 循环
+}
+console.log(i) // 5
+
+for (let i = 0; i &lt; 5; ++i) {
+    // 循环
+}
+console.log(i) // ReferenceError: Can't find variable: i
+</code></pre>
+<h3><a id="%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原始数据类型</h3>
+<p><code>typeof</code>操作符判断数据类型，返回对应类型的<strong>字符串</strong></p>
+<pre class="line-numbers"><code class="language-js">typeof(null) // &quot;object&quot;
+</code></pre>
+<h4><a id="underfined%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Underfined类型</h4>
+<blockquote>
+<p><code>underfined</code></p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">let message
+// let age
+
+console.log(typeof message) // &quot;underfined&quot;
+console.log(typeof age) // &quot;underfined&quot; 
+
+console.log(message) // underfined
+console.log(age) // ReferenceError: Can't find variable: age
+</code></pre>
+<h4><a id="null%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Null类型</h4>
+<blockquote>
+<p><code>null</code>，逻辑上，null值表示一个空对象指针。</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">console.log(null == underfined) // true
+console.log(null === underfined) // false
+</code></pre>
+<h4><a id="boolean%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Boolean类型</h4>
+<blockquote>
+<p><code>true</code>/<code>false</code></p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">console.log(Boolean(null)) // false
+</code></pre>
+<h4><a id="number%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Number类型</h4>
+<h4><a id="string%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>String类型</h4>
+<h4><a id="symbol%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Symbol类型</h4>
 <h2><a id="%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本引用类型</h2>
 <h3><a id="%E5%8E%9F%E5%A7%8B%E5%80%BC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原始值包装类型</h3>
 <ul>
