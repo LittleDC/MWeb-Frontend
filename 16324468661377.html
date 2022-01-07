@@ -226,7 +226,44 @@ console.log(null === underfined) // false
 <p><code>true</code>/<code>false</code></p>
 </blockquote>
 <pre class="line-numbers"><code class="language-js">console.log(Boolean(null)) // false
+console.log(Boolean({})) // true
 </code></pre>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align: center">=true</th>
+<th style="text-align: center">=false</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td style="text-align: center">true</td>
+<td style="text-align: center">false</td>
+</tr>
+<tr>
+<td>String</td>
+<td style="text-align: center">非空字符串</td>
+<td style="text-align: center">&quot;&quot;（空字符串）</td>
+</tr>
+<tr>
+<td>Number</td>
+<td style="text-align: center">非零数值（包括无穷值）</td>
+<td style="text-align: center">0、NaN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td style="text-align: center">任意对象</td>
+<td style="text-align: center">null</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td style="text-align: center">-（不存在）</td>
+<td style="text-align: center">underfined</td>
+</tr>
+</tbody>
+</table>
 <h4><a id="number%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Number类型</h4>
 <h4><a id="string%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>String类型</h4>
 <h4><a id="symbol%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Symbol类型</h4>
