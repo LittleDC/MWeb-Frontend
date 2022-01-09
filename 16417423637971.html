@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  vue cli - 
+  Principle - 
   
   </title>
  <meta name="description" content="">
@@ -174,80 +174,9 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>vue cli</h1>
+<h1>Principle</h1>
 
-<p><a href="https://cli.vuejs.org/zh/guide/cli-service.html#vue-cli-service-serve">vue-cli-service</a></p>
-<h2><a id="vue-cli-service" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>vue-cli-service</h2>
-<h3><a id="preview" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preview</h3>
-<p><code>package.json</code>:</p>
-<pre class="line-numbers"><code class="language-json">{
-  &quot;scripts&quot;: {
-    &quot;serve&quot;: &quot;vue-cli-service serve&quot;,
-    &quot;build&quot;: &quot;vue-cli-service build&quot;
-  }
-}
-</code></pre>
-<h3><a id="vue-cli-service-serve" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>vue-cli-service serve</h3>
-<blockquote>
-<p><code>vue-cli-service serve</code>命令会启动一个开发服务器 (基于 webpack-dev-server) 并附带开箱即用的模块热重载 (Hot-Module-Replacement)。</p>
-</blockquote>
-<pre class="line-numbers"><code class="language-js">用法：vue-cli-service serve [options] [entry]
-
-选项：
-
-  --open    在服务器启动时打开浏览器
-  --copy    在服务器启动时将 URL 复制到剪切版
-  --mode    指定环境模式 (默认值：development)
-  --host    指定 host (默认值：0.0.0.0)
-  --port    指定 port (默认值：8080)
-  --https   使用 https (默认值：false)
-</code></pre>
-<h3><a id="vue-cli-service-build" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>vue-cli-service build</h3>
-<blockquote>
-<p><code>vue-cli-service build</code>命令会在 <code>dist/</code> 目录产生一个可用于生产环境的包，带有 JS/CSS/HTML 的压缩，和为更好的缓存而做的自动的 vendor chunk splitting。它的 chunk manifest 会内联在 HTML 里。</p>
-</blockquote>
-<pre class="line-numbers"><code class="language-js">用法：vue-cli-service build [options] [entry|pattern]
-
-选项：
-
-  --mode        指定环境模式 (默认值：production)
-  --dest        指定输出目录 (默认值：dist)
-  --modern      面向现代浏览器带自动回退地构建应用
-  --target      app | lib | wc | wc-async (默认值：app)
-  --name        库或 Web Components 模式下的名字 (默认值：package.json 中的 &quot;name&quot; 字段或入口文件名)
-  --no-clean    在构建项目之前不清除目标目录
-  --report      生成 report.html 以帮助分析包内容
-  --report-json 生成 report.json 以帮助分析包内容
-  --watch       监听文件变化
-</code></pre>
-<h3><a id="vue-cli-service-inspect" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>vue-cli-service inspect</h3>
-<blockquote>
-<p>你可以使用 <code>vue-cli-service inspect</code> 来审查一个 Vue CLI 项目的 webpack config。</p>
-</blockquote>
-<pre class="line-numbers"><code class="language-js">用法：vue-cli-service inspect [options] [...paths]
-
-选项：
-
-  --mode    指定环境模式 (默认值：development)
-</code></pre>
-<h2><a id="%E5%BC%80%E5%8F%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>开发</h2>
-<h3><a id="html%E5%92%8C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML和静态资源</h3>
-<h4><a id="html" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h4>
-<blockquote>
-<p>public/index.html 文件是一个会被 <code>html-webpack-plugin</code> 处理的模板。在构建过程中，资源链接会被自动注入。</p>
-</blockquote>
-<h5><a id="%E6%8F%92%E5%80%BC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>插值</h5>
-<p>因为 index 文件被用作模板，所以你可以使用 <a href="https://lodash.com/docs/4.17.10#template">lodash template</a> 语法插入内容：</p>
-<ul>
-<li><code>&lt;%= VALUE %&gt;</code> 用来做不转义插值；</li>
-<li><code>&lt;%- VALUE %&gt;</code> 用来做 HTML 转义插值；</li>
-<li><code>&lt;% expression %&gt;</code> 用来描述 JavaScript 流程控制。</li>
-</ul>
-<p>除了<a href="https://github.com/jantimon/html-webpack-plugin#writing-your-own-templates">被 <code>html-webpack-plugin</code> 暴露的默认值</a>之外，所有<a href="./mode-and-env.md#using-env-variables-in-client-side-code">客户端环境变量</a>也可以直接使用。例如，<code>BASE_URL</code> 的用法：</p>
-<pre class="line-numbers"><code class="language-html">&lt;link rel=&quot;icon&quot; href=&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;&gt;
-</code></pre>
-<p>更多内容可以查阅：<code>publicpath</code></p>
-<h4><a id="%E5%A4%84%E7%90%86%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>处理静态资源</h4>
+<h2><a id="" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a></h2>
 
 
 </div>
@@ -259,15 +188,13 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16401645826486.html"  title="Previous Post: Webpack">&laquo; Webpack</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16400576847027.html" 
-	        title="Next Post: vue router">vue router &raquo;</a>
+	        <a href="16406143899741.html" 
+	        title="Next Post: 网络层">网络层 &raquo;</a>
 	    
 	</div>
   </div>
@@ -280,7 +207,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16401638058072.html';
+		var currentURL = '16417423637971.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
@@ -326,8 +253,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
-
-<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
