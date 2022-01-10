@@ -276,7 +276,34 @@ console.log(Boolean({})) // true
 <blockquote>
 <p>使用IEEE 754格式表示整数和浮点数（也称<strong>双精度</strong>值）</p>
 </blockquote>
+<h5><a id="nan" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>NaN</h5>
+<p>【Not a Number】</p>
+<pre class="line-numbers"><code class="language-js">console.log(0/0) // NaN
+console.log(5/0) // Infinity
+console.log(5/-0) // -Infinity
+console.log(NaN === NaN) // false
+console.log(isNaN(NaN)) // true
+</code></pre>
+<h5><a id="%E6%95%B0%E5%80%BC%E8%BD%AC%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数值转换</h5>
+<ol>
+<li>Number()</li>
+<li>parseInt() --- 多用于<strong>进制转换</strong></li>
+<li>parseFloat()</li>
+</ol>
+<pre class="line-numbers"><code class="language-js">console.log(Number(true)) // 1
+console.log(Number(false)) // 0
+console.log(Number(null)) // 0
+console.log(Number(undefined)) // NaN
+console.log(Number('')) // 0
+</code></pre>
 <h4><a id="string%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>String类型</h4>
+<h5><a id="%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>不可变性</h5>
+<p>【immutable】</p>
+<blockquote>
+<p>一旦创建，它们的值就不能变了。 --- 要修改某个变量中的字符串值，必须先销毁原始的字符串，然后将包含新值的另一个字符串保存到该变量中。</p>
+</blockquote>
+<h5><a id="%E6%A8%A1%E7%89%88%E5%AD%97%E9%9D%A2%E9%87%8F%E6%A0%87%E7%AD%BE%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>模版字面量标签函数</h5>
+<p>标签函数【tag function】可以自定义插值行为。</p>
 <h4><a id="symbol%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Symbol类型</h4>
 <h2><a id="%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本引用类型</h2>
 <h3><a id="%E5%8E%9F%E5%A7%8B%E5%80%BC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原始值包装类型</h3>
