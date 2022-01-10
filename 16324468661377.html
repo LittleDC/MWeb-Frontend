@@ -304,6 +304,25 @@ console.log(Number('')) // 0
 </blockquote>
 <h5><a id="%E6%A8%A1%E7%89%88%E5%AD%97%E9%9D%A2%E9%87%8F%E6%A0%87%E7%AD%BE%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>模版字面量标签函数</h5>
 <p>标签函数【tag function】可以自定义插值行为。</p>
+<pre class="line-numbers"><code class="language-js">let a = 6, b = 9
+
+function simpleTag(strings, ...expressions){
+    console.log(strings)
+    for(const expression of expressions) {
+        console.log(expression)
+    }
+    
+    return 'foobar'
+}
+
+let taggedResult = simpleTag`${ a } + ${ b } = ${ a + b }`
+[Log] [&quot;&quot;, &quot; + &quot;, &quot; = &quot;, &quot;&quot;] (4)
+[Log] 6
+[Log] 9
+[Log] 15
+
+console.log(taggedResult) // 'foobar'
+</code></pre>
 <h4><a id="symbol%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Symbol类型</h4>
 <h2><a id="%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本引用类型</h2>
 <h3><a id="%E5%8E%9F%E5%A7%8B%E5%80%BC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原始值包装类型</h3>
