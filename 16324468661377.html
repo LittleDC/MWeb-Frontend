@@ -323,12 +323,40 @@ let taggedResult = simpleTag`${ a } + ${ b } = ${ a + b }`
 
 console.log(taggedResult) // 'foobar'
 </code></pre>
-<h4><a id="symbol%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Symbol类型</h4>
+<h4><a id="%F0%9F%A5%BAsymbol%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>🥺Symbol类型</h4>
 <blockquote>
 <p>ES6新增。符号是原始值且符号实例是唯一、不可变的。<br />
 用途：确保对象属性使用唯一标识符，不会发生属性冲突的危险。</p>
 </blockquote>
 <h5><a id="%E5%88%9D%E5%A7%8B%E5%8C%96" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>初始化</h5>
+<p>符号没有字面量语法，需要使用<code>Symbol()</code>函数初始化。</p>
+<pre class="line-numbers"><code class="language-js">let sym = Symbol('foo')
+console.log(typeof sym) // symbol
+let sym2 = Symbol('foo')
+console.log(sym2 === sym) // false
+let mySymbol = new Symbol() // TypeError: Symbol is not a constructor
+</code></pre>
+<h5><a id="%E5%85%A8%E5%B1%80%E7%AC%A6%E5%8F%B7%E6%B3%A8%E5%86%8C%E8%A1%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>全局符号注册表</h5>
+<blockquote>
+<p>作用：共享和重用符号实例<br />
+<code>Symbol.for()</code>用一个<strong>字符串</strong>作为键，在全局符号注册表中创建并重用符号。</p>
+</blockquote>
+<p>Symbol.for()对每个字符串键都执行幂等操作。</p>
+<pre class="line-numbers"><code class="language-js">let globalSym = Symbol.for('bar')
+let otherGlobalSym = Symbol.for('bar')
+console.log(globalSym === otherGlobalSym) // true
+let localSym = Symbol('bar')
+console.log(globalSym === localSym) // false
+</code></pre>
+<ul>
+<li>查询全局注册表：<code>Symbol.keyFor(Symbol)</code></li>
+</ul>
+<pre class="line-numbers"><code class="language-js">let s = Symbol.for('foo')
+let s2 = Symbol('bar')
+console.log(Symbol.keyFor(s)) // 'foo'
+console.log(Symbol.keyFor(s2)) // undefined
+</code></pre>
+<h5><a id="%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E7%AC%A6%E5%8F%B7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>常用内置符号</h5>
 <h3><a id="object%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object类型</h3>
 <p>原型方法：</p>
 <ol>
