@@ -335,6 +335,35 @@ MF=0，代表最后一片/没分片</li>
 <p>在<strong>专用网</strong>连接到因特网的路由器上安装NAT软件，安装了NAT软件的路由器叫NAT路由器，它至少有一个有效的<strong>外部全球IP地址</strong>。</p>
 </blockquote>
 <h4><a id="%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>子网划分</h4>
+<p><img src="media/16406143899741/16420810711556.jpg" alt="子网划分" /></p>
+<ul>
+<li>子网掩码 --- 区分子网号和主机号的划分点</li>
+</ul>
+<h2><a id="%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80cidr" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>无分类编址CIDR</h2>
+<blockquote>
+<p>无分类域间路由选择【Classless Inter-Domain Routing】</p>
+</blockquote>
+<ol>
+<li>消除了传统的A类、B类、C类地址以及划分子网的概念。<code>网络前缀 + 主机号</code></li>
+<li>融合子网地址与子网掩码，方便子网划分。<code>CIDR地址块</code> --- 网络前缀都相同</li>
+</ol>
+<p><img src="media/16406143899741/16420829126961.jpg" alt="CIDR" /></p>
+<h3><a id="%E6%9E%84%E6%88%90%E8%B6%85%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>构成超网</h3>
+<blockquote>
+<p>将多个子网聚合成一个较大的子网，叫做构成超网/路由聚合。<br />
+方法：将网络前缀缩短。</p>
+</blockquote>
+<p>最长前缀匹配：使用CIDR时，查找路由表可能得到的几个匹配结果，应该选择具有<strong>最长</strong>网络前缀的路由。前缀越长，地址块越小，路由越具体。</p>
+<h2><a id="arp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>ARP协议</h2>
+<blockquote>
+<p>地址解析协议【Address Resolution Protocol】：完成主机或路由器IP地址到MAC地址的映射。</p>
+</blockquote>
+<h3><a id="%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BF%87%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>发送数据的过程</h3>
+<p>局域网内传输：1 -&gt; 3<br />
+<img src="media/16406143899741/16420843438446.jpg" alt="内" /></p>
+<ul>
+<li>ARP协议<strong>自动进行</strong></li>
+</ul>
 
 
 </div>
