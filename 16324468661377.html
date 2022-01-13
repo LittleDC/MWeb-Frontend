@@ -356,7 +356,33 @@ let s2 = Symbol('bar')
 console.log(Symbol.keyFor(s)) // 'foo'
 console.log(Symbol.keyFor(s2)) // undefined
 </code></pre>
+<ul>
+<li>凡是可以使用字符串或数值作为属性的地方，都可以使用符号。</li>
+</ul>
 <h5><a id="%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E7%AC%A6%E5%8F%B7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>常用内置符号</h5>
+<blockquote>
+<p>【well-known symbol】，用于暴露语言内部行为。--- 作为其他对象内部方法(属性值)的<strong>键(属性)</strong>。<br />
+以Symbol工厂函数字符串<strong>属性</strong>的形式存在。 --- 获取符号方式</p>
+</blockquote>
+<p><img src="media/16324468661377/16420364386967.jpg" alt="Symbol" /></p>
+<ul>
+<li>本质上是全局函数<code>Symbol</code>的以普通字符串作为键的 属性，该属性指向一个符号的实例。</li>
+<li>所有内置符号属性都是<strong>不可写、不可枚举、不可配置</strong>的。</li>
+</ul>
+<ol>
+<li><code>Symbol.asyncIterator</code>:一个方法，该方法返回对象默认的AsyncIterator。由<code>for-await-of</code>语句使用。</li>
+<li><code>Symbol.hasInstance</code>:一个方法，该方法决定一个构造器对象是否认可一个对象是它的实例。由<code>instanceof</code>操作符使用。</li>
+<li><code>Symbol.isConcatSpreadable</code>:一个布尔值，如果是true，则意味着对象应该用Array.prototype.concat()打平其数组元素。</li>
+<li><code>Symbol.iterator</code>:一个方法，该方法 返回/指向 对象默认的迭代器。由<code>for-of</code>语句使用。 --- 实现迭代器API的一个函数（迭代器函数）</li>
+<li><code>Symbol.match</code>:一个正则表达式方法，该方法用正则表达式去匹配字符串。由<code>String.prototype.match()</code>方法使用。</li>
+<li><code>Symbol.replace</code>:一个正则表达式方法</li>
+<li><code>Symbol.search</code>:一个正则表达式方法</li>
+<li><code>Symbol.split</code>:一个正则表达式方法</li>
+<li><code>Symbol.species</code>:一个函数值，该函数作为创建派生对象的构造函数。？</li>
+<li><code>Symbol.toPrimitive</code>:一个方法，该方法将对象转换为响应的原始值。由<code>ToPrimitive</code>抽象操作使用。？</li>
+<li><code>Symbol.toStringTag</code>:一个字符串，该字符串用于创建对象的默认字符串描述。由内置方法<code>Object.prototype.toString()</code>使用。</li>
+<li><code>Symbol.unscopables</code>:一个对象，该对象所有的以及继承的属性，都会从关联对象的<code>with</code>环境绑定中排除。 --- 不推荐使用with和该属性。</li>
+</ol>
 <h3><a id="object%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object类型</h3>
 <p>原型方法：</p>
 <ol>
