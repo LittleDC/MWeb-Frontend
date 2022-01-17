@@ -355,8 +355,10 @@ MF=0，代表最后一片/没分片</li>
 </blockquote>
 <p>最长前缀匹配：使用CIDR时，查找路由表可能得到的几个匹配结果，应该选择具有<strong>最长</strong>网络前缀的路由。前缀越长，地址块越小，路由越具体。</p>
 <h2><a id="arp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>ARP协议</h2>
+<p>数据链路层 -&gt; 网络层</p>
+<p>地址解析协议【Address Resolution Protocol】</p>
 <blockquote>
-<p>地址解析协议【Address Resolution Protocol】：完成主机或路由器IP地址到MAC地址的映射。</p>
+<p>完成主机或路由器IP地址到MAC地址的映射。</p>
 </blockquote>
 <h3><a id="%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BF%87%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>发送数据的过程</h3>
 <p>局域网内传输：1 -&gt; 3<br />
@@ -364,9 +366,57 @@ MF=0，代表最后一片/没分片</li>
 <ul>
 <li>ARP协议<strong>自动进行</strong></li>
 </ul>
-<h2><a id="%E4%B8%BB%E6%9C%BA%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>主机获取IP地址</h2>
+<h2><a id="%E4%B8%BB%E6%9C%BA%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>主机获取IP地址的协议</h2>
+<p>网络层 -&gt; 传输层</p>
 <h3><a id="dhcp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>DHCP协议</h3>
+<p>动态主机设置协议【Dynamic Host Configuration Protocol】</p>
+<blockquote>
+<p>是<strong>应用层</strong>协议，使用<strong>客户/服务器</strong>方式，客户端和服务器通过<strong>广播</strong>方式进行交互，基于<strong>UDP</strong>。</p>
+</blockquote>
+<p>DHCP提供<strong>即插即用</strong>联网的机制，主机可以从服务器动态获取IP地址、子网掩码、默认网关、DNS服务器名称与IP地址，允许<strong>地址复用</strong>，支持<strong>移动用户加入网络</strong>，支持<strong>在用地址续租</strong>。</p>
+<ol>
+<li>主机广播DHCP<strong>发现</strong>报文</li>
+<li>DHCP服务器广播DHCP<strong>提供</strong>报文</li>
+<li>主机广播DHCP<strong>请求</strong>报文</li>
+<li>DHCP服务器广播DHCP<strong>确认</strong>报文</li>
+</ol>
 <h3><a id="icmp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>ICMP协议</h3>
+<p>互联网控制消息协议【Internet Control Message Protocol】</p>
+<blockquote>
+<p>用于网际协议中发送控制消息，提供可能发生在通信环境中的各种问题反馈。</p>
+</blockquote>
+<p><img src="media/16406143899741/16424292389566.jpg" alt="ICMP" /></p>
+<h4><a id="%E5%B7%AE%E9%94%99%E6%8A%A5%E6%96%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>差错报文</h4>
+<blockquote>
+<p>有差错数据直接丢弃 --- 但需返回指定信息（差错报文）</p>
+</blockquote>
+<p>差错报文类型：</p>
+<ol>
+<li>终点不可达</li>
+<li>源点抑制 --- 已不使用</li>
+<li>时间超过</li>
+<li>参数问题</li>
+<li>改变路由（重定向）</li>
+</ol>
+<p>差错报文数据字段：有差错的IP数据报 =&gt; ICMP报文<br />
+<img src="media/16406143899741/16424296491092.jpg" alt="数据报" /></p>
+<p>不发送ICMP差错报文的情况：<br />
+1.对<strong>ICMP差错报告报文</strong>不再发送ICMP差错报告报文。<br />
+2.对第一个分片的数据报片的所有<strong>后续数据报片</strong>都不发送ICMP差错报告报文。<br />
+3.对具有<strong>组播地址</strong>的数据报都不发送ICMP差错报告报文。<br />
+4.对具有<strong>特殊地址</strong>（如127.0.0.0或0.0.0.0）的数据报不发送ICMP差错报告报文。</p>
+<h4><a id="%E8%AF%A2%E9%97%AE%E6%8A%A5%E6%96%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>询问报文</h4>
+<p>询问报文类型：<br />
+1.回送请求和回答报文<br />
+2.时间戳请求和回答报文<br />
+3.掩码地址请求和回答报文 --- 已不使用<br />
+4.路由器询问和通告报文 --- 已不使用</p>
+<h4><a id="icmp%E5%BA%94%E7%94%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>ICMP应用</h4>
+<ol>
+<li>PING：测试两个主机之间的连通性，使用了<strong>ICMP回送请求和回答报文</strong>。</li>
+<li>Traceroute：跟踪一个分组从源点到终点的路径，使用了<strong>ICMP时间超过差错报告报文</strong>。</li>
+</ol>
+<h2><a id="ipv6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IPV6</h2>
 
 
 </div>
