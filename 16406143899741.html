@@ -180,7 +180,7 @@
  <div class="markdown-body">
 <h1>网络层</h1>
 
-<h2><a id="%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本概念</h2>
+<h2><a id="%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>一 基本概念</h2>
 <blockquote>
 <p>主要任务是把<strong>分组</strong>从源端传到目的端，为分组交换网上的不同主机提供通信服务。</p>
 </blockquote>
@@ -191,8 +191,8 @@
 <li>异构网络互联</li>
 <li>拥塞控制 --- 全局性</li>
 </ol>
-<h2><a id="%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据交换方式</h2>
-<h3><a id="%E4%B8%80%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>一.电路交换</h3>
+<h2><a id="%E4%BA%8C%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二 数据交换方式</h2>
+<h3><a id="2-1%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 电路交换</h3>
 <blockquote>
 <p>建立连接 =&gt; 通信 =&gt; 释放连接</p>
 </blockquote>
@@ -212,7 +212,7 @@
 <li>灵活性差</li>
 <li>无差错控制能力</li>
 </ol>
-<h3><a id="%E4%BA%8C%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二.报文交换</h3>
+<h3><a id="2-2%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2 报文交换</h3>
 <blockquote>
 <p>报文：源应用发送的信息<strong>整体</strong>。</p>
 </blockquote>
@@ -230,7 +230,7 @@
 <li>有存储转发时延</li>
 <li>报文大小不定，需要网络节点有较大缓存空间</li>
 </ol>
-<h3><a id="%E4%B8%89%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三.分组交换</h3>
+<h3><a id="2-3%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3 分组交换</h3>
 <blockquote>
 <p>分组：把大的数据块<strong>分割</strong>成小的数据块。</p>
 </blockquote>
@@ -243,7 +243,7 @@
 <li>乱序到目的主机时，需对主机排序重组</li>
 </ol>
 <p>tip：<code>1字节（Byte）=8比特（bit）</code></p>
-<h4><a id="1%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.数据报方式</h4>
+<h4><a id="2-3-1%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.1 数据报方式</h4>
 <blockquote>
 <p>数据报方式为网络层提供<strong>无连接服务</strong>。 --- 因特网</p>
 </blockquote>
@@ -255,56 +255,57 @@
 <li>路由器根据分组的目的地址转发分组：<br />
 基于路由协议/算法构建转发表 =&gt; 检索转发表 =&gt; 每个分组独立选路</li>
 </ol>
-<h4><a id="2%E8%99%9A%E7%94%B5%E8%B7%AF%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.虚电路方式</h4>
+<h4><a id="2-3-2%E8%99%9A%E7%94%B5%E8%B7%AF%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.2 虚电路方式</h4>
 <blockquote>
 <p>虚电路方式为网络层提供<strong>连接服务</strong>。 --- 数据报方式和电路交换方式的结合</p>
 </blockquote>
 <p><code>连接服务</code>：首先为分组的传输确定传输路径（建立连接），然后沿改路径（连接）传输系列分组，系列分组传输路径相同，传输结束后拆除连接。</p>
 <p>虚电路：一条源主机到目的主机类似于电路的路径（逻辑连接），路径上所有结点都要维持这条虚电路的建立，都维持一张虚电路表，每一项纪录了一个打开的虚电路信息。</p>
 <p>建立连接（虚电路建立） =&gt; 数据传输 =&gt; 释放连接（虚电路释放）</p>
-<h4><a id="%E6%95%B0%E6%8D%AE%E6%8A%A5%E8%99%9A%E7%94%B5%E8%B7%AF%E5%AF%B9%E6%AF%94" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据报&amp;虚电路 对比</h4>
+<h4><a id="2-3-3%E6%95%B0%E6%8D%AE%E6%8A%A5%E8%99%9A%E7%94%B5%E8%B7%AF%E5%AF%B9%E6%AF%94" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.3 数据报&amp;虚电路 对比</h4>
 <p><img src="media/16406143899741/16407862413167.jpg" alt="compare" /></p>
-<h3><a id="%E5%AF%B9%E6%AF%94" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>对比</h3>
+<h3><a id="2-4%E5%AF%B9%E6%AF%94" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.4 对比</h3>
 <p><img src="media/16406143899741/16407029014872.jpg" alt="总结" /></p>
-<h2><a id="%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E5%8F%8A%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>路由算法及路由协议概述</h2>
-<h3><a id="%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>路由算法</h3>
+<h2><a id="%E4%B8%89%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E5%8F%8A%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三 路由算法及路由协议概述</h2>
+<p>详见 八、九、十</p>
+<h3><a id="3-1%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 路由算法</h3>
 <blockquote>
 <p>最佳路由：“最佳”只能是相对于某一种特定要求下得出的较为合理的选择而已。</p>
 </blockquote>
-<h4><a id="%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>静态路由算法</h4>
+<h4><a id="3-1-1%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1.1 静态路由算法</h4>
 <blockquote>
 <p>管理员手工配置路由信息。</p>
 </blockquote>
 <p>缺点：路由更新慢，不适用大型网络。</p>
-<h4><a id="%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>动态路由算法</h4>
+<h4><a id="3-1-2%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1.2 动态路由算法</h4>
 <blockquote>
 <p>路由器间彼此交换信息，按照路由算法优化出路由表项。</p>
 </blockquote>
 <p>缺点：算法复杂，增加网络负担</p>
 <h5><a id="%E5%85%A8%E5%B1%80%E6%80%A7%EF%BC%9A%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95ospf" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>全局性：链路状态路由算法 <code>OSPF</code></h5>
 <blockquote>
-<p>所有路由器掌握完整的网络拓扑和链路费用信息。</p>
+<p>所有路由器掌握完整的网络拓扑和链路费用信息。 --- 适用大型网络</p>
 </blockquote>
 <h5><a id="%E5%88%86%E6%95%A3%E6%80%A7%EF%BC%9A%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95rip" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>分散性：距离向量路由算法 <code>RIP</code></h5>
 <blockquote>
-<p>路由器只掌握物理相连的邻居及链路费用。</p>
+<p>路由器只掌握物理相连的邻居及链路费用。 --- 只适用小互联网</p>
 </blockquote>
-<h3><a id="%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>路由协议</h3>
+<h3><a id="3-2%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2 路由协议</h3>
 <p><code>分层次</code></p>
 <blockquote>
 <p><strong>自治系统AS</strong>：在单一的技术管理下的一组路由器，而这些路由器使用一种<strong>AS内部</strong>的路由选择协议和共同的度量以确定分组在该AS内的路由，同时还使用一种<strong>AS之间</strong>的路由协议以确定在AS之间的路由。</p>
 </blockquote>
 <p>一个AS内的所有网络都属于一个行政单位来管辖，一个自治系统的所有路由器在本自治系统内都必须连通。</p>
-<h4><a id="%E5%86%85%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AEigp" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>内部网关协议 IGP</h4>
+<h4><a id="3-2-1%E5%86%85%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE-igp" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2.1 内部网关协议 IGP</h4>
 <p>一个<strong>AS内</strong>使用的 --- RIP、OSPF</p>
-<h4><a id="%E5%A4%96%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AEegp" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>外部网关协议 EGP</h4>
+<h4><a id="3-2-2%E5%A4%96%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE-egp" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2.2 外部网关协议 EGP</h4>
 <p><strong>AS之间</strong>使用的 --- BGP</p>
-<h2><a id="ip%E6%95%B0%E6%8D%AE%E6%8A%A5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IP数据报</h2>
+<h2><a id="%E5%9B%9Bip%E6%95%B0%E6%8D%AE%E6%8A%A5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>四 IP数据报</h2>
 <p><img src="media/16406143899741/16412129771863.jpg" alt="TCP/IP协议栈" /></p>
-<h3><a id="ip%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IP数据报格式</h3>
+<h3><a id="4-1-ip%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1 IP数据报格式</h3>
 <p><img src="media/16406143899741/16412134427117.jpg" alt="preview" /><br />
 <img src="media/16406143899741/16412149786986.jpg" alt="detail" /></p>
-<h3><a id="%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E5%8D%95%E5%85%83mtu" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>最大传输单元MTU</h3>
+<h3><a id="4-2%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E5%8D%95%E5%85%83-mtu" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2 最大传输单元MTU</h3>
 <blockquote>
 <p>链路层数据帧可封装数据有上限。以太网的MTU是<code>1500字节</code> --- 网络层数据分片</p>
 </blockquote>
@@ -324,49 +325,49 @@ MF=0，代表最后一片/没分片</li>
 <li>片偏移：指出较长分组分片后，某片在原分组中的相对位置。以<strong>8B</strong>为单位。</li>
 </ol>
 <p>除了最后一个分片，每个分片长度一定是<strong>8B的整数倍</strong>。</p>
-<h3><a id="ipv4%E5%9C%B0%E5%9D%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IPV4地址</h3>
+<h3><a id="4-3-ipv4%E5%9C%B0%E5%9D%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.3 IPV4地址</h3>
 <p><img src="media/16406143899741/16412176940275.jpg" alt="分类" /></p>
 <p><img src="media/16406143899741/16412177234944.jpg" alt="特殊的IP地址" /></p>
 <p><img src="media/16406143899741/16412180575030.jpg" alt="私有/专用IP地址" /></p>
 <p><img src="media/16406143899741/16412182453395.jpg" alt="数量" /></p>
-<h4><a id="%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2nat" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>网络地址转换 NAT</h4>
+<h4><a id="4-3-1%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2-nat" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.3.1 网络地址转换 NAT</h4>
 <p>NAT【Network Address Translation】</p>
 <blockquote>
 <p>在<strong>专用网</strong>连接到因特网的路由器上安装NAT软件，安装了NAT软件的路由器叫NAT路由器，它至少有一个有效的<strong>外部全球IP地址</strong>。</p>
 </blockquote>
-<h4><a id="%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>子网划分</h4>
+<h4><a id="4-3-2%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.3.2 子网划分</h4>
 <p><img src="media/16406143899741/16420810711556.jpg" alt="子网划分" /></p>
 <ul>
 <li>子网掩码 --- 区分子网号和主机号的划分点</li>
 </ul>
-<h4><a id="%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80cidr" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>无分类编址 CIDR</h4>
+<h4><a id="4-3-3%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80-cidr" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.3.3 无分类编址 CIDR</h4>
 <p>无分类域间路由选择【Classless Inter-Domain Routing】</p>
 <ol>
 <li>消除了传统的A类、B类、C类地址以及划分子网的概念。<code>网络前缀 + 主机号</code></li>
 <li>融合子网地址与子网掩码，方便子网划分。<code>CIDR地址块</code> --- 网络前缀都相同</li>
 </ol>
 <p><img src="media/16406143899741/16420829126961.jpg" alt="CIDR" /></p>
-<h3><a id="%E6%9E%84%E6%88%90%E8%B6%85%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>构成超网</h3>
+<h3><a id="4-4%E6%9E%84%E6%88%90%E8%B6%85%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.4 构成超网</h3>
 <blockquote>
 <p>将多个子网聚合成一个较大的子网，叫做构成超网/路由聚合。<br />
 方法：将网络前缀缩短。</p>
 </blockquote>
 <p>最长前缀匹配：使用CIDR时，查找路由表可能得到的几个匹配结果，应该选择具有<strong>最长</strong>网络前缀的路由。前缀越长，地址块越小，路由越具体。</p>
-<h2><a id="arp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>ARP协议</h2>
+<h2><a id="%E4%BA%94arp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>五 ARP协议</h2>
 <p>数据链路层 -&gt; 网络层</p>
 <p>地址解析协议【Address Resolution Protocol】</p>
 <blockquote>
 <p>完成主机或路由器IP地址到MAC地址的映射。</p>
 </blockquote>
-<h3><a id="%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BF%87%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>发送数据的过程</h3>
+<h3><a id="5-1%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BF%87%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.1 发送数据的过程</h3>
 <p>局域网内传输：1 -&gt; 3<br />
 <img src="media/16406143899741/16420843438446.jpg" alt="内" /></p>
 <ul>
 <li>ARP协议<strong>自动进行</strong></li>
 </ul>
-<h2><a id="%E4%B8%BB%E6%9C%BA%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>主机获取IP地址的协议</h2>
+<h2><a id="%E5%85%AD%E4%B8%BB%E6%9C%BA%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>六 主机获取IP地址的协议</h2>
 <p>网络层 -&gt; 传输层</p>
-<h3><a id="dhcp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>DHCP协议</h3>
+<h3><a id="6-1-dhcp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.1 DHCP协议</h3>
 <p>动态主机设置协议【Dynamic Host Configuration Protocol】</p>
 <blockquote>
 <p>是<strong>应用层</strong>协议，使用<strong>客户/服务器</strong>方式，客户端和服务器通过<strong>广播</strong>方式进行交互，基于<strong>UDP</strong>。</p>
@@ -378,13 +379,13 @@ MF=0，代表最后一片/没分片</li>
 <li>主机广播DHCP<strong>请求</strong>报文</li>
 <li>DHCP服务器广播DHCP<strong>确认</strong>报文</li>
 </ol>
-<h3><a id="icmp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>ICMP协议</h3>
+<h3><a id="6-2-icmp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2 ICMP协议</h3>
 <p>互联网控制消息协议【Internet Control Message Protocol】</p>
 <blockquote>
 <p>用于网际协议中发送控制消息，提供可能发生在通信环境中的各种问题反馈。</p>
 </blockquote>
 <p><img src="media/16406143899741/16424292389566.jpg" alt="ICMP" /></p>
-<h4><a id="%E5%B7%AE%E9%94%99%E6%8A%A5%E6%96%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>差错报文</h4>
+<h4><a id="6-2-1%E5%B7%AE%E9%94%99%E6%8A%A5%E6%96%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2.1 差错报文</h4>
 <blockquote>
 <p>有差错数据直接丢弃 --- 但需返回指定信息（差错报文）</p>
 </blockquote>
@@ -403,23 +404,23 @@ MF=0，代表最后一片/没分片</li>
 2.对第一个分片的数据报片的所有<strong>后续数据报片</strong>都不发送ICMP差错报告报文。<br />
 3.对具有<strong>组播地址</strong>的数据报都不发送ICMP差错报告报文。<br />
 4.对具有<strong>特殊地址</strong>（如127.0.0.0或0.0.0.0）的数据报不发送ICMP差错报告报文。</p>
-<h4><a id="%E8%AF%A2%E9%97%AE%E6%8A%A5%E6%96%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>询问报文</h4>
+<h4><a id="6-2-2%E8%AF%A2%E9%97%AE%E6%8A%A5%E6%96%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2.2 询问报文</h4>
 <p>询问报文类型：<br />
 1.回送请求和回答报文<br />
 2.时间戳请求和回答报文<br />
 3.掩码地址请求和回答报文 --- 已不使用<br />
 4.路由器询问和通告报文 --- 已不使用</p>
-<h4><a id="icmp%E5%BA%94%E7%94%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>ICMP应用</h4>
+<h4><a id="6-2-3-icmp%E5%BA%94%E7%94%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2.3 ICMP应用</h4>
 <ol>
 <li>PING：测试两个主机之间的连通性，使用了<strong>ICMP回送请求和回答报文</strong>。</li>
 <li>Traceroute：跟踪一个分组从源点到终点的路径，使用了<strong>ICMP时间超过差错报告报文</strong>。</li>
 </ol>
-<h2><a id="ipv6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IPV6</h2>
+<h2><a id="%E4%B8%83ipv6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>七 IPV6</h2>
 <p>地址分配<strong>128位</strong>（16B）</p>
-<h3><a id="%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据报格式</h3>
+<h3><a id="7-1%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.1 数据报格式</h3>
 <p>固定<strong>40B</strong>基本首部</p>
 <p><img src="media/16406143899741/16424315179369.jpg" alt="IPV6" /></p>
-<h3><a id="%E5%8C%BA%E5%88%AB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>区别</h3>
+<h3><a id="7-2%E5%8C%BA%E5%88%AB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.2 区别</h3>
 <ol>
 <li>IPV6将地址从32位（4B）扩大到<strong>128位（16B）</strong>，更大的地址空间。</li>
 <li>IPV6将1Pv4的<strong>校验和字段彻底移除</strong>，以减少每跳的处理时间。</li>
@@ -428,12 +429,25 @@ MF=0，代表最后一片/没分片</li>
 <li>IPV6首部长度必须是<strong>8B的整数倍</strong>，1Pv4首部是4B的整数倍。</li>
 <li>IPv6<strong>只能在主机处分片</strong>，1Pv4可以在路由器和主机处分片。</li>
 </ol>
-<h3><a id="%E5%9C%B0%E5%9D%80%E8%A1%A8%E7%A4%BA%E5%BD%A2%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>地址表示形式</h3>
+<h3><a id="7-3%E5%9C%B0%E5%9D%80%E8%A1%A8%E7%A4%BA%E5%BD%A2%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.3 地址表示形式</h3>
 <p><img src="media/16406143899741/16425150207470.jpg" alt="表示" /></p>
-<h3><a id="ipv6%E5%90%91ipv4%E8%BF%87%E6%B8%A1%E7%9A%84%E7%AD%96%E7%95%A5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IPv6向IPv4过渡的策略</h3>
+<h3><a id="7-4-ipv6%E5%90%91ipv4%E8%BF%87%E6%B8%A1%E7%9A%84%E7%AD%96%E7%95%A5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.4 IPv6向IPv4过渡的策略</h3>
 <ol>
 <li>双栈协议</li>
 <li>隧道技术</li>
+</ol>
+<h2><a id="%E5%85%ABrip%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>八 RIP协议</h2>
+<p>路由信息协议【Routing Information Protocol】</p>
+<blockquote>
+<p>RIP是一种分布式的基于<strong>距离向量</strong>的路由选择协议，是因特网的协议标准。<code>简单</code></p>
+</blockquote>
+<p>RIP允许一条路由最多只能包含<code>15个</code>路由器，因此距离为<strong>16表示网络不可达</strong>。<br />
+RIP协议只适用于小互联网。</p>
+<h3><a id="8-1%E4%BF%A1%E6%81%AF%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.1 信息交换</h3>
+<ol>
+<li>仅和<strong>相邻路由器</strong>交换信息</li>
+<li>路由器交换的信息是<strong>自己的路由表</strong>。</li>
+<li><strong>每30s</strong>交换一次路由信息。</li>
 </ol>
 
 
