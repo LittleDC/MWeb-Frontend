@@ -415,9 +415,26 @@ MF=0，代表最后一片/没分片</li>
 <li>Traceroute：跟踪一个分组从源点到终点的路径，使用了<strong>ICMP时间超过差错报告报文</strong>。</li>
 </ol>
 <h2><a id="ipv6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IPV6</h2>
+<p>地址分配<strong>128位</strong>（16B）</p>
 <h3><a id="%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据报格式</h3>
 <p>固定<strong>40B</strong>基本首部</p>
 <p><img src="media/16406143899741/16424315179369.jpg" alt="IPV6" /></p>
+<h3><a id="%E5%8C%BA%E5%88%AB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>区别</h3>
+<ol>
+<li>IPV6将地址从32位（4B）扩大到<strong>128位（16B）</strong>，更大的地址空间。</li>
+<li>IPV6将1Pv4的<strong>校验和字段彻底移除</strong>，以减少每跳的处理时间。</li>
+<li>IPV6将1Pv4的可选字段移出首部，变成了<strong>扩展首部</strong>，成为灵活的首部格式，路由器通常不对扩展首部进行检查，大大提高了路由器的处理效率。</li>
+<li>IPV6支持<strong>即插即用</strong>（即自动配置），不需要DHCP协议。</li>
+<li>IPV6首部长度必须是<strong>8B的整数倍</strong>，1Pv4首部是4B的整数倍。</li>
+<li>IPv6<strong>只能在主机处分片</strong>，1Pv4可以在路由器和主机处分片。</li>
+</ol>
+<h3><a id="%E5%9C%B0%E5%9D%80%E8%A1%A8%E7%A4%BA%E5%BD%A2%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>地址表示形式</h3>
+<p><img src="media/16406143899741/16425150207470.jpg" alt="表示" /></p>
+<h3><a id="ipv6%E5%90%91ipv4%E8%BF%87%E6%B8%A1%E7%9A%84%E7%AD%96%E7%95%A5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IPv6向IPv4过渡的策略</h3>
+<ol>
+<li>双栈协议</li>
+<li>隧道技术</li>
+</ol>
 
 
 </div>
