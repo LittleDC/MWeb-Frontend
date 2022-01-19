@@ -300,6 +300,7 @@
 <p>一个<strong>AS内</strong>使用的 --- RIP、OSPF</p>
 <h4><a id="3-2-2%E5%A4%96%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE-egp" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2.2 外部网关协议 EGP</h4>
 <p><strong>AS之间</strong>使用的 --- BGP</p>
+<hr />
 <h2><a id="%E5%9B%9Bip%E6%95%B0%E6%8D%AE%E6%8A%A5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>四 IP数据报</h2>
 <p><img src="media/16406143899741/16412129771863.jpg" alt="TCP/IP协议栈" /></p>
 <h3><a id="4-1-ip%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1 IP数据报格式</h3>
@@ -436,18 +437,74 @@ MF=0，代表最后一片/没分片</li>
 <li>双栈协议</li>
 <li>隧道技术</li>
 </ol>
+<hr />
 <h2><a id="%E5%85%ABrip%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>八 RIP协议</h2>
-<p>路由信息协议【Routing Information Protocol】</p>
+<p>路由信息协议【Routing Information Protocol】 --- <strong>应用层</strong>协议</p>
 <blockquote>
 <p>RIP是一种分布式的基于<strong>距离向量</strong>的路由选择协议，是因特网的协议标准。<code>简单</code></p>
 </blockquote>
 <p>RIP允许一条路由最多只能包含<code>15个</code>路由器，因此距离为<strong>16表示网络不可达</strong>。<br />
 RIP协议只适用于小互联网。</p>
-<h3><a id="8-1%E4%BF%A1%E6%81%AF%E4%BA%A4%E6%8D%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.1 信息交换</h3>
+<h3><a id="8-1%E4%BF%A1%E6%81%AF%E4%BA%A4%E6%8D%A2%E7%89%B9%E7%82%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.1 信息交换特点</h3>
 <ol>
 <li>仅和<strong>相邻路由器</strong>交换信息</li>
 <li>路由器交换的信息是<strong>自己的路由表</strong>。</li>
 <li><strong>每30s</strong>交换一次路由信息。</li>
+<li>使用<strong>距离向量算法</strong>更新路由表 --- 详Google</li>
+</ol>
+<h3><a id="8-2%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.2 报文格式</h3>
+<p><img src="media/16406143899741/16426025358111.jpg" alt="报文" /></p>
+<ul>
+<li>应用层协议，使用<strong>UDP</strong>传输数据</li>
+</ul>
+<h3><a id="8-3%E7%89%B9%E7%82%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.3 特点</h3>
+<p>当网络<strong>出现故障</strong>时，要经过较长的时间（例如数分钟）才能将信息传送到所有的路由器，“慢收敛”。</p>
+<h2><a id="%E4%B9%9Dospf%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>九 OSPF协议</h2>
+<p>开放式最短路径优先【Open Shortest Path First】 --- 网络层（/传输层）协议</p>
+<blockquote>
+<p>“开放”标明OSPF协议不是受某一家厂商控制，而是<strong>公开发表</strong>的；“最短路径优先”是因为使用了Dijkstra提出的<strong>最短路径算法<code>SPF</code></strong></p>
+</blockquote>
+<p>特征：使用分布式的<strong>链路状态协议</strong>。</p>
+<h3><a id="9-1%E4%BF%A1%E6%81%AF%E4%BA%A4%E6%8D%A2%E7%89%B9%E7%82%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>9.1 信息交换特点</h3>
+<ol>
+<li>使用洪泛法向自治系统内<strong>所有路由器</strong>发送信息。（广播）</li>
+<li>发送与本路由器<strong>相邻的所有路由器的链路状态</strong></li>
+<li>只有当<strong>链路状态发生变化时</strong>，才再次发送信息。</li>
+<li>使用<strong>链路状态路由算法</strong>更新链路状态。</li>
+</ol>
+<p>最后，所有路由器都能建立一个<strong>链路状态数据库</strong>，即<strong>全网拓扑图</strong>。</p>
+<h3><a id="9-2%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>9.2 链路状态路由算法</h3>
+<p>初始化：</p>
+<ol>
+<li>每个路由器发现它的邻居结点【HELLO问候分组】，并了解邻居节点的网络地址。</li>
+<li>设置到它的每个邻居的成本度量metric。</li>
+<li>构造【DD数据库描述分组】，向邻站给出自己的链路状态数据库中的所有链路状态项目的摘要信息。</li>
+<li>如果DD分组中的摘要自己都有，则邻站不做处理；如果有没有的或者是更新的，则发送【LSR链路状态请求分组】请求自己没有的和比自己更新的信息。</li>
+<li>收到邻站的LSR分组后，发送【LSU链路状态更新分组】进行更新。</li>
+<li>更新完毕后，邻站返回一个【LSAck链路状态确认分组】进行确认。</li>
+</ol>
+<ul>
+<li>只要一个路由器的链路状态发生变化：</li>
+</ul>
+<ol start="5">
+<li>泛洪发送【LSU链路状态更新分组】进行更新。</li>
+<li>更新完毕后，其他站返回一个【LSAck链路状态确认分组】进行确认。</li>
+<li>使用Dijkstra根据自己的链路状态数据库构造到其他节点间的最短路径。</li>
+</ol>
+<h3><a id="9-3-ospf%E5%8C%BA%E5%9F%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>9.3 OSPF区域</h3>
+<p>为了使 OSPF 能够用于规模很大的网络，OSPF将一个自治系统再划分为若干个更小的范围，叫做区域。<br />
+每一个区域都有一个32 位的区域标识符（用点分十进制表示）<br />
+<img src="media/16406143899741/16426044652660.jpg" alt="区域" /></p>
+<h3><a id="9-4%E5%88%86%E7%BB%84%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>9.4 分组格式</h3>
+<p><img src="media/16406143899741/16426043353533.jpg" alt="分组" /></p>
+<ul>
+<li>OSPF直接使用<strong>IP数据包</strong>传送。</li>
+</ul>
+<h3><a id="9-5%E7%89%B9%E7%82%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>9.5 特点</h3>
+<ol>
+<li>每隔<strong>30min</strong>，要刷新一次数据库中的链路状态。</li>
+<li>由于一个路由器的链路状态只涉及到与相邻路由器的连通状态，因而与整个互联网的规模并无直接关系。因此当<strong>互联网规模很大</strong>时，OSPF 协议要比距离向量协议 RIP 好得多。</li>
+<li>OSPF不存在坏消息传的慢的问题，它的<strong>收敛速度很快</strong>。</li>
 </ol>
 
 
