@@ -181,7 +181,7 @@
 <h1>⭐️对象,类与面对对象编程</h1>
 
 <h2><a id="%E4%B8%80%E7%90%86%E8%A7%A3%E5%AF%B9%E8%B1%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>一.理解对象</h2>
-<h3><a id="%E5%B1%9E%E6%80%A7%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%8F%8F%E8%BF%B0%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>属性的类型(描述符)</h3>
+<h3><a id="1-1%E5%B1%9E%E6%80%A7%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%8F%8F%E8%BF%B0%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 属性的类型(描述符)</h3>
 <p>使用一些内部特性来描述属性的特征。表示：[[Enumerable]]</p>
 <ol>
 <li>数据属性(数据描述符)</li>
@@ -253,8 +253,8 @@
 <li>默认情况下，所有<strong>直接定义</strong>在对象上的 configurable、enumerable 和 writable 属性都是<code>true</code></li>
 <li>访问器属性是不能直接定义的，必须使用Object.defineProperty().</li>
 </ul>
-<h3><a id="%E5%AE%9A%E4%B9%89%E6%8F%8F%E8%BF%B0%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定义描述符</h3>
-<h4><a id="object-defineproperty" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.defineProperty()</h4>
+<h3><a id="1-2%E5%AE%9A%E4%B9%89%E6%8F%8F%E8%BF%B0%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2 定义描述符</h3>
+<h4><a id="1-2-1-object-defineproperty" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.1 Object.defineProperty()</h4>
 <p><code>Object.defineProperty(obj, prop, descriptor)</code></p>
 <p>方法不指定属性时的默认值：</p>
 <ul>
@@ -284,7 +284,7 @@ Object.defineProperty(book, 'year', {
 book.year = 2018
 console.log(book.edition) //2
 </code></pre>
-<h4><a id="object-defineproperties" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.defineProperties()</h4>
+<h4><a id="1-2-2-object-defineproperties" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.2 Object.defineProperties()</h4>
 <p><code>Object.defineProperties(obj, props)</code></p>
 <pre class="line-numbers"><code class="language-JavaScript">&quot;use strict&quot;;
 let book = {}
@@ -316,7 +316,7 @@ Object.defineProperties(book, {
 
 book.year = 2018 // error!
 </code></pre>
-<h3><a id="%E8%AF%BB%E5%8F%96%E6%8F%8F%E8%BF%B0%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>读取描述符</h3>
+<h3><a id="1-3%E8%AF%BB%E5%8F%96%E6%8F%8F%E8%BF%B0%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3 读取描述符</h3>
 <p>方法：<code>Object.getOwnPropertyDescriptor(obj, prop)</code><br />
 返回一个对象，包含各自对应的属性。</p>
 <p>方法：<code>Object.getOwnPropertyDescriptors(obj)</code></p>
@@ -349,7 +349,7 @@ edition: {value: 1, writable: false, enumerable: false, configurable: false}
 year: {get: function, set: function, enumerable: false, configurable: false}
 year_: {value: 2017, writable: false, enumerable: false, configurable: false}
 </code></pre>
-<h3><a id="%E5%90%88%E5%B9%B6%E5%AF%B9%E8%B1%A1mergemixin" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>合并对象 merge/mixin</h3>
+<h3><a id="1-4%E5%90%88%E5%B9%B6%E5%AF%B9%E8%B1%A1-mergemixin" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.4 合并对象 merge/mixin</h3>
 <p>把源对象所有的本地属性一起复制到目标对象上。使目标对象得到了增强</p>
 <p>方法：<code>Object.assign(target, ...sources)</code></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">assign</a></p>
@@ -381,7 +381,7 @@ console.log(dest) // { set a(val) {...} }
 <li>不能在两个对象间转换获取函数和设置函数</li>
 <li>没有‘回滚’操作，可能只会完成部分复制的方法（中途出错时，出错前的复制仍有效）</li>
 </ol>
-<h3><a id="%E5%AF%B9%E8%B1%A1%E6%A0%87%E8%AF%86%E5%8F%8A%E7%9B%B8%E7%AD%89%E5%88%A4%E5%AE%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>对象标识及相等判定</h3>
+<h3><a id="1-5%E5%AF%B9%E8%B1%A1%E6%A0%87%E8%AF%86%E5%8F%8A%E7%9B%B8%E7%AD%89%E5%88%A4%E5%AE%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.5 对象标识及相等判定</h3>
 <p>方法：<code>Object.is()</code></p>
 <pre class="line-numbers"><code class="language-JavaScript">console.log(NaN === NaN) // false
 console.log(Object.is(NaN, NaN)) // true
@@ -391,7 +391,7 @@ function recursivelyCheckEqual(x, ...rest){
     return Object.is(x, rest[0]) &amp;&amp; 
             (rest.length &lt; 2 || recursivelyCheckEqual(...rest))
 </code></pre>
-<h3><a id="%E5%A2%9E%E5%BC%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AF%AD%E6%B3%95%E8%AF%AD%E6%B3%95%E7%B3%96%F0%9F%8D%AC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>增强对象的语法 --- 语法糖🍬</h3>
+<h3><a id="1-6%E5%A2%9E%E5%BC%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AF%AD%E6%B3%95%E8%AF%AD%E6%B3%95%E7%B3%96%F0%9F%8D%AC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.6 增强对象的语法 --- 语法糖🍬</h3>
 <p>ES6新增</p>
 <ol>
 <li>
@@ -422,7 +422,7 @@ let person = {
     // }
 }
 </code></pre>
-<h3><a id="%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>对象解构</h3>
+<h3><a id="1-7%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.7 对象解构</h3>
 <pre class="line-numbers"><code class="language-JavaScript">let person = {
     name: 'test',
     age: 18
@@ -439,7 +439,7 @@ console.log(age) //18
 <li>参数上下文解构</li>
 </ol>
 <h2><a id="%E4%BA%8C%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二.创建对象</h2>
-<h3><a id="%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E5%87%BD%E6%95%B0%E9%97%AD%E5%8C%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>工厂模式 --- 函数闭包</h3>
+<h3><a id="2-1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E5%87%BD%E6%95%B0%E9%97%AD%E5%8C%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 工厂模式 --- 函数闭包</h3>
 <pre class="line-numbers"><code class="language-js">function createPerson(name, age, job) {
     let o = new Object()
     o.name = name
@@ -453,7 +453,7 @@ console.log(age) //18
 
 let person1 = createPerson('test', 18, 'Doctor')
 </code></pre>
-<h3><a id="%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%A8%A1%E5%BC%8Fnew%E5%85%B3%E9%94%AE%E5%AD%97" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>构造函数模式 --- new关键字</h3>
+<h3><a id="2-2%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%A8%A1%E5%BC%8F-new%E5%85%B3%E9%94%AE%E5%AD%97" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2 构造函数模式 --- new关键字</h3>
 <pre class="line-numbers"><code class="language-js">function Person(name, age, job){
     this.name = name
     this.age = age
@@ -470,14 +470,24 @@ let person1 = new Person('test', 18, 'Doctor')
 <li>构造函数也是函数</li>
 <li>构造函数的问题：共同方法重复实例化，占用空间。</li>
 </ul>
-<h3><a id="%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8Fprototype" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原型模式 --- prototype</h3>
+<h3><a id="2-3%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F-prototype" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3 原型模式 --- prototype</h3>
 <p>原型对象上定义的属性和方法可以被对象实例<strong>共享</strong></p>
-<h4><a id="%E7%90%86%E8%A7%A3%E5%8E%9F%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>理解原型</h4>
+<h4><a id="2-3-1%E7%90%86%E8%A7%A3%E5%8E%9F%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.1 理解原型</h4>
 <blockquote>
 <p>无论何时，只要创建一个<strong>函数</strong>，就会按照特定的规则为这个函数创建一个<code>prototype</code>属性（指向原型对象）<br />
 默认情况下，所有原型对象自动获得一个名为<code>constructor</code>的属性，指回与之关联的构造函数。</p>
 </blockquote>
-<h4><a id="%E5%8E%9F%E5%9E%8B%E5%B1%82%E7%BA%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原型层级</h4>
+<h4><a id="2-3-2%E5%8E%9F%E5%9E%8B%E9%93%BE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.2 原型链</h4>
+<p><code>hasOwnProperty()</code>方法用于确定某个属性是在实例上还是在原型对象上。在调用实例上返回true。</p>
+<h4><a id="2-3-3-in%E6%93%8D%E4%BD%9C%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.3 in操作符</h4>
+<ol>
+<li>单独使用：<code>in</code>操作符会在可以通过对象访问指定属性时返回true，无论该属性是在实例上还是原型上。</li>
+<li><code>for-in循环</code>：通过对象访问且可以被枚举的属性都会返回，包括实例属性和原型属性。类似<code>Object.keys()</code></li>
+</ol>
+<h4><a id="2-3-4%E5%B1%9E%E6%80%A7%E6%9E%9A%E4%B8%BE%E9%A1%BA%E5%BA%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.4 属性枚举顺序</h4>
+<p><code>for-in循环</code>、<code>Object.keys()</code>的枚举顺序是不确定的，取决于JavaScript引擎。<br />
+<code>Object.getOwnPropertyNames()</code>、<code>Object.getOwnPropertySymbols()</code>、<code>Object.assign()</code>的枚举顺序是确定的。先以<strong>升序</strong>枚举数值键，然后以插入顺序枚举字符串和符号键。</p>
+<h3><a id="2-4%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.4 对象迭代</h3>
 <h2><a id="%E4%B8%89%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三.继承</h2>
 <p>主要通过<strong>原型链</strong>实现的</p>
 <p><code>TODO</code></p>
