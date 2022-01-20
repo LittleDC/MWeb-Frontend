@@ -367,9 +367,8 @@ MF=0，代表最后一片/没分片</li>
 <li>ARP协议<strong>自动进行</strong></li>
 </ul>
 <h2><a id="%E5%85%AD%E4%B8%BB%E6%9C%BA%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>六 主机获取IP地址的协议</h2>
-<p>网络层 -&gt; 传输层</p>
 <h3><a id="6-1-dhcp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.1 DHCP协议</h3>
-<p>动态主机设置协议【Dynamic Host Configuration Protocol】</p>
+<p>动态主机设置协议【Dynamic Host Configuration Protocol】 --- 应用层协议</p>
 <blockquote>
 <p>是<strong>应用层</strong>协议，使用<strong>客户/服务器</strong>方式，客户端和服务器通过<strong>广播</strong>方式进行交互，基于<strong>UDP</strong>。</p>
 </blockquote>
@@ -381,6 +380,7 @@ MF=0，代表最后一片/没分片</li>
 <li>DHCP服务器广播DHCP<strong>确认</strong>报文</li>
 </ol>
 <h3><a id="6-2-icmp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2 ICMP协议</h3>
+<p>网络层 -&gt; 传输层</p>
 <p>互联网控制消息协议【Internet Control Message Protocol】</p>
 <blockquote>
 <p>用于网际协议中发送控制消息，提供可能发生在通信环境中的各种问题反馈。</p>
@@ -460,7 +460,7 @@ RIP协议只适用于小互联网。</p>
 <h3><a id="8-3%E7%89%B9%E7%82%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.3 特点</h3>
 <p>当网络<strong>出现故障</strong>时，要经过较长的时间（例如数分钟）才能将信息传送到所有的路由器，“慢收敛”。</p>
 <h2><a id="%E4%B9%9Dospf%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>九 OSPF协议</h2>
-<p>开放式最短路径优先【Open Shortest Path First】 --- 网络层（/传输层）协议</p>
+<p>开放式最短路径优先【Open Shortest Path First】 --- <strong>网络层</strong>（/传输层）协议</p>
 <blockquote>
 <p>“开放”标明OSPF协议不是受某一家厂商控制，而是<strong>公开发表</strong>的；“最短路径优先”是因为使用了Dijkstra提出的<strong>最短路径算法<code>SPF</code></strong></p>
 </blockquote>
@@ -507,8 +507,87 @@ RIP协议只适用于小互联网。</p>
 <li>OSPF不存在坏消息传的慢的问题，它的<strong>收敛速度很快</strong>。</li>
 </ol>
 <h2><a id="%E5%8D%81bgp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>十 BGP协议</h2>
-<p>边界网关协议【Border Gateway Protocol】</p>
+<p>边界网关协议【Border Gateway Protocol】 --- <strong>应用层</strong>协议</p>
 <h3><a id="10-1%E4%BF%A1%E6%81%AF%E4%BA%A4%E6%8D%A2%E7%89%B9%E7%82%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>10.1 信息交换特点</h3>
+<ol>
+<li>与<strong>其他AS</strong>的领站BGP发言人交换信息。</li>
+<li>交换网络可达性的信息，即要<strong>到达某个网络所要经过的一系列AS</strong>。</li>
+<li>发生变化时更新有变化的部分。</li>
+</ol>
+<h3><a id="10-2%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>10.2 报文格式</h3>
+<p>一个 BGP 发言人与其他自治系统中的 BGP 发言人要交换路由信息，就要<strong>先建立TCP连接</strong>，即通过TCP传送，然后在此连接上交换 BGP 报文以建立 BGP 会话(session)，利用 BGP 会话交换路由信息。<br />
+<img src="media/16406143899741/16426875009032.jpg" alt="报文" /></p>
+<ul>
+<li>应用层协议，借助<strong>TCP</strong>传送。</li>
+</ul>
+<h3><a id="10-3%E7%89%B9%E7%82%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>10.3 特点</h3>
+<ol>
+<li>支持<code>CIDR</code></li>
+<li>在BGP刚刚运行时，BGP 的邻站是交换整个的BGP路由表。但以后只需要在发生变化时更新有变化的部分。这样做对节省网络带宽和减少路由器的处理开销都有好处。</li>
+</ol>
+<h3><a id="10-4-bgp-4%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%8A%A5%E6%96%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>10.4 BGP-4的四种报文</h3>
+<ol>
+<li><strong>0PEN（打开）报文</strong>：用来与相邻的另一个BGP发言人建立关系，并认证发送方。</li>
+<li><strong>UPDATE（更新）报文</strong>：通告新路径或撤销原路径。</li>
+<li><strong>KEEPALIVE（保活）报文</strong>：在无UPDATE时，周期性证实邻站的连通性；也作为OPEN的确认。</li>
+<li><strong>NOTIFICATION（通知）报文</strong>：报告先前报文的差错；也被用于关闭连接。</li>
+</ol>
+<h3><a id="%E4%B8%89%E7%A7%8D%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AF%B9%E6%AF%94" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三种路由协议的对比</h3>
+<p><img src="media/16406143899741/16426881649171.jpg" alt="对比" /></p>
+<hr />
+<h2><a id="%E5%8D%81%E4%B8%80ip%E7%BB%84%E6%92%AD" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>十一 IP组播</h2>
+<p>IP数据包的三种传输方式：</p>
+<ol>
+<li>单播：点对点</li>
+<li>广播：点对多点（全部）</li>
+<li>组播（多播）：点对多点（部分）</li>
+</ol>
+<h3><a id="11-1-ip%E7%BB%84%E6%92%AD%E5%9C%B0%E5%9D%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>11.1 IP组播地址</h3>
+<p>IP组播地址让源设备能够将分组发送给一组设备。属于多播组的设备将被分配一<strong>个组播组IP地址</strong>（一群共同需求主机的相同标识）。</p>
+<blockquote>
+<p>组播地址范围为<strong>224.0.0.0～239.255.255.255(D类地址）</strong>，一个D类地址表示一个组播组。<br />
+只能用作分组的目标地址。源地址总是为单播地址。</p>
+</blockquote>
+<p>1.组播数据报也是“尽最大努力交付”，不提供可靠交付，应用于<strong>UDP</strong>。<br />
+2.对组播数据报<strong>不产生ICMP差错报文</strong>。<br />
+3.并非所有D类地址都可以作为组播地址。</p>
+<h3><a id="11-2%E7%A1%AC%E4%BB%B6%E7%BB%84%E6%92%AD" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>11.2 硬件组播</h3>
+<p>同单播地址一样，组播IP地址也需要相应的组播MAC地址在本地网络中实际传送帧。组播MAC地址以十六进制值<code>01-00-5E打头</code>，余下的6个十六进制位是根据IP组播组地址的最后23位转换得到的。</p>
+<p><img src="media/16406143899741/16426896169199.jpg" alt="映射" /></p>
+<ul>
+<li>收到多播数据报的主机，还要在IP层利用软件进行过滤，把不是本主机要接收的数据报丢弃。 --- 解决D类IP地址前5位未映射的问题</li>
+</ul>
+<h3><a id="11-3%E5%9B%A0%E7%89%B9%E7%BD%91%E8%8C%83%E5%9B%B4%E5%86%85%E7%BB%84%E6%92%AD" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>11.3 因特网范围内组播</h3>
+<ol>
+<li>IGMP协议：路由器内</li>
+<li>组播路由选择协议：路由器之间</li>
+</ol>
+<h4><a id="11-3-1-igmp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>11.3.1 IGMP协议</h4>
+<p>网络层 -&gt; 传输层</p>
+<p>互联网组管理协议【Internet Group Management Protocol】</p>
+<blockquote>
+<p>让路由器知道<strong>本局域网</strong>上是否有主机（的进程）参加或退出了某个组播组。</p>
+</blockquote>
+<p>IGMP工作的两个阶段：<br />
+ROUND 1:<br />
+某主机要加入组播组时，该主机向组播组的组播地址发送一个IGMP报文，声明自己要称为该组的成员。<br />
+本地组播路由器收到IGMP报文后，要利用组播路由选择协议把这组成员关系发给因特网上的其他组播路由器。<br />
+ROUND 2:<br />
+本地组播路由器周期性探询本地局域网上的主机，以便知道这些主机是否还是组播组的成员。<br />
+只要有一个主机对某个组响应，那么组播路由器就认为这个组是活跃的：如果经过几次探询后没有一个主机响应，组播路由器就认为本网络上的没有此组播组的主机，因此就不再把这组的成员关系发给其他的组播路由器。</p>
+<ul>
+<li>组播路由器知道的成员关系只是所连接的局域网中<strong>有无</strong>组播组的成员。</li>
+</ul>
+<h4><a id="11-3-2%E7%BB%84%E6%92%AD%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>11.3.2 组播路由选择协议</h4>
+<blockquote>
+<p>目的时找出以源主机为根节点的<strong>组播转发树</strong>。</p>
+</blockquote>
+<p>常用算法：</p>
+<ol>
+<li>基于链路状态的路由选择</li>
+<li>基于距离-向量的路由选择</li>
+<li>协议无关的组播（稀疏/密集）</li>
+</ol>
 
 
 </div>
