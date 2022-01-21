@@ -505,6 +505,20 @@ console.log(Object.entries(o)) // [[&quot;foo&quot;, &quot;bar&quot;], [&quot;ba
 <h2><a id="%E4%B8%89%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三.继承</h2>
 <p><strong>实现继承</strong>是ECMAScript唯一支持的继承方式，主要通过<strong>原型链</strong>实现的</p>
 <h3><a id="%E5%8E%9F%E5%9E%8B%E9%93%BE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原型链</h3>
+<ol>
+<li>默认情况下，所有引用类型都继承自<code>Object</code> --- 任何函数的默认原型都是一个Object的实例。</li>
+<li>原型与实例关系：
+<ol>
+<li>instanceof操作符：如果一个实例的原型链中出现过相应的构造函数，则instanceof返回true。</li>
+<li>isPrototypeOf()方法：只要原型链中包含这个原型，这个方法就返回true。</li>
+</ol>
+</li>
+</ol>
+<h3><a id="%E7%9B%97%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>盗用构造函数</h3>
+<h3><a id="%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>组合继承</h3>
+<h3><a id="%E5%8E%9F%E5%9E%8B%E5%BC%8F%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原型式继承</h3>
+<h3><a id="%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寄生式继承</h3>
+<h3><a id="%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寄生式组合继承</h3>
 <h2><a id="%E5%9B%9B%E7%B1%BBclass%E5%85%B3%E9%94%AE%E5%AD%97" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>四.类 --- class关键字</h2>
 <p>ES6新增 语法糖 实际实现：原型和构造函数</p>
 <p><code>TODO</code></p>
