@@ -218,7 +218,9 @@
 <p>套接字Socket =（主机IP地址，端口号）</p>
 </blockquote>
 <h2><a id="%E4%BA%8Cudp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二 UDP协议</h2>
+<blockquote>
 <p>UDP只在IP数据报服务之上增加了很少功能，即<strong>复用分用</strong>和<strong>差错检测</strong>功能。</p>
+</blockquote>
 <p>UDP的主要特点：</p>
 <ol>
 <li>UDP是<strong>无连接</strong>的，减少开销和发送数据之前的时延。</li>
@@ -240,6 +242,39 @@
 <li>接收端的伪首部是从ip数据报中提取的发送目标地址等信息，不上下传送</li>
 </ul>
 <h2><a id="%E4%B8%89tcp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三 TCP协议</h2>
+<p>主要特点：</p>
+<ol>
+<li>TCP是面向连接（虚连接）的传输层协议。</li>
+<li>每一条TCP连接只能有两个端点，每一条TCP连接只能是点对点的。</li>
+<li>TCP提供可靠交付的服务，无差错、不丢失、不重复、按序到达。<strong>可靠有序，不丢不重</strong></li>
+<li>TCP提供全双工通信：
+<ol>
+<li>发送缓存：准备发送的数据&amp;已发送但尚未收到确认的数据</li>
+<li>接收缓存：按序到达但尚未被接受应用程序读取的数据＆不按序到达的数据</li>
+</ol>
+</li>
+<li>TCP面向字节流 =&gt; TCP把应用程序交下来的数据看成仅仅是一连串的<strong>无结构的字节流</strong>。</li>
+</ol>
+<blockquote>
+<p>流：流入到进程或从进程流出的字节序列。</p>
+</blockquote>
+<p><img src="media/16427785444311/16428624244617.jpg" alt="流" /></p>
+<h3><a id="3-1-tcp%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 TCP首部格式</h3>
+<p><img src="media/16427785444311/16428633058237.jpg" alt="首部" /></p>
+<p><strong>6个控制位</strong>：</p>
+<ol>
+<li>紧急位<code>URG</code>【urgent】：URG=1时，标明此报文段中有紧急数据，是高优先级的数据，<strong>发送端</strong>应尽快传送，不用在缓存里排队，配合紧急指针字段使用。</li>
+<li>确认位<code>ACK</code>【acknowledgement】：ACK=1时确认号有效，在连接建立后所有传送的报文段都必须把ACK置为1。</li>
+<li>推送位<code>PSH</code>【push】：PSH=1时，<strong>接收方</strong>尽快交付接收应用进程，不再等到缓存填满再向上交付。</li>
+<li>复位<code>RST</code>【reset】：RST=1时，表明TCP连接中出现严重差错，必须释放连接，然后再重新建立传输链接。</li>
+<li>同步位<code>SYN</code>【synchronous】：SYN=1时，表明是一个连接请求/连接接受报文。</li>
+<li>终止位<code>FIN</code>【finish】：FIN=1时，表明此报文段发送方数据已发完，要求释放连接。</li>
+</ol>
+<p><strong>窗口</strong>：指的是发送本报文段的一方的接收窗口，即现在允许对方发送的数据量。<br />
+<strong>检验和</strong>：检验首部+数据，检验时要加上12B伪首部，<strong>第四个字段为6</strong>。 --- 同UDP<br />
+<strong>紧急指针</strong>：<code>URG=1</code>时才有意义，指出本报文段中紧急数据的字节数。<br />
+<strong>选项</strong>：最大报文段长度MSS、窗口扩大、时间戳、选择确认…</p>
+<h3><a id="3-2-tcp%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2 TCP连接管理</h3>
 
 
 </div>
