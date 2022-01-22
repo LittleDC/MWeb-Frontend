@@ -195,12 +195,12 @@
 <h3><a id="1-1%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 传输层的两个协议</h3>
 <ol>
 <li>
-<p>面向连接的 传输控制协议<code>TCP</code>：【Transmission Control Protocol】<br />
+<p>面向连接的 传输控制协议<code>TCP</code>：【Transmission Control Protocol】 --- 可靠传输<br />
 传送数据之前必须建立连接，数据传送结束后要释放连接。不提供广播或多播服务。由于TCP要提供可靠的面向连接的传输服务，因此不可避免增加了许多开销：确认、流量控制、计时器及连接管理等。<br />
 特点：可靠，面向连接，时延大，适用于大文件。</p>
 </li>
 <li>
-<p>无连接的 用户数据报协议<code>UDP</code>：【User Datagram Protocol】<br />
+<p>无连接的 用户数据报协议<code>UDP</code>：【User Datagram Protocol】 --- 不可靠传输<br />
 传送数据之前不需要建立连接，收到UDP报文后也不需要给出任何确认。<br />
 特点：不可靠，无连接，时延小，适用于小文件。</p>
 </li>
@@ -217,6 +217,29 @@
 <blockquote>
 <p>套接字Socket =（主机IP地址，端口号）</p>
 </blockquote>
+<h2><a id="%E4%BA%8Cudp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二 UDP协议</h2>
+<p>UDP只在IP数据报服务之上增加了很少功能，即<strong>复用分用</strong>和<strong>差错检测</strong>功能。</p>
+<p>UDP的主要特点：</p>
+<ol>
+<li>UDP是<strong>无连接</strong>的，减少开销和发送数据之前的时延。</li>
+<li>UDP使用最大努力交付，即<strong>不保证可靠交付</strong>。 --- 由应用层保证可靠交付</li>
+<li>UDP是<strong>面向报文</strong>的，适合一次性传输少量数据的网络应用。 --- 不处理应用层报文数据</li>
+<li>UDP无拥塞控制，适合很多<strong>实时应用</strong>。</li>
+<li>UDP首部开销小<code>8B</code>（TCP 20B）。</li>
+</ol>
+<p><img src="media/16427785444311/16428468698382.jpg" alt="面向报文" /></p>
+<h3><a id="2-1-udp%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 UDP首部格式</h3>
+<p><img src="media/16427785444311/16428470868579.jpg" alt="首部" /></p>
+<p>分用时，找不到对应的目的端口号，就丢弃报文，并给发送方发送 ICMP“端口不可达”差错报告报文。</p>
+<h3><a id="2-2-udp%E6%A0%A1%E9%AA%8C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2 UDP校验</h3>
+<p>伪首部：<br />
+<img src="media/16427785444311/16428473519430.jpg" alt="伪首部" /></p>
+<p>校验过程：<br />
+<img src="media/16427785444311/16428476261186.jpg" alt="校验过程" /></p>
+<ul>
+<li>接收端的伪首部是从ip数据报中提取的发送目标地址等信息，不上下传送</li>
+</ul>
+<h2><a id="%E4%B8%89tcp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三 TCP协议</h2>
 
 
 </div>
