@@ -184,6 +184,39 @@
  <div class="markdown-body">
 <h1>传输层</h1>
 
+<p>只有主机才会有的层次。为应用层提供通信服务，使用网络层的服务</p>
+<p>功能：</p>
+<ol>
+<li>提供进程和进程之间的逻辑通信。（网络层提供主机之间的逻辑通信。）</li>
+<li>复用和分用</li>
+<li>对收到的报文进行差错检测。</li>
+</ol>
+<h2><a id="%E4%B8%80%E6%A6%82%E8%A7%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>一 概览</h2>
+<h3><a id="1-1%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 传输层的两个协议</h3>
+<ol>
+<li>
+<p>面向连接的 传输控制协议<code>TCP</code>：【Transmission Control Protocol】<br />
+传送数据之前必须建立连接，数据传送结束后要释放连接。不提供广播或多播服务。由于TCP要提供可靠的面向连接的传输服务，因此不可避免增加了许多开销：确认、流量控制、计时器及连接管理等。<br />
+特点：可靠，面向连接，时延大，适用于大文件。</p>
+</li>
+<li>
+<p>无连接的 用户数据报协议<code>UDP</code>：【User Datagram Protocol】<br />
+传送数据之前不需要建立连接，收到UDP报文后也不需要给出任何确认。<br />
+特点：不可靠，无连接，时延小，适用于小文件。</p>
+</li>
+</ol>
+<h3><a id="1-2%E5%AF%BB%E5%9D%80%E4%B8%8E%E7%AB%AF%E5%8F%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2 寻址与端口</h3>
+<p>复用：应用层所有的应用进程都可以通过传输层再传输到网络层。<br />
+分用：传输层从网络层收到数据后交付指明的应用进程。</p>
+<p>端口(逻辑端口/软件端口)是传输层的SAP，标识主机中的应用进程。<br />
+端口号只有本地意义，在因特网中不同计算机的相同端口是没有联系的。<br />
+端口号长度为<code>16bit</code>，能表示65536个不同的端口号，</p>
+<p><img src="media/16427785444311/16428453413614.jpg" alt="分类" /></p>
+<p><img src="media/16427785444311/16428456271736.jpg" alt="常见端口号" /></p>
+<p>在网络中采用发送方和接收方的套接字组合来识别端点，<strong>套接字</strong>唯一标识了网络中的一个主机和它上面的一个进程。</p>
+<blockquote>
+<p>套接字Socket =（主机IP地址，端口号）</p>
+</blockquote>
 
 
 </div>
