@@ -239,7 +239,7 @@ FTP、SMTP、POP3、HTTP、DNS</p>
 <ul>
 <li>高速缓存：在主机/本地域名服务器存储访问过的IP地址以直接进行本地域名解析。（定期更新）</li>
 </ul>
-<h2><a id="%E4%B8%89%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AEftp" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三 文件传输协议 FTP</h2>
+<h2><a id="%E4%B8%89ftp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三 FTP协议</h2>
 <p>文件传输协议FTP【File Transfer Protocol】</p>
 <blockquote>
 <p>提供不同种类主机系统（硬、软件体系等都可以不同）之间的文件传输能力。</p>
@@ -247,6 +247,110 @@ FTP、SMTP、POP3、HTTP、DNS</p>
 <ul>
 <li>番外：简单文件传送协议TFTP 【Trivial File Transfer Protocol】</li>
 </ul>
+<p>FTP是基于客户/服务器（C/S）的协议。用户通过一个客户机程序连接至在远程计算机上运行的服务器程序。<br />
+依照FTP协议提供服务，进行文件传送的计算机就是 <strong>FTP服务器</strong>。<br />
+连接FTP服务器，遵循FTP协议与服务器传送文件的电脑就是<strong>FTP客户端</strong>。</p>
+<h3><a id="3-1-ftp%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 FTP工作原理</h3>
+<p>登陆：</p>
+<ol>
+<li>ftp地址 + 用户名&amp;密码</li>
+<li>ftp地址 + 匿名登陆</li>
+</ol>
+<p>匿名登陆：<br />
+互连网中有很大一部分 FTP 服务器被称为“匿名”(Anonymous）FTP服务器。这类服务器的目的是向公众提供文件拷贝服务，不要求用户事先在该服务器进行登记注册，也不用取得FTP服务器的授权。<br />
+Anonymous（匿名文件传输）能够使用户与远程主机建立连接并以匿名身份从远程主机上拷贝文件，而不必是该远程主机的注册用户。用户使用特殊的用户名<code>anonymous</code>登陆FTP服务，就可访问远程主机上公开的文件。</p>
+<p>FTP使用<strong>TCP</strong>实现可靠传输。</p>
+<p>服务器进程：1个主进程 + m个从属进程</p>
+<p><img src="media/16429345213468/16430296983538.jpg" alt="连接与传输" /></p>
+<p>FTP传输模式：</p>
+<ol>
+<li>文本模式：ASCI模式，以文本序列传输数据；</li>
+<li>二进制模式：Binary模式，以二进制序列传输数据。</li>
+</ol>
+<h2><a id="%E5%9B%9B%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>四 电子邮件</h2>
+<p>电子邮件的信息格式：信封 + 内容（首部、主体）</p>
+<h3><a id="4-1%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1 组成结构</h3>
+<p><img src="media/16429345213468/16430304222790.jpg" alt="组成结构" /><br />
+<img src="media/16429345213468/16430305136014.jpg" alt="发送接收过程" /></p>
+<h3><a id="4-2-smtp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2 SMTP协议</h3>
+<p>简单邮件传输协议【Simple Mail Transfer Protocol】</p>
+<blockquote>
+<p>SMTP规定了在两个相互通信的SMTP进程之间应如何交换信息。</p>
+</blockquote>
+<p>负责发送邮件的SMTP进程就是<strong>SMTP客户</strong>，负责接收邮件的进程就是<strong>SMTP服务器</strong>。<br />
+SMTP规定了<strong>14条命令</strong>（几个字母）和<strong>21种应答信息</strong>（三位数字代码+简单文字说明）。<br />
+TCP连接、端口号<code>25</code>、C/S模式</p>
+<p>通信过程：连接建立 =&gt; 邮件传送 =&gt; 连接释放<br />
+<img src="media/16429345213468/16430310946501.jpg" alt="通信过程" /></p>
+<h4><a id="4-2-1-mime%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.1 MIME类型</h4>
+<p>SMTP的缺点：</p>
+<ol>
+<li>SMTP不能传送可执行文件或者其他二进制对象。</li>
+<li>SMTP仅限于传送7位ASCI码，不能传送其他非英语国家的文字。</li>
+<li>SMTP服务器会拒绝超过一定长度的邮件。</li>
+</ol>
+<p>多用途互联网邮件扩展类型【Multipurpose Internet Mail Extensions】<br />
+<img src="media/16429345213468/16430313793806.jpg" alt="MIME" /></p>
+<h3><a id="4-3-pop3%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.3 POP3协议</h3>
+<p>邮局协议【Post Office Protocol - Version 3】</p>
+<blockquote>
+<p>主要用于支持使用客户端远程管理在服务器上的电子邮件</p>
+</blockquote>
+<p>TCP连接、端口号<code>110</code>、C/S模式</p>
+<p><img src="media/16429345213468/16430316498537.jpg" alt="工作方式" /></p>
+<h3><a id="4-4-imap%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.4 IMAP协议</h3>
+<p>因特网信息访问协议【Internet Message Access Protocol】 类似POP3协议</p>
+<p>IMAP协议比POP协议复杂。当用户PC上的IMAP客户程序打开IMAP服务器的邮箱时，用户可以看到<strong>邮箱的首部</strong>，若用户需要打开某个邮件，该邮件才上传到用户的计算机上。<br />
+IMAP可以让用户在不同的地方使用不同的计算机随时上网阅读处理邮件，还允许只读取邮件中的某一个部分（先看正文，有WiFi的时候再下载附件）</p>
+<h3><a id="4-5%E5%9F%BA%E4%BA%8E%E4%B8%87%E7%BB%B4%E7%BD%91%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.5 基于万维网的电子邮件</h3>
+<p>方便</p>
+<p><img src="media/16429345213468/16430321117496.jpg" alt="web mail" /></p>
+<h2><a id="%E4%BA%94%E4%B8%87%E7%BB%B4%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>五 万维网</h2>
+<p>万维网WWW【World Wide Web】</p>
+<blockquote>
+<p>是一个大规模的、联机式的信息储藏所/<strong>资料空间</strong>，是无数个网络站点和网页的集合。</p>
+</blockquote>
+<p>万维网以<strong>客户/服务器</strong>方式工作，用户使用的浏览器就是万维网客户程序，万维网文档所驻留的主机运行服务器程序。</p>
+<h3><a id="5-1%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6-url" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.1 统一资源定位符 URL</h3>
+<p>URL【Uniform Resource Locator】：<br />
+<img src="media/16429345213468/16430326569964.jpg" alt="URL" /></p>
+<p>用户通过点击超链接(<code>http://www.baidu.com</code>)获取资源，这些资源通过超文本传输协议<code>HTTP</code>传送给使用者。<br />
+万维网使用超文本标记语言<code>HTML</code>，使得万维网页面设计者可以很方便地从一个界面的链接转到另一个界面，并能够在自己的屏幕上显示出来。</p>
+<h3><a id="5-2-http%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.2 HTTP协议</h3>
+<p>超文本传输协议【HyperText Transfer Protocol】</p>
+<blockquote>
+<p>HTTP协议定义了浏览器（万维网客户进程）怎样向万维网服务器请求万维网文档，以及服务器怎样把文档传送给浏览器。</p>
+</blockquote>
+<p><img src="media/16429345213468/16430331023383.jpg" alt="HTTP" /></p>
+<p>特点：</p>
+<ol>
+<li>HTTP协议是<strong>无状态</strong>的。<br />
+纪录状态：<strong>Cookie</strong>是存储在用户主机中的文本文件，记录一段时间内某用户的访问记录。</li>
+<li>HTTP采用<code>TCP</code>作为运输层协议，但<strong>HTTP协议本身是无连接的</strong>（通信双方在交换HTTP报文之前不需要先建立HTTP连接）。</li>
+</ol>
+<h4><a id="5-2-1-http%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.2.1 HTTP连接方式</h4>
+<ol>
+<li>非持久连接(Close)</li>
+<li>持久连接(Keep-alive)：非流水线/流水线</li>
+</ol>
+<p><img src="media/16429345213468/16430336757218.jpg" alt="连接方式" /></p>
+<h4><a id="5-2-2-http%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.2.2 HTTP报文结构</h4>
+<blockquote>
+<p>HTTP报文是<strong>面向文本</strong>的，因此在报文中的每一个字段都是一些ASCI码串。</p>
+</blockquote>
+<ol>
+<li>请求报文</li>
+<li>响应报文</li>
+</ol>
+<p><img src="media/16429345213468/16430340455346.jpg" alt="报文结构" /></p>
+<p>响应报文<strong>状态码</strong>：<br />
+1xx 表示通知信息的，如请求收到了或正在处理。<br />
+2xx 表示成功，如接受或知道了。<code>202 Accepted</code><br />
+3xx 表示重定向，如要完成请求还必须采取进一步的行动。<code>301 Moved Permanently</code><br />
+4xx 表示客户的差错，如请求中有错误的语法或不能完成。<code>404 Not Found</code><br />
+5xx 表示服务器的差错，如服务器失效无法完成请求。</p>
+<h2><a id="end" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>END</h2>
+<p>🔚学无止境</p>
 
 
 </div>
