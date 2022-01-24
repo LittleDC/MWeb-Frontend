@@ -486,6 +486,7 @@ let person1 = new Person('test', 18, 'Doctor')
 默认情况下，所有原型对象自动获得一个名为<code>constructor</code>的属性，指回与之关联的构造函数。</p>
 </blockquote>
 <h4><a id="2-3-2%E5%8E%9F%E5%9E%8B%E5%B1%82%E7%BA%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.2 原型层级</h4>
+<p>只要给对象实例添加一个属性，这个属性就会<strong>遮蔽</strong>（shadow）原型对象上的同名属性，也就是虽然不会修改它，但回屏蔽对它的访问。</p>
 <p><code>hasOwnProperty()</code>方法用于确定某个属性是在实例上还是在原型对象上。在调用实例上返回true。</p>
 <h4><a id="2-3-3-in%E6%93%8D%E4%BD%9C%E7%AC%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3.3 in操作符</h4>
 <ol>
@@ -522,8 +523,60 @@ console.log(Object.entries(o)) // [[&quot;foo&quot;, &quot;bar&quot;], [&quot;ba
 </ol>
 </li>
 </ol>
+<pre class="line-numbers"><code class="language-js">function SuperType() {
+    this.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]
+}
+
+function SubType() {}
+// 继承SuperType
+SubType.prototype = new SuperType()
+
+let instance1 = new SubType()
+instance1.colors.push(&quot;black&quot;)
+console.log(instance1.colors) // [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;black&quot;]
+
+let instance2 = new SubType()
+console.log(instance2.colors) // [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;black&quot;]
+</code></pre>
+<p>原型链的问题：</p>
+<ol>
+<li>原型中包含的引用值会在所有实例间共享。</li>
+<li>子类型在实例化时不能给父类型的构造函数传参。</li>
+</ol>
 <h3><a id="%E7%9B%97%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>盗用构造函数</h3>
+<p>【constructor stealing】：为了解决原型包含引用值导致的继承问题。</p>
+<blockquote>
+<p>在子类构造函数中调用父类构造函数。 --- 使用<code>apply()</code>/<code>call()</code>方法以新创建的对象为上下文执行构造函数。（修改this）</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">function SuperType(name) {
+    this.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]
+    this.name = name
+}
+
+function SubType() {
+    // 继承 SuperType
+    SuperType.call(this, &quot;dc&quot;)
+    this.age = 29
+}
+
+let instance1 = new SubType()
+instance1.colors.push(&quot;black&quot;)
+console.log(instance1.colors) // [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;black&quot;]
+console.log(instance1.name, instance1.age) // dc 29
+
+let instance2 = new SubType()
+console.log(instance2.colors) // [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]
+</code></pre>
+<p>盗用构造函数的问题：</p>
+<ol>
+<li>必须在构造函数中定义方法，因此函数不能重用。</li>
+<li>子类也不能访问父类原型上定义的方法，因此所有类型只能使用构造函数模式。</li>
+</ol>
 <h3><a id="%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>组合继承</h3>
+<p>综合了原型链和盗用构造函数，将两者优点集中起来。是JS中使用最多的继承模式。</p>
+<blockquote>
+<p>使用原型链机场原型上的属性和方法，而通过盗用构造函数继承实例属性。</p>
+</blockquote>
 <h3><a id="%E5%8E%9F%E5%9E%8B%E5%BC%8F%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原型式继承</h3>
 <h3><a id="%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寄生式继承</h3>
 <h3><a id="%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寄生式组合继承</h3>
