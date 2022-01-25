@@ -513,7 +513,7 @@ console.log(Object.entries(o)) // [[&quot;foo&quot;, &quot;bar&quot;], [&quot;ba
 </ol>
 <h2><a id="%E4%B8%89%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三.继承</h2>
 <p><strong>实现继承</strong>是ECMAScript唯一支持的继承方式，主要通过<strong>原型链</strong>实现的</p>
-<h3><a id="%E5%8E%9F%E5%9E%8B%E9%93%BE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原型链</h3>
+<h3><a id="3-1%E5%8E%9F%E5%9E%8B%E9%93%BE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 原型链</h3>
 <ol>
 <li>默认情况下，所有引用类型都继承自<code>Object</code> --- 任何函数的默认原型都是一个Object的实例。</li>
 <li>原型与实例关系：
@@ -543,7 +543,7 @@ console.log(instance2.colors) // [&quot;red&quot;, &quot;blue&quot;, &quot;green
 <li>原型中包含的引用值会在所有实例间共享。</li>
 <li>子类型在实例化时不能给父类型的构造函数传参。</li>
 </ol>
-<h3><a id="%E7%9B%97%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>盗用构造函数</h3>
+<h3><a id="3-2%E7%9B%97%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2 盗用构造函数</h3>
 <p>【constructor stealing】：为了解决原型包含引用值导致的继承问题。</p>
 <blockquote>
 <p>在子类构造函数中调用父类构造函数。 --- 使用<code>apply()</code>/<code>call()</code>方法以新创建的对象为上下文执行构造函数。（修改this）</p>
@@ -572,14 +572,91 @@ console.log(instance2.colors) // [&quot;red&quot;, &quot;blue&quot;, &quot;green
 <li>必须在构造函数中定义方法，因此函数不能重用。</li>
 <li>子类也不能访问父类原型上定义的方法，因此所有类型只能使用构造函数模式。</li>
 </ol>
-<h3><a id="%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>组合继承</h3>
+<h3><a id="3-3%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3 组合继承</h3>
 <p>综合了原型链和盗用构造函数，将两者优点集中起来。是JS中使用最多的继承模式。</p>
 <blockquote>
 <p>使用原型链机场原型上的属性和方法，而通过盗用构造函数继承实例属性。</p>
 </blockquote>
-<h3><a id="%E5%8E%9F%E5%9E%8B%E5%BC%8F%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>原型式继承</h3>
-<h3><a id="%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寄生式继承</h3>
-<h3><a id="%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寄生式组合继承</h3>
+<pre class="line-numbers"><code class="language-js">function SuperType(name) {
+    this.name = name
+    this.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]
+}
+
+SuperType.prototype.sayName = function() {
+    console.log(this.name)
+}
+
+function SubType(name, age) {
+    // 继承属性
+    SuperType.call(this, name) // first
+    
+    this.age = age
+}
+
+// 继承方法
+SubType.prototype = new SuperType() // second
+
+SubType.prototype.sayAge = function() {
+    console.log(this.age)
+}
+</code></pre>
+<h3><a id="3-4%E5%8E%9F%E5%9E%8B%E5%BC%8F%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.4 原型式继承</h3>
+<pre class="line-numbers"><code class="language-js">function object(o) {
+    function F() {
+        F.prototype = o
+        return new F()
+    }
+}
+</code></pre>
+<p>本质上，object()是对传入的对象执行了一次<strong>浅复制</strong>。</p>
+<p><code>Object.create()</code>方法：将原型式继承的概念规范化了。 --- 类似上方object函数</p>
+<pre class="line-numbers"><code class="language-js">let person = {
+    name: &quot;Nicholas&quot;,
+    friends: [&quot;Shelby&quot;, &quot;Court&quot;, &quot;Van&quot;]
+}
+
+let anotherPerson = Object.create(person, {
+    name: {
+        value: &quot;Greg&quot;
+    }
+})
+console.log(anotherPerson.name) // &quot;Greg&quot;
+
+anotherPerson.friends.push(&quot;test&quot;)
+let yetAnotherPerson = Object.create(person)
+console.log(person.friends) // [&quot;Shelby&quot;, &quot;Court&quot;, &quot;Van&quot;, &quot;test&quot;]
+</code></pre>
+<p>问题：属性中包含的引用值始终会在相关对象间共享，跟使用原型模式是一样的。</p>
+<h3><a id="3-5%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.5 寄生式继承</h3>
+<p>【parasitic inheritance】</p>
+<blockquote>
+<p>创建一个实现继承的函数，以某种方式增强对象，然后返回这个对象。</p>
+</blockquote>
+<pre class="line-numbers"><code class="language-js">function createAnother(original) {
+    let clone = object(original) // 通过调用函数创建一个新对象
+    clone.sayHi = function() { // 以某种方式增强这个对象
+        console.log(&quot;hi&quot;)
+    }
+    return clone // 返回这个对象
+</code></pre>
+<p>问题：通过寄生式继承给对象添加函数会导致函数难以复用，与构造函数模式类似。</p>
+<h3><a id="3-6%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.6 寄生式组合继承</h3>
+<p>组合继承的效率问题：父类构造函数始终会被<strong>调用两次</strong>：</p>
+<ol>
+<li>创建子类原型时调用 --- 可优化</li>
+<li>子类构造函数中调用</li>
+</ol>
+<blockquote>
+<p>寄生式组合继承通过盗用构造函数继承属性，但使用混合式原型链继承方法。 --- 直接修改<code>constructor</code>指向</p>
+</blockquote>
+<p>核心代码：</p>
+<pre class="line-numbers"><code class="language-js">function inheritPrototype(subType, superType) {
+    let prototype = object(superType.prototype)  // 创建原型对象
+    prototype.constructor = subType  // 增强对象（修改constructor指向）
+    subtype.prototype = prototype    // 赋值对象
+}
+</code></pre>
+<p>寄生式组合继承可以算是引用类型继承的最佳模式。</p>
 <h2><a id="%E5%9B%9B%E7%B1%BBclass%E5%85%B3%E9%94%AE%E5%AD%97" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>四.类 --- class关键字</h2>
 <p>ES6新增 语法糖 实际实现：原型和构造函数</p>
 <p><code>TODO</code></p>
