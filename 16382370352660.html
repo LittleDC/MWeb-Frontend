@@ -703,7 +703,14 @@ console.log(PersonName) // ReferenceError: PersonName is not defined
 </code></pre>
 <h3><a id="4-2%E7%B1%BB%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2 类构造函数</h3>
 <p><code>constructor</code>关键字用于在类定义块内部创建类的构造函数。<br />
-方法名constructor会告诉解释器在使用new操作符创建类的新实例时，应该调用这个函数。--- 非必需</p>
+方法名constructor会告诉解释器在使用new操作符创建类的新实例时，应该调用这个函数。--- 非必需<br />
+不定义时默认为空函数</p>
+<pre class="line-numbers"><code class="language-js">class Person {}
+
+console.log(Person.constructor === Person) // false
+console.log(Person.constructor === Person.__proto__.constructor) // true
+console.log(Person.prototype.constructor === Person) // true
+</code></pre>
 <h4><a id="4-2-1%E5%AE%9E%E4%BE%8B%E5%8C%96" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.1 实例化</h4>
 <p>使用new操作符实例化类的操作相当于使用new调用其构造函数。</p>
 <ol>
@@ -742,7 +749,7 @@ console.log(p2 instanceof Person) // true
 <li>调用类构造函数必须使用new操作符。而普通构造函数如果不适用new调用，那么就会以<strong>全局的this</strong>（window）作为内部对象。</li>
 </ol>
 <h4><a id="4-2-2%E6%8A%8A%E7%B1%BB%E5%BD%93%E6%88%90%E7%89%B9%E6%AE%8A%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.2 把类当成特殊函数</h4>
-<p>ECMAScript类就是一种特殊函数。 --- 有prototype属性</p>
+<p>ECMAScript类就是一种特殊<strong>函数</strong>。 --- 有prototype属性</p>
 <p>类中定义的constructor方法<strong>不会</strong>被当成构造函数，在对它使用instanceof操作符时会返回false。但是，如果在创建实例时直接将类构造函数当成普通构造函数来使用，那么instanceof操作符的返回值会反转。</p>
 <pre class="line-numbers"><code class="language-js">class Person {
     constructor() {
