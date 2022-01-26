@@ -659,7 +659,30 @@ console.log(person.friends) // [&quot;Shelby&quot;, &quot;Court&quot;, &quot;Van
 <p>寄生式组合继承可以算是引用类型继承的最佳模式。</p>
 <h2><a id="%E5%9B%9B%E7%B1%BBclass%E5%85%B3%E9%94%AE%E5%AD%97" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>四.类 --- class关键字</h2>
 <p>ES6新增 语法糖 实际实现：原型和构造函数</p>
-<p><code>TODO</code></p>
+<h3><a id="4-1%E7%B1%BB%E5%AE%9A%E4%B9%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1 类定义</h3>
+<pre class="line-numbers"><code class="language-js">// 类声明
+class Person {}
+// 类表达式
+const Animal = class {}
+</code></pre>
+<ol>
+<li>类无提升：</li>
+</ol>
+<pre class="line-numbers"><code class="language-js">console.log(ClassDeclaration) // ReferenceError: ClassDeclaration is not defined
+class ClassDeclaration {}
+console.log(ClassDeclaration) // class ClassDeclaration {}
+</code></pre>
+<ol start="2">
+<li>函数受函数作用域限制，而类受块作用域限制：</li>
+</ol>
+<pre class="line-numbers"><code class="language-js">{
+    function FunctionDeclaration() {}
+    class ClassDeclaration {}
+}
+
+console.log(FunctionDeclaration) // FunctionDeclaration() {}
+console.log(ClassDeclaration) // ReferenceError: ClassDeclaration is not defined
+</code></pre>
 
 
 </div>
