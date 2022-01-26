@@ -683,6 +683,81 @@ console.log(ClassDeclaration) // class ClassDeclaration {}
 console.log(FunctionDeclaration) // FunctionDeclaration() {}
 console.log(ClassDeclaration) // ReferenceError: ClassDeclaration is not defined
 </code></pre>
+<p>类的构成：构造函数方法、实例方法、获取函数、设置函数和静态类方法。但这些都不是必须的。</p>
+<ul>
+<li>类定义中的代码都在<strong>严格模式</strong>中执行。</li>
+</ul>
+<p>类表达式的名称是可选的。在把类表达式赋值给变量后，可以通过<code>name</code>属性取得类表达式的名称字符串。但不能在<strong>类表达式作用域外部</strong>访问这个标识符。</p>
+<pre class="line-numbers"><code class="language-js">let Person = class PersonName {
+    identify() {
+        console.log(Person.name, PersonName.name)
+    }
+}
+
+let p = new Person()
+
+p.identify() // PersonName PersonName
+
+console.log(Person.name) // PersonName
+console.log(PersonName) // ReferenceError: PersonName is not defined
+</code></pre>
+<h3><a id="4-2%E7%B1%BB%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2 类构造函数</h3>
+<p><code>constructor</code>关键字用于在类定义块内部创建类的构造函数。<br />
+方法名constructor会告诉解释器在使用new操作符创建类的新实例时，应该调用这个函数。--- 非必需</p>
+<h4><a id="4-2-1%E5%AE%9E%E4%BE%8B%E5%8C%96" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.1 实例化</h4>
+<p>使用new操作符实例化类的操作相当于使用new调用其构造函数。</p>
+<ol>
+<li>在内存中创建一个新对象。</li>
+<li>这个新对象内部的[[Prototype]]指针被赋值为构造函数的prototype属性。</li>
+<li>构造函数内部的this被赋值为这个新对象（即this指向新对象）</li>
+<li>执行构造函数内部的代码（给新对象添加属性）</li>
+<li>如果构造函数返回非空对象，这返回该对象；否则，返回刚创建的新对象。</li>
+</ol>
+<p>默认情况下，类构造函数会在执行之后返回<strong>this对象</strong>。 --- 实例化的对象</p>
+<p>tip：</p>
+<ol>
+<li>如果构造函数返回的不是this对象，而是其他对象，则这个对象不会通过instanceof操作符检测出跟类有关联，因为这个对象的原型指针没有被修改。</li>
+</ol>
+<pre class="line-numbers"><code class="language-js">class Person {
+    constructor(override) {
+        this.foo = 'foo'
+        if (override) {
+            return {
+                bar: 'bar'
+            }
+        }
+    }
+}
+
+let p1 = new Person(),
+    p2 = new Person(true)
+    
+console.log(p1) // Person {foo: 'foo'}
+console.log(p1 instanceof Person) // true
+
+console.log(p2) // {bar: 'bar'}
+console.log(p2 instanceof Person) // true
+</code></pre>
+<ol start="2">
+<li>调用类构造函数必须使用new操作符。而普通构造函数如果不适用new调用，那么就会以<strong>全局的this</strong>（window）作为内部对象。</li>
+</ol>
+<h4><a id="4-2-2%E6%8A%8A%E7%B1%BB%E5%BD%93%E6%88%90%E7%89%B9%E6%AE%8A%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.2 把类当成特殊函数</h4>
+<p>ECMAScript类就是一种特殊函数。 --- 有prototype属性</p>
+<p>类中定义的constructor方法<strong>不会</strong>被当成构造函数，在对它使用instanceof操作符时会返回false。但是，如果在创建实例时直接将类构造函数当成普通构造函数来使用，那么instanceof操作符的返回值会反转。</p>
+<pre class="line-numbers"><code class="language-js">class Person {}
+
+let p1 = new Person()
+console.log(p1.constructor === Person) // true
+console.log(p1 instanceof Person) // true
+console.log(p1 instanceof Person.constructor) // false
+
+let p2 = new Person.constructor() // 不建议使用
+console.log(p2.constructor === Person) // false
+console.log(p2 instanceof Person) // false
+console.log(p2 instanceof Person.constructor) // true
+</code></pre>
+<p>与立即调用函数表达式类似，类也可以<strong>立即实例化</strong>。</p>
+<h3><a id="4-3%E5%AE%9E%E4%BE%8B%E3%80%81%E5%8E%9F%E5%9E%8B%E5%92%8C%E7%B1%BB%E6%88%90%E5%91%98" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.3 实例、原型和类成员</h3>
 
 
 </div>
