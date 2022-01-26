@@ -744,7 +744,11 @@ console.log(p2 instanceof Person) // true
 <h4><a id="4-2-2%E6%8A%8A%E7%B1%BB%E5%BD%93%E6%88%90%E7%89%B9%E6%AE%8A%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.2 把类当成特殊函数</h4>
 <p>ECMAScript类就是一种特殊函数。 --- 有prototype属性</p>
 <p>类中定义的constructor方法<strong>不会</strong>被当成构造函数，在对它使用instanceof操作符时会返回false。但是，如果在创建实例时直接将类构造函数当成普通构造函数来使用，那么instanceof操作符的返回值会反转。</p>
-<pre class="line-numbers"><code class="language-js">class Person {}
+<pre class="line-numbers"><code class="language-js">class Person {
+    constructor() {
+        this.name = 'dc'
+    }
+}
 
 let p1 = new Person()
 console.log(p1.constructor === Person) // true
