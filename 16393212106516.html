@@ -188,13 +188,13 @@
  <div class="markdown-body">
 <h1>数据链路层</h1>
 
-<h2><a id="%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本概念</h2>
+<h2><a id="%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>一 基本概念</h2>
 <p>节点：主机，路由器<br />
 链路：物理通道<br />
 数据链路：逻辑通道<br />
 帧：链路层的协议数据单元，封装网络层数据报</p>
 <p>数据链路层负责通过一条链路从一个结点向另一个物理链路直接相连的相邻结点传送数据报。</p>
-<h3><a id="%E5%8A%9F%E8%83%BD" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>功能</h3>
+<h3><a id="1-1%E5%8A%9F%E8%83%BD" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 功能</h3>
 <ol>
 <li>为网络层提供服务。</li>
 <li>链路管理，即连接的建立，维持，释放（用于面向连接服务）</li>
@@ -203,30 +203,30 @@
 <li>差错控制（帧错/位错）</li>
 </ol>
 <hr />
-<h2><a id="%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>封装成帧</h2>
+<h2><a id="%E4%BA%8C%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二 封装成帧</h2>
 <p><img src="media/16393212106516/16394881780519.jpg" alt="封装成帧" /></p>
 <p>帧同步：<strong>接收方</strong>应当能从接收到的二进制比特流中区分出帧的起始和终止。</p>
 <p><strong>透明传输</strong>：不管所传数据是什么样的比特组合，都应当能够在链路上传送。 --- 隐藏控制信息</p>
-<h3><a id="%E7%BB%84%E5%B8%A7%E6%96%B9%E6%B3%95%EF%BC%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>组帧方法：</h3>
-<h4><a id="1%E5%AD%97%E7%AC%A6%E8%AE%A1%E6%95%B0%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. 字符计数法</h4>
+<h3><a id="2-1%E7%BB%84%E5%B8%A7%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 组帧方法</h3>
+<h4><a id="2-1-1%E5%AD%97%E7%AC%A6%E8%AE%A1%E6%95%B0%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.1 字符计数法</h4>
 <p><img src="media/16393212106516/16394886163032.jpg" alt="字符计数法" /><br />
 缺点：容易出错</p>
-<h4><a id="2%E5%AD%97%E7%AC%A6%EF%BC%88%E8%8A%82%EF%BC%89%E5%A1%AB%E5%85%85%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. 字符（节）填充法</h4>
+<h4><a id="2-1-2%E5%AD%97%E7%AC%A6%EF%BC%88%E8%8A%82%EF%BC%89%E5%A1%AB%E5%85%85%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.2 字符（节）填充法</h4>
 <p><img src="media/16393212106516/16394887650231.jpg" alt="思路" /><br />
 <img src="media/16393212106516/16394890318396.jpg" alt="字符填充法" /></p>
-<h4><a id="3%E9%9B%B6%E6%AF%94%E7%89%B9%E5%A1%AB%E5%85%85%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. 零比特填充法</h4>
+<h4><a id="2-1-3%E9%9B%B6%E6%AF%94%E7%89%B9%E5%A1%AB%E5%85%85%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.3 零比特填充法</h4>
 <p><img src="media/16393212106516/16394896995216.jpg" alt="零比特填充法" /></p>
-<h4><a id="4%E8%BF%9D%E8%A7%84%E7%BC%96%E7%A0%81%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. 违规编码法</h4>
+<h4><a id="2-1-4%E8%BF%9D%E8%A7%84%E7%BC%96%E7%A0%81%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.4 违规编码法</h4>
 <p><img src="media/16393212106516/16394900645110.jpg" alt="违规编码法" /></p>
-<h3><a id="%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结</h3>
+<h3><a id="2-2%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2 总结</h3>
 <p>由于字节计数法中Count字段的脆弱性（其值若有差错将导致灾难性后果）及字符填充实现<br />
 上的复杂性和不兼容性，目前较普遍使用的帧同步法是<strong>比特填充法</strong>和<strong>违规编码法</strong>。</p>
 <hr />
-<h2><a id="%E5%B7%AE%E9%94%99%E6%8E%A7%E5%88%B6%EF%BC%88%E6%AF%94%E7%89%B9%E9%94%99%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>差错控制（比特错）</h2>
+<h2><a id="%E4%B8%89%E5%B7%AE%E9%94%99%E6%8E%A7%E5%88%B6%EF%BC%88%E6%AF%94%E7%89%B9%E9%94%99%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三 差错控制（比特错）</h2>
 <p>差错由来：<strong>噪声</strong><br />
 主要解决局部性造成的差错</p>
 <p><img src="media/16393212106516/16394904907471.jpg" alt="差错" /></p>
-<h3><a id="%E6%A3%80%E9%94%99%E7%BC%96%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>检错编码</h3>
+<h3><a id="3-1%E6%A3%80%E9%94%99%E7%BC%96%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 检错编码</h3>
 <ol>
 <li>奇偶校验码<br />
 <img src="media/16393212106516/16394909522605.jpg" alt="奇偶校验码" /></li>
@@ -241,7 +241,7 @@
 <ul>
 <li>能够实现无比特差错的传输，但这还不是可靠传输。（错误的帧会被丢弃）</li>
 </ul>
-<h3><a id="%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81%E6%B5%B7%E6%98%8E%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>纠错编码 --- 海明码</h3>
+<h3><a id="3-2%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81%E6%B5%B7%E6%98%8E%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2 纠错编码 --- 海明码</h3>
 <p><strong>发现</strong>双比特错，<strong>纠正</strong>单比特错。<code>动一发而牵全身</code></p>
 <ol>
 <li>确定校验码位数r：海明不等式</li>
@@ -249,24 +249,24 @@
 <li>求出校验码的值</li>
 <li>检错并纠正</li>
 </ol>
-<h3><a id="%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结</h3>
+<h3><a id="3-3%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3 总结</h3>
 <p><img src="media/16393212106516/16395740151603.jpg" alt="总结" /></p>
 <hr />
-<h2><a id="%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E6%9C%BA%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>流量控制与可靠传输机制</h2>
-<h3><a id="%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>流量控制</h3>
+<h2><a id="%E5%9B%9B%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E6%9C%BA%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>四 流量控制与可靠传输机制</h2>
+<h3><a id="4-1%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1 流量控制</h3>
 <p><strong>较高的发送速度</strong>和<strong>较低的接收能力</strong>的不匹配，会造成传输出错。</p>
 <ul>
 <li>数据链路层的流量控制是<strong>点对点</strong>的，而传输层的流量控制是<strong>端到端</strong>的。</li>
 <li>数据链路层 流量控制手段：接收方收不下就不回复确认。<br />
 传输层 流量控制手段：接收端给发送端一个窗口公告。</li>
 </ul>
-<h3><a id="%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方法</h3>
+<h3><a id="4-2%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2 方法</h3>
 <p><img src="media/16393212106516/16395761708898.jpg" alt="方法" /></p>
 <ul>
 <li>发送窗口与接收窗口在传输过程中是固定的。</li>
 <li>发送方自动重传解决可靠传输</li>
 </ul>
-<h4><a id="%E5%81%9C%E6%AD%A2%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>停止-等待协议</h4>
+<h4><a id="4-2-1%E5%81%9C%E6%AD%A2%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.1 停止-等待协议</h4>
 <h5><a id="%E6%97%A0%E5%B7%AE%E9%94%99%E6%83%85%E5%86%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>无差错情况</h5>
 <p><img src="media/16393212106516/16395767478958.jpg" alt="无差错情况" /></p>
 <h5><a id="%E6%9C%89%E5%B7%AE%E9%94%99%E6%83%85%E5%86%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>有差错情况</h5>
@@ -277,7 +277,7 @@
 <p><img src="media/16393212106516/16395777731073.jpg" alt="性能分析" /></p>
 <h5><a id="%E4%BF%A1%E9%81%93%E5%88%A9%E7%94%A8%E7%8E%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>信道利用率</h5>
 <p><img src="media/16393212106516/16395779250608.jpg" alt="信道利用率" /></p>
-<h4><a id="%E5%90%8E%E9%80%80n%E5%B8%A7%E5%8D%8F%E8%AE%AE%EF%BC%88gbn%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>后退N帧协议（GBN）</h4>
+<h4><a id="4-2-2%E5%90%8E%E9%80%80-n%E5%B8%A7%E5%8D%8F%E8%AE%AE%EF%BC%88gbn%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.2 后退N帧协议（GBN）</h4>
 <ul>
 <li>流水线技术</li>
 <li>发送窗口多个，接收窗口只有一个</li>
@@ -304,7 +304,7 @@
 <li>好：因连续发送数据帧而提高了信道利用率</li>
 <li>坏：在重传时必须把原来已经正确传送的数据帧重传，是传送效率降低。</li>
 </ul>
-<h4><a id="%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AE%EF%BC%88sr%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>选择重传协议（SR）</h4>
+<h4><a id="4-2-3%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AE%EF%BC%88-sr%EF%BC%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.3 选择重传协议（SR）</h4>
 <ul>
 <li>设置单个确认，同时加大接收窗口，设置<strong>接收缓存</strong>，缓存乱序到达的帧。</li>
 <li>一般发送窗口和接收窗口设置大小相等。</li>
@@ -325,13 +325,13 @@
 <h5><a id="%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%95%BF%E5%BA%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>滑动窗口长度</h5>
 <p><code>Wmax = 2^(n-1)</code> n表示序号比特位</p>
 <hr />
-<h2><a id="%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6mac%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>介质访问控制 -- MAC协议</h2>
+<h2><a id="%E4%BA%94%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6mac%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>五 介质访问控制 -- MAC协议</h2>
 <p>MAC协议【media access control】</p>
 <blockquote>
 <p>采取一定的措施，使得两对节点之间的通信不会发生互相干扰的情况。 --- 针对广播式链路</p>
 </blockquote>
 <p><img src="media/16393212106516/16396658655373.jpg" alt="all" /></p>
-<h3><a id="%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E9%93%BE%E8%B7%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>传输数据使用的两种链路</h3>
+<h3><a id="5-1%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E9%93%BE%E8%B7%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.1 传输数据使用的两种链路</h3>
 <ol>
 <li>
 <p>点对点链路：两个相邻节点通过一个链路相连，没有第三者。<br />
@@ -344,7 +344,7 @@
 </li>
 </ol>
 <hr />
-<h3><a id="%E9%9D%99%E6%80%81%E5%88%92%E5%88%86%E4%BF%A1%E9%81%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>静态划分信道</h3>
+<h3><a id="5-2%E9%9D%99%E6%80%81%E5%88%92%E5%88%86%E4%BF%A1%E9%81%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.2 静态划分信道</h3>
 <p>信道划分介质访问控制：</p>
 <blockquote>
 <p>将使用介质的每个设备与来自同一信道上的其它设备的<strong>通信隔离开</strong>，把<strong>时域和频域资源</strong>合理地<strong>事先分配</strong>给网络上的设备。 --- 主要基于<strong>多路复用</strong>技术实现</p>
@@ -355,27 +355,27 @@
 <blockquote>
 <p>把多个信号组合在一条物理信道上进行传输，使得多个计算机或终端设备<strong>共享信道资源</strong>，提高信道利用率。 --- 实际就是把广播信道转变为点对点信道</p>
 </blockquote>
-<h4><a id="1-fdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.FDM</h4>
+<h4><a id="5-2-1-fdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.2.1 FDM</h4>
 <p><img src="media/16393212106516/16400075632177.jpg" alt="FDM" /></p>
-<h4><a id="2-tdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.TDM</h4>
+<h4><a id="5-2-2tdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.2.2TDM</h4>
 <p><img src="media/16393212106516/16400076982742.jpg" alt="TDM" /></p>
 <h5><a id="%E6%94%B9%E8%BF%9B%E7%9A%84tdm%E7%BB%9F%E8%AE%A1%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8-stdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>改进的TDM: 统计时分复用STDM</h5>
 <p><img src="media/16393212106516/16400079400488.jpg" alt="STDM" /></p>
-<h4><a id="3-wdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.WDM</h4>
+<h4><a id="5-2-3-wdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.2.3 WDM</h4>
 <p>波分多路复用就是<strong>光的频分多路复用</strong>，在一根光纤中传输多种不同波长（频率）的光信号，由于波长（频率）不同，所以各路光信号互不干扰，最后再用波长分解复用器将各路波长分解出来。</p>
-<h4><a id="4-cdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.CDM</h4>
+<h4><a id="5-2-4-cdm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.2.4 CDM</h4>
 <h5><a id="%E7%A0%81%E5%88%86%E5%A4%9A%E5%9D%80cdma%E6%98%AF-cdm%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>码分多址(CDMA)是CDM的一种方式</h5>
 <p>【Code Division Multiple Access】<br />
 <img src="media/16393212106516/16400086512365.jpg" alt="CDMA" /></p>
 <hr />
-<h3><a id="%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E4%BF%A1%E9%81%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>动态分配信道</h3>
+<h3><a id="5-3%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E4%BF%A1%E9%81%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.3 动态分配信道</h3>
 <blockquote>
 <p>动态媒体接入/多点接入</p>
 </blockquote>
 <ul>
 <li>特点：信道并非在用户通信时固定分配给用户。</li>
 </ul>
-<h4><a id="%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>随机访问介质访问控制</h4>
+<h4><a id="5-3-1%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.3.1 随机访问介质访问控制</h4>
 <blockquote>
 <p>所有用户可随机发送信息，发送信息时占用<strong>全部带宽</strong></p>
 </blockquote>
@@ -441,7 +441,7 @@
 <li>ACK帧</li>
 <li>RTS/CTS帧（可选）</li>
 </ol>
-<h4><a id="%E8%BD%AE%E8%AF%A2%E8%AE%BF%E9%97%AE%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>轮询访问介质访问控制</h4>
+<h4><a id="5-3-2%E8%BD%AE%E8%AF%A2%E8%AE%BF%E9%97%AE%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.3.2 轮询访问介质访问控制</h4>
 <blockquote>
 <p>既要不产生冲突，又要发送时占用全部带宽。</p>
 </blockquote>
@@ -471,15 +471,15 @@
 <ul>
 <li>令牌传送方式通常用于<strong>负载较小，通信量较大</strong>的网络中。</li>
 </ul>
-<h3><a id="%E6%80%BB%E7%BB%933%E7%A7%8D%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结3种信道划分协议</h3>
+<h3><a id="5-4%E6%80%BB%E7%BB%93-3%E7%A7%8D%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.4 总结3种信道划分协议</h3>
 <p><img src="media/16393212106516/16401843227709.jpg" alt="all" /></p>
 <hr />
-<h2><a id="%E5%B1%80%E5%9F%9F%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>局域网</h2>
+<h2><a id="%E5%85%AD%E5%B1%80%E5%9F%9F%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>六 局域网</h2>
 <p>局域网【Local Area Network】：</p>
 <blockquote>
 <p>简称<code>LAN</code>，是指在<strong>某一区域内</strong>由多台计算机互联成的计算机组，使用<strong>广播通信</strong>。</p>
 </blockquote>
-<h3><a id="%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本概念和体系结构</h3>
+<h3><a id="6-1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.1 基本概念和体系结构</h3>
 <p>只对应<code>物理层</code>和<code>数据链路层</code></p>
 <p>决定局域网的主要要素（特点）：<code>网络拓扑</code>，<code>传输介质</code>，<code>介质访问控制方法</code></p>
 <ol>
@@ -493,7 +493,7 @@
 </ol>
 </li>
 </ol>
-<h4><a id="%E5%B1%80%E5%9F%9F%E7%BD%91%E5%88%86%E7%B1%BB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>局域网分类</h4>
+<h4><a id="6-1-1%E5%B1%80%E5%9F%9F%E7%BD%91%E5%88%86%E7%B1%BB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.1.1 局域网分类</h4>
 <ol>
 <li><strong>以太网</strong>：CSMA/CD 逻辑拓扑总线型，物理拓扑星型或拓展星型 都符合<code>IEEE 802.3</code>系列标准</li>
 <li>令牌环网</li>
@@ -501,9 +501,9 @@
 <li>ATM网【Asynchronous Transfer Mode】</li>
 <li>无线局域网【Wireless Local Area Network；WLAN】 采用<code>IEEE 802.11</code>标准</li>
 </ol>
-<h4><a id="ieee-802%E6%A0%87%E5%87%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>IEEE 802标准</h4>
+<h4><a id="6-1-2-ieee-802%E6%A0%87%E5%87%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.1.2 IEEE 802标准</h4>
 <p><img src="media/16393212106516/16402683658755.jpg" alt="MAC/LLC" /></p>
-<h3><a id="%E4%BB%A5%E5%A4%AA%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>以太网</h3>
+<h3><a id="6-2%E4%BB%A5%E5%A4%AA%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2 以太网</h3>
 <p>以太网【Ethernet】：</p>
 <blockquote>
 <p>由Xerox公司创建并由Xerox、Intel和DEC公司联合开发的<strong>基带总线局域网规范</strong>，是当今现有局域网采用的最通用的通信协议标准。使用<code>CSMA/CD</code>技术</p>
@@ -523,26 +523,26 @@
 <li><code>DIX Ethernet V2</code>：第一个局域网产品（以太网）规约</li>
 <li><code>IEEE 802.3</code>：IEEE 802委员会802.3工作组制定的第一个IEEE以太网标准。</li>
 </ol>
-<h4><a id="%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%8F%90%E4%BE%9B%E6%97%A0%E8%BF%9E%E6%8E%A5%EF%BC%8C%E4%B8%8D%E5%8F%AF%E9%9D%A0%E7%9A%84%E6%9C%8D%E5%8A%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>以太网提供无连接，不可靠的服务</h4>
+<h4><a id="6-2-1%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%8F%90%E4%BE%9B%E6%97%A0%E8%BF%9E%E6%8E%A5%EF%BC%8C%E4%B8%8D%E5%8F%AF%E9%9D%A0%E7%9A%84%E6%9C%8D%E5%8A%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2.1 以太网提供无连接，不可靠的服务</h4>
 <blockquote>
 <p>以太网只实现无差错接收，不实现可靠传输。</p>
 </blockquote>
 <p>无连接：发送方和接收方之间无“握手过程”<br />
 不可靠：不对发送方的数据帧<strong>编码</strong>，接收方不向发送方进行<strong>确认</strong>，差错帧直接丢弃，差错纠正由高层负责（传输层）。</p>
-<h4><a id="mac%E5%9C%B0%E5%9D%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>MAC地址</h4>
+<h4><a id="6-2-2-mac%E5%9C%B0%E5%9D%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2.2 MAC地址</h4>
 <blockquote>
 <p>适配器(网卡)上装有处理器和存储器(包括RAM和ROM)，ROM上由计算机硬件地址<strong>MAC地址</strong></p>
 </blockquote>
 <p>在局域网中，硬件地址又称为物理地址/MAC地址。【实际上是<strong>标识符</strong>】</p>
 <p>MAC地址：全球唯一的48位二进制地址，前24位代表厂家（IEEE规定），后24位厂家自己指定。通常用<code>6个十六进制数</code>表示。</p>
-<h4><a id="%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>以太网帧</h4>
+<h4><a id="6-2-3%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2.3 以太网帧</h4>
 <p>最常用的是<strong>以太网V2</strong>的格式<br />
 <img src="media/16393212106516/16402705318330.jpg" alt="MAC帧" /></p>
 <ul>
 <li>64B --- CAMA/CD协议最小数据长度</li>
 <li>1420B ？</li>
 </ul>
-<h4><a id="%E9%AB%98%E9%80%9F%E4%BB%A5%E5%A4%AA%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>高速以太网</h4>
+<h4><a id="6-2-4%E9%AB%98%E9%80%9F%E4%BB%A5%E5%A4%AA%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.2.4 高速以太网</h4>
 <blockquote>
 <p>速率&gt;=100Mb/s的以太网称为高速以太网（一般可实现无冲突传输）</p>
 </blockquote>
@@ -551,8 +551,8 @@
 <li>吉比特以太网</li>
 <li>10吉比特以太网</li>
 </ol>
-<h3><a id="%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>无线局域网</h3>
-<h4><a id="mac%E5%B8%A7%E5%A4%B4%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>MAC帧头格式</h4>
+<h3><a id="6-3%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.3 无线局域网</h3>
+<h4><a id="6-3-1-mac%E5%B8%A7%E5%A4%B4%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.3.1 MAC帧头格式</h4>
 <p><img src="media/16393212106516/16405310482381.jpg" alt="帧头" /></p>
 <p><img src="media/16393212106516/16405315436358.jpg" alt="各情况帧" /></p>
 <ul>
@@ -560,17 +560,17 @@
 <li>AP 基站</li>
 <li>DS 分配系统</li>
 </ul>
-<h4><a id="%E5%88%86%E7%B1%BB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>分类</h4>
+<h4><a id="6-3-2%E5%88%86%E7%B1%BB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.3.2 分类</h4>
 <ol>
 <li>有固定基础设施无线局域网</li>
 <li>无固定基础设施无线局域网的自组织网络</li>
 </ol>
-<h2><a id="%E5%B9%BF%E5%9F%9F%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>广域网</h2>
+<h2><a id="%E4%B8%83%E5%B9%BF%E5%9F%9F%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>七 广域网</h2>
 <p>广域网【WAN，Wide Area Network】</p>
 <blockquote>
 <p>通常跨接很大的物理范围。</p>
 </blockquote>
-<h3><a id="%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本概念</h3>
+<h3><a id="7-1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.1 基本概念</h3>
 <p>对应了<code>物理层</code>、<code>数据链路层</code>和<code>网络层</code></p>
 <blockquote>
 <p>广域网的通信子网主要使用<strong>分组交换</strong>技术。广域网的通信子网可以利用公用分组交换网、卫星通信网和无线分组交换网，它将分布在不同地区的<strong>局域网或计算机系统</strong>互连起来，达到<strong>资源共享</strong>的目的。<br />
@@ -580,7 +580,7 @@
 <ul>
 <li>PPP协议和HDLC协议是广域网中最常使用的两种协议 --- 都只支持全双工链路</li>
 </ul>
-<h3><a id="ppp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>PPP协议</h3>
+<h3><a id="7-2-ppp%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.2 PPP协议</h3>
 <p>点对点协议【Point-to-Point Protocol】</p>
 <blockquote>
 <p>是目前使用最广泛的数据链路层协议，用户使用<strong>拨号</strong>电话接入因特网时一般都使用PPP协议</p>
@@ -598,16 +598,16 @@
 <li>网络层地址协商</li>
 <li>数据压缩协商</li>
 </ol>
-<h4><a id="%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>组成部分</h4>
+<h4><a id="7-2-1%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.2.1 组成部分</h4>
 <ol>
 <li>一个将1p数据报封装到串行链路(同步串行/异步串行）的方法。</li>
 <li>链路控制协议LCP：建立并维护数据链路连接。 --- <code>身份验证</code></li>
 <li>网络控制协议NCP：PPP可支持多种网络层协议，每个不同的网络层协议都要一个相应的NCP来配<br />
 置，为网络层协议建立和配置逻辑连接。</li>
 </ol>
-<h4><a id="%E5%B8%A7%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>帧格式</h4>
+<h4><a id="7-2-2%E5%B8%A7%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.2.2 帧格式</h4>
 <p><img src="media/16393212106516/16406111902105.jpg" alt="帧格式" /></p>
-<h3><a id="hdlc%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HDLC协议</h3>
+<h3><a id="7-3-hdlc%E5%8D%8F%E8%AE%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.3 HDLC协议</h3>
 <p>高级数据链路控制【HDLC，High-Level Data Link Control】</p>
 <blockquote>
 <p>在同步网上传输数据、面向比特的数据链路层协议。 面向比特</p>
@@ -616,14 +616,14 @@
 <p>站点包括：主张，从站，复合站</p>
 <h4><a id="%E5%B8%A7%E6%A0%BC%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>帧格式</h4>
 <p><img src="media/16393212106516/16406116145617.jpg" alt="帧格式" /></p>
-<h2><a id="%E9%93%BE%E8%B7%AF%E5%B1%82%E8%AE%BE%E5%A4%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>链路层设备</h2>
-<h3><a id="%E7%89%A9%E7%90%86%E5%B1%82%E6%89%A9%E5%B1%95%E4%BB%A5%E5%A4%AA%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>物理层扩展以太网</h3>
+<h2><a id="%E5%85%AB%E9%93%BE%E8%B7%AF%E5%B1%82%E8%AE%BE%E5%A4%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>八 链路层设备</h2>
+<h3><a id="8-1%E7%89%A9%E7%90%86%E5%B1%82%E6%89%A9%E5%B1%95%E4%BB%A5%E5%A4%AA%E7%BD%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.1 物理层扩展以太网</h3>
 <ol>
 <li>光纤调制器扩展</li>
 <li>主干集线器</li>
 </ol>
 <p>解决冲突域效率低的两种设备：</p>
-<h3><a id="1%E7%BD%91%E6%A1%A5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.网桥</h3>
+<h3><a id="8-2%E7%BD%91%E6%A1%A5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.2 网桥</h3>
 <blockquote>
 <p>网桥根据<strong>MAC帧的目的地址</strong>对帧进行<strong>转发</strong>和<strong>过滤</strong>。</p>
 </blockquote>
@@ -636,7 +636,7 @@
 <p>源路由网桥：在发送帧时，把详细的最佳路由信息（路由最少/时间最短）放在帧的首部中。<br />
 方法：源站以广播的方式向欲通信的目的站发送一个<strong>发现帧</strong></p>
 </blockquote>
-<h3><a id="2%E4%BA%A4%E6%8D%A2%E6%9C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.交换机</h3>
+<h3><a id="8-3%E4%BA%A4%E6%8D%A2%E6%9C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.3 交换机</h3>
 <blockquote>
 <p>以太网交换机可以独占传输媒体带宽。</p>
 </blockquote>
@@ -649,7 +649,7 @@
 <p>存储转发式交换机: 将帧放入<strong>高速缓存</strong>，并检查是否正确，正确则转发，错误则丢弃。<br />
 特点：延迟大，可靠性高，可以支持具有不同速率的端口交换。</p>
 </blockquote>
-<h3><a id="%E5%86%B2%E7%AA%81%E5%9F%9F%E5%B9%BF%E6%92%AD%E5%9F%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>冲突域&amp;广播域</h3>
+<h3><a id="8-4%E5%86%B2%E7%AA%81%E5%9F%9F%E5%B9%BF%E6%92%AD%E5%9F%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8.4 冲突域&amp;广播域</h3>
 <blockquote>
 <p>冲突域：在同一个冲突域中的每一个节点都能收到所有被发送的帧简单的说就是同一时间内只能有一台设备发送信息的范围。</p>
 </blockquote>
