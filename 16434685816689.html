@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  集合应用类型 - 
+  HTTP & HTTPS - 
   
   </title>
  <meta name="description" content="">
@@ -190,190 +190,8 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>集合应用类型</h1>
+<h1>HTTP & HTTPS</h1>
 
-<h2><a id="object" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object</h2>
-<h3><a id="%E5%88%9B%E5%BB%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>创建</h3>
-<ol>
-<li>new操作符 <code>new Object()</code></li>
-<li>对象字面量（object literal）</li>
-</ol>
-<h3><a id="%E8%8E%B7%E5%8F%96" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>获取</h3>
-<ol>
-<li>点语法</li>
-<li>中括号 --- 可以通过变量访问属性</li>
-</ol>
-<h2><a id="array" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array</h2>
-<h3><a id="%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>创建数组</h3>
-<ol>
-<li>
-<p>Array.from()<br />
-第一个参数是一个类/伪数组对象<br />
-第二个参数是映射函数参数（可选）</p>
-</li>
-<li>
-<p>Array.of()<br />
-可以把一组参数转换为数组</p>
-</li>
-</ol>
-<pre class="line-numbers"><code class="language-JavaScript">Array.of(1,2,3,4) // [1,2,3,4]
-</code></pre>
-<h3><a id="%E6%A3%80%E6%B5%8B%E6%95%B0%E7%BB%84value" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>检测数组 value</h3>
-<ol>
-<li>value instanceof Array（假定只有一个全局执行上下文）</li>
-<li>Array.isArray(value)</li>
-</ol>
-<h3><a id="%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>迭代器方法</h3>
-<p><code>let arr = ['foo', 'bar']</code></p>
-<ol>
-<li>arr.keys()    //[0, 1]</li>
-<li>arr.values()  //['foo', 'bar']</li>
-<li>arr.entries() //[[0, 'foo'], [1, 'bar']]</li>
-</ol>
-<h3><a id="%E5%A4%8D%E5%88%B6%E5%92%8C%E5%A1%AB%E5%85%85%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>复制和填充方法</h3>
-<ol>
-<li>arr.fill() 批量复制</li>
-<li>arr.copyWinthin() 填充</li>
-</ol>
-<h3><a id="%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>转换方法</h3>
-<ol>
-<li>arr.toLocaleString()</li>
-<li>arr.toString() 每个值调用toString()方法后','拼接 返回字符串</li>
-<li>arr.valueOf() 返回数组本身</li>
-<li>arr.join(arg) 拼接字符串 arg分隔符</li>
-</ol>
-<h3><a id="%E6%A0%88%E6%96%B9%E6%B3%95%E9%98%9F%E5%88%97%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>栈方法 队列方法</h3>
-<ol>
-<li>栈：arr.push() / arr.pop()</li>
-<li>队列：
-<ol>
-<li>arr.push() / arr.shift()</li>
-<li>arr.pop() / arr.unshift()</li>
-</ol>
-</li>
-</ol>
-<h3><a id="%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95%E4%BC%9A%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84arr" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>排序方法 --- 会改变原数组arr</h3>
-<ol>
-<li>arr.reverse() 将数组反向</li>
-<li>arr.sort() 默认按照<strong>字符串</strong>升序重新排列数组元素</li>
-</ol>
-<h3><a id="%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>操作方法</h3>
-<ol>
-<li>arr.concat() 不改变原数组</li>
-<li>arr.slice() 不改变原数组</li>
-<li>arr.splice(起始位置，删除个数，插入元素...) 改变原数组 删除，插入，替换</li>
-</ol>
-<h3><a id="%E6%90%9C%E7%B4%A2%E5%92%8C%E4%BD%8D%E7%BD%AE%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>搜索和位置方法</h3>
-<ol>
-<li>严格相等搜索 arr.indexOf() / arr.lastIndexOf() / <u>arr.includes() es7新增</u></li>
-<li>断言函数搜索 arr.find() / arr.findIndex()</li>
-</ol>
-<h3><a id="%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95%E9%83%BD%E4%B8%8D%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84arr" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>迭代方法 --- 都不改变原数组arr</h3>
-<p>对数组每一项都运行传入的函数</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>返回值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>arr.filter()</td>
-<td>函数返回true的项会组成数组之后返回</td>
-</tr>
-<tr>
-<td>arr.forEach()</td>
-<td>没有返回值，本质上相当于for循环遍历数组</td>
-</tr>
-<tr>
-<td>arr.map()</td>
-<td>返回由每次函数调用的结果构成的数组</td>
-</tr>
-<tr>
-<td>arr.every()</td>
-<td>如果对每一项函数都返回true，则该方法返回true</td>
-</tr>
-<tr>
-<td>arr.some()</td>
-<td>如果有一项函数返回true，则该方法返回true</td>
-</tr>
-</tbody>
-</table>
-<h3><a id="%E5%BD%92%E5%B9%B6%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>归并方法</h3>
-<ol>
-<li>arr.reduce()<br />
-<code>[1,2,3,4,5].reduce((prev, cur, index, array) =&gt; prev + cur)</code> //15</li>
-<li>arr.reduceRight()</li>
-</ol>
-<h3><a id="tips" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tips</h3>
-<ol>
-<li>使用length属性可以方便的向数组末尾添加元素（length会自加一）<br />
-<code>arr[arr.length] = 'blue'</code></li>
-<li>数组最多可以包含 2^32-1 个元素</li>
-</ol>
-<h3><a id="%E5%AE%9A%E5%9E%8B%E6%95%B0%E7%BB%84%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定型数组？</h3>
-<h2><a id="map%E9%94%AE%E5%80%BC%E5%AD%98%E5%82%A8%E6%9C%BA%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Map 键/值存储机制</h2>
-<p>es6新增<br />
-Map可以使用任何JavaScript数据类型作为键，其内部使用SameValueZero比较操作。</p>
-<pre class="line-numbers"><code class="language-JavaScript">const m = new Map()
-
-const a = 0/&quot;&quot;, b = 0/&quot;&quot;, // NaN
-      pz = +0, nz = -0
-
-console.log(a === b) //false
-console.log(pz === nz) //true
-
-m.set(a, &quot;foo&quot;)
-m.set(pz, &quot;bar&quot;)
-
-alert(m.get(b)) //foo
-alert(m.get(nz)) //bar
-</code></pre>
-<h3><a id="%E5%9F%BA%E6%9C%ACapi" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本API</h3>
-<ol>
-<li>创建 <code>const m = new Map()</code></li>
-<li>m.set() 方法添加键/值对，返回映射实例，因此可以连缀使用</li>
-<li>m.get() / m.has() 方法进行查询</li>
-<li>m.delete() / m.clear() 方法删除值</li>
-<li>m.size属性获取映射中键值对的数量</li>
-</ol>
-<h3><a id="%E9%A1%BA%E5%BA%8F%E4%B8%8E%E8%BF%AD%E4%BB%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>顺序与迭代</h3>
-<ol>
-<li>m.entries() 默认迭代器 -&gt; 可以直接对映射实例使用扩展操作</li>
-<li>m.forEach() 回调方式</li>
-<li>m.keys() / m.values() 分别返回以插入顺序生成键和值的迭代器</li>
-</ol>
-<p><code>键和值在迭代器遍历时是可以修改的，但映射内部的引用则无法修改</code></p>
-<h3><a id="%E9%80%89%E6%8B%A9object%E8%BF%98%E6%98%AFmap" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>选择Object还是Map</h3>
-<ol>
-<li>内存占用 --- 给定固定大小的内存，Map大约可以比Object多存储50%的键值对</li>
-<li>插入性能 --- 涉及大量插入操作选Map的性能更佳</li>
-<li>查找速度 --- 涉及大量查找操作选Object更好一些（浏览器引擎可以进行优化）</li>
-<li>删除性能 --- 涉及大量删除操作选Map的性能更佳（Map的delete()操作都比插入和查找更快）</li>
-</ol>
-<h3><a id="weakmap%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>WeakMap？</h3>
-<h2><a id="set%E9%9B%86%E5%90%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set 集合数据结构</h2>
-<p>es6新增<br />
-类似加强的Map，可以包含任何JavaScript数据类型作为值，集合也使用SameValueZero操作。<br />
-键值相等？</p>
-<h3><a id="%E5%9F%BA%E6%9C%ACapi" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本API</h3>
-<ol>
-<li>创建 <code>const s = new Set()</code></li>
-<li>s.add() 方法增加值，返回集合实例，故可连缀使用</li>
-<li>s.has() 方法查询</li>
-<li>s.delete() / s.clear() 方法删除元素</li>
-<li>s.size 属性获取元素数量</li>
-</ol>
-<h3><a id="%E9%A1%BA%E5%BA%8F%E4%B8%8E%E8%BF%AD%E4%BB%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>顺序与迭代</h3>
-<ol>
-<li>s.values() / s.keys() 默认迭代器，后者为别名<br />
-<code>s.values === s[Symbol.iterator]</code> //true<br />
-<code>s.keys === s[Symbol.iterator]</code> //true</li>
-<li>s.forEach() 回调方式</li>
-</ol>
-<h3><a id="%E5%AE%9A%E4%B9%89%E6%AD%A3%E5%BC%8F%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C%EF%BC%9F%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>定义正式集合操作？？</h3>
-<h3><a id="weakset%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>WeakSet？</h3>
 
 
 </div>
@@ -385,15 +203,13 @@ alert(m.get(nz)) //bar
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16347422574488.html"  title="Previous Post: 我也不知道这一页该叫什么🧐">&laquo; 我也不知道这一页该叫什么🧐</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16325412705266.html" 
-	        title="Next Post: 烦😶‍🌫️">烦😶‍🌫️ &raquo;</a>
+	        <a href="16429345213468.html" 
+	        title="Next Post: 应用层">应用层 &raquo;</a>
 	    
 	</div>
   </div>
@@ -406,7 +222,7 @@ alert(m.get(nz)) //bar
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16344851791468.html';
+		var currentURL = '16434685816689.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
@@ -452,8 +268,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
-
-<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
