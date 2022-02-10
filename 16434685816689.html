@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  HTTP & HTTPS - 
+  HTTP - 
   
   </title>
  <meta name="description" content="">
@@ -47,7 +47,9 @@
         <li><label>network</label></li>
 
           
-            <li><a title="HTTP & HTTPS" href="16434685816689.html">HTTP & HTTPS</a></li>
+            <li><a title="HTTPS" href="16445059759610.html">HTTPS</a></li>
+          
+            <li><a title="HTTP" href="16434685816689.html">HTTP</a></li>
           
             <li><a title="应用层" href="16429345213468.html">应用层</a></li>
           
@@ -126,7 +128,9 @@
                     
                       <li class="side-title"><span>network</span></li>
                         
-                          <li><a title="HTTP & HTTPS" href="16434685816689.html">HTTP & HTTPS</a></li>
+                          <li><a title="HTTPS" href="16445059759610.html">HTTPS</a></li>
+                        
+                          <li><a title="HTTP" href="16434685816689.html">HTTP</a></li>
                         
                           <li><a title="应用层" href="16429345213468.html">应用层</a></li>
                         
@@ -190,8 +194,9 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>HTTP & HTTPS</h1>
+<h1>HTTP</h1>
 
+<h2><a id="base" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>base</h2>
 <p><a href="https://www.runoob.com/http/http-tutorial.html">HTTP runoob</a></p>
 <p>超文本传输协议【HyperText Transfer Protocol】</p>
 <blockquote>
@@ -205,15 +210,15 @@
 <li>HTTP是<strong>媒体独立</strong>的：这意味着，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。客户端以及服务器指定使用适合的MIME-type内容类型。</li>
 <li>HTTP是<strong>无状态</strong>：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
 </ol>
-<h2><a id="%E6%B6%88%E6%81%AF%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>消息结构</h2>
-<h3><a id="%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>客户端请求消息</h3>
+<h3><a id="%E6%B6%88%E6%81%AF%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>消息结构</h3>
+<h4><a id="%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>客户端请求消息</h4>
 <p><img src="media/16434685816689/16445039148457.jpg" alt="send" /></p>
 <pre class="line-numbers"><code class="language-json">GET /hello.txt HTTP/1.1
 User-Agent: curl/7.16.3 libcurl/7.16.3 OpenSSL/0.9.7l zlib/1.2.3
 Host: www.example.com
 Accept-Language: en, mi
 </code></pre>
-<h3><a id="%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%93%8D%E5%BA%94%E6%B6%88%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务器响应消息</h3>
+<h4><a id="%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%93%8D%E5%BA%94%E6%B6%88%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务器响应消息</h4>
 <p><img src="media/16434685816689/16445039324868.jpg" alt="receive" /></p>
 <pre class="line-numbers"><code class="language-json">HTTP/1.1 200 OK
 Date: Mon, 27 Jul 2009 12:28:53 GMT
@@ -225,7 +230,7 @@ Content-Length: 51
 Vary: Accept-Encoding
 Content-Type: text/plain
 </code></pre>
-<h2><a id="%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>请求方法</h2>
+<h3><a id="%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>请求方法</h3>
 <p>HTTP1.0 定义了三种请求方法： <strong>GET</strong>, <strong>POST</strong> 和 HEAD 方法。<br />
 HTTP1.1 新增了六种请求方法：OPTIONS、<strong>PUT</strong>、PATCH、<strong>DELETE</strong>、TRACE 和 CONNECT 方法。</p>
 <table>
@@ -284,7 +289,7 @@ HTTP1.1 新增了六种请求方法：OPTIONS、<strong>PUT</strong>、PATCH、<
 </tr>
 </tbody>
 </table>
-<h2><a id="%E5%93%8D%E5%BA%94%E5%A4%B4%E4%BF%A1%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>响应头信息</h2>
+<h3><a id="%E5%93%8D%E5%BA%94%E5%A4%B4%E4%BF%A1%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>响应头信息</h3>
 <p>HTTP请求头提供了关于请求，响应或者其他的发送实体的信息。</p>
 <p>部分常用请求头：</p>
 <table>
@@ -345,7 +350,7 @@ HTTP1.1 新增了六种请求方法：OPTIONS、<strong>PUT</strong>、PATCH、<
 </tr>
 </tbody>
 </table>
-<h2><a id="%E7%8A%B6%E6%80%81%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>状态码</h2>
+<h3><a id="%E7%8A%B6%E6%80%81%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>状态码</h3>
 <p>当浏览者访问一个网页时，浏览者的浏览器会向网页所在服务器发出请求。当浏览器接收并显示网页前，此网页所在的服务器会返回一个包含 HTTP 状态码【HTTP Status Code】的信息头（server header）用以响应浏览器的请求。</p>
 <p><code>200</code> - 请求成功<br />
 <code>301</code> - 资源（网页等）被永久转移到其它URL<br />
@@ -381,7 +386,7 @@ HTTP1.1 新增了六种请求方法：OPTIONS、<strong>PUT</strong>、PATCH、<
 </tr>
 </tbody>
 </table>
-<h2><a id="content-type" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>content-type</h2>
+<h3><a id="content-type" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>content-type</h3>
 <p>Content-Type（内容类型），一般是指网页中存在的 Content-Type，用于定义网络文件的类型和网页的编码，决定浏览器将以什么形式、什么编码读取这个文件。<br />
 Content-Type 标头告诉客户端实际返回的内容的内容类型。</p>
 <p><img src="media/16434685816689/16445057168125.jpg" alt="content-type" /></p>
@@ -411,8 +416,9 @@ application/x-www-form-urlencoded ： <code>&lt;form encType=&quot;&quot;&gt;</c
 multipart/form-data ： 需要在表单中进行文件上传时，就需要使用该格式</p>
 </li>
 </ol>
-<h2><a id="%E5%8F%82%E8%80%83" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考</h2>
+<h2><a id="advance" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>advance</h2>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP">HTTP MDN</a></p>
+<h2><a id="%E5%8F%82%E8%80%83" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考</h2>
 <p><a href="https://nodejs.org/zh-cn/docs/guides/anatomy-of-an-http-transaction/">nodejs http</a></p>
 
 
@@ -425,6 +431,8 @@ multipart/form-data ： 需要在表单中进行文件上传时，就需要使�
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
+	        <a href="16445059759610.html"  title="Previous Post: HTTPS">&laquo; HTTPS</a>
+	    
 	</div>
   </div>
   <div class="large-6 columns">
