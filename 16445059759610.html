@@ -211,20 +211,28 @@
 <h1>HTTPS</h1>
 
 <h2><a id="overview" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>overview</h2>
-<p>【HyperText Transfer Protocol over Secure Socket Layer】<a href="https://mp.weixin.qq.com/s/cU0sKl3PWn2eWUqrEV_fsg">funny https</a></p>
+<p>【Hypertext Transfer Protocol Secure】<a href="https://mp.weixin.qq.com/s/cU0sKl3PWn2eWUqrEV_fsg">funny https</a></p>
 <p><img src="media/16445059759610/16448887474198.jpg" alt="compare" /></p>
-<p><a href="https://zhuanlan.zhihu.com/p/27395037">HTTP&amp;HTTPS</a></p>
 <h3><a id="insecurity-of-http" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>insecurity of HTTP</h3>
 <p>HTTP请求过程中，客户端与服务器之间没有任何身份确认的过程，数据全部明文传输，“裸奔”在互联网上，所以很容易遭到黑客的攻击：<br />
 <img src="media/16445059759610/16448908019013.jpg" alt="" /><br />
 可以看到，客户端发出的请求很容易被黑客截获，如果此时黑客冒充服务器，则其可返回任意信息给客户端，而不被客户端察觉，所以我们经常会听到一词“劫持”<br />
 所以 HTTP 传输面临的风险有：</p>
 <ol>
-<li>窃听风险：黑客可以获知通信内容。</li>
-<li>篡改风险：黑客可以修改通信内容。</li>
+<li><strong>窃听</strong>风险：黑客可以获知通信内容。</li>
+<li><strong>篡改</strong>风险：黑客可以修改通信内容。 --- 非对称加解锁可解决</li>
 <li>冒充风险：黑客可以冒充他人身份参与通信。</li>
 </ol>
 <h3><a id="http-https" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTTP -&gt; HTTPS</h3>
+<p><img src="media/16445059759610/16448933743195.jpg" alt="HTTPS" /></p>
+<ol>
+<li>怎么保证保证服务器给客户端下发的公钥是真正的公钥，而不是中间人伪造的公钥呢？</li>
+</ol>
+<p><img src="media/16445059759610/16448934250335.jpg" alt="" /></p>
+<ol start="2">
+<li>证书如何安全传输，被掉包了怎么办？</li>
+</ol>
+<p><img src="media/16445059759610/16448934392683.jpg" alt="" /></p>
 
 
 </div>
