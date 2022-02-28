@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Webpack - 
+  notes - 
   
   </title>
  <meta name="description" content="">
@@ -218,9 +218,24 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>Webpack</h1>
+<h1>notes</h1>
 
-<p><a href="https://webpack.js.org/">webpack official</a></p>
+<h2><a id="setimmediate" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>setImmediate</h2>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setImmediate">window.setImmediate</a></p>
+<p>非标准: 该特性是非标准的，请尽量不要在生产环境中使用它！</p>
+<p>目前只有最新版本的 Internet Explorer 和Node.js 0.10+实现了该方法</p>
+<p>该方法可以用来替代 <code>setTimeout(0)</code> 方法来滞后完成一些需要占用大量cpu时间的操作</p>
+<h2><a id="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AF%B9%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>操作系统内核对线程的调度算法</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/97071815">调度算法</a></p>
+<p><strong>进程</strong>是操作系统进行”资源分配“的基本单位，<strong>线程</strong>是操作系统进行“调度”的基本单位.</p>
+<h2><a id="json-stringify" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>JSON.stringify()</h2>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify">JSON.stringify()</a></p>
+<p>将一个 JavaScript 对象或值转换为 <code>JSON 字符串</code></p>
+<ol>
+<li>undefined、任意的函数以及 symbol 值，在序列化过程中会被忽略（出现在非数组对象的属性值中时）或者被转换成 null（出现在数组中时）。</li>
+<li>函数、undefined 被单独转换时，会返回<code>undefined</code>，如JSON.stringify(function(){}) or JSON.stringify(undefined).</li>
+<li>NaN 和 Infinity 格式的数值及 null 都会被当做 <code>null</code>。</li>
+</ol>
 
 
 </div>
@@ -232,15 +247,13 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16402238078899.html"  title="Previous Post: ⭐️期约与异步函数">&laquo; ⭐️期约与异步函数</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16401638058072.html" 
-	        title="Next Post: vue cli">vue cli &raquo;</a>
+	        <a href="16445062695977.html" 
+	        title="Next Post: catalogue">catalogue &raquo;</a>
 	    
 	</div>
   </div>
@@ -253,7 +266,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16401645826486.html';
+		var currentURL = '16460176233572.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
