@@ -236,6 +236,37 @@
 <li>函数、undefined 被单独转换时，会返回<code>undefined</code>，如JSON.stringify(function(){}) or JSON.stringify(undefined).</li>
 <li>NaN 和 Infinity 格式的数值及 null 都会被当做 <code>null</code>。</li>
 </ol>
+<h2><a id="%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数组去重的几种方法</h2>
+<p>以下都不会改变原数组</p>
+<pre class="line-numbers"><code class="language-js">// (1)
+const newNums = Array.from(new Set(nums))
+
+// (2)
+const newNums = nums.filter((n, i) =&gt; {
+    return nums.indexOf(n) === i
+})
+
+// (3)
+const newNums = nums.reduce((acc, n, i) =&gt; {
+    return [].concat(acc, nums.indexOf(n) === i ? n : [])
+})
+</code></pre>
+<h2><a id="%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>正则表达式</h2>
+<p>正则表达式 ^d+[^d]+ 能匹配下列哪个字符串？<br />
+A. 123<br />
+B. 123a<br />
+C. d123<br />
+D. 123def</p>
+<p>answer: C</p>
+<pre class="line-numbers"><code class="language-js">var re = new RegExp(&quot;^d+[^d]+&quot;);
+var re2 = new RegExp(&quot;^\\d+[^\\d]+&quot;);
+re.test('d123') // true
+re2.test('123def') //true
+</code></pre>
+<p><code>/[a-z]\s/i</code> 和 <code>new RegExp(&quot;[a-z]\\s&quot;, &quot;i&quot;)</code> 创建了相同的正则表达式<br />
+字符串字面量中反斜杠是转义字符。所以为了在模式中添加一个反斜杠，需要在字符串字面量中转义它</p>
+<h2><a id="%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>回流与重绘</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/52076790">reflow &amp; repaint</a></p>
 
 
 </div>
@@ -312,6 +343,8 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
+
+<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
