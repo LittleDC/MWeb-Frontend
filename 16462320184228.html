@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  vue router - 
+  🤯 - 
   
   </title>
  <meta name="description" content="">
@@ -222,68 +222,12 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>vue router</h1>
+<h1>🤯</h1>
 
-<p><a href="https://router.vuejs.org/zh/">vue router official</a></p>
-<h2><a id="preview" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preview</h2>
-<p>随着前端应用的业务功能越来越复杂、用户对于使用体验的要求越来越高，<strong>单页面应用</strong>（SPA）成为前端应用的主流形式。大型单页应用最显著特点之一就是采用前端路由系统，通过改变URL，在<strong>不重新请求页面的情况下</strong>，更新页面视图。</p>
-<blockquote>
-<p>“<strong>更新视图但不重新请求页面</strong>”是前端路由原理的核心之一</p>
-</blockquote>
-<p>目前在浏览器环境中这一功能的实现主要有两种方式：</p>
-<ol>
-<li>利用URL中的<code>hash</code>（“#”）</li>
-<li>利用<code>History</code> interface在 HTML5中新增的方法</li>
-</ol>
-<pre class="line-numbers"><code class="language-js">// 根据mode确定history实际的类并实例化
-switch (mode) {
-  case 'history':
-    this.history = new HTML5History(this, options.base)
-    break
-  case 'hash':
-    this.history = new HashHistory(this, options.base, this.fallback)
-    break
-  case 'abstract':
-    this.history = new AbstractHistory(this, options.base)
-    break
-  default:
-    if (process.env.NODE_ENV !== 'production') {
-      assert(false, `invalid mode: ${mode}`)
-    }
-}
-</code></pre>
-<p><img src="media/16400576847027/16400662867356.jpg" alt="mode" /></p>
-<h2><a id="hashhistory" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HashHistory</h2>
-<blockquote>
-<p>两个方法：HashHistory.push() 和 HashHistory.replace()</p>
-</blockquote>
-<p><img src="media/16400576847027/16400664518289.jpg" alt="push" /></p>
-<p><img src="media/16400576847027/16400664765699.jpg" alt="replace" /></p>
-<p>从设置路由改变到视图更新的流程：<br />
-<code>$router.push() --&gt; HashHistory.push() --&gt; History.transitionTo() --&gt; History.updateRoute() --&gt; {app._route = route} --&gt; vm.render()</code></p>
-<pre class="line-numbers"><code class="language-js">1 $router.push() //调用方法
-
-2 HashHistory.push() //根据hash模式调用,设置hash并添加到浏览器历史记录（添加到栈顶）（window.location.hash= XXX）
-
-3 History.transitionTo() //监测更新，更新则调用History.updateRoute()
-
-4 History.updateRoute() //更新路由
-
-5 {app._route= route} //替换当前app路由
-
-6 vm.render() //更新视图
-</code></pre>
-<h2><a id="html5history" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML5History</h2>
-<blockquote>
-<p>History interface是浏览器历史记录栈提供的接口，通过back(), forward(), go()等方法，我们可以读取<strong>浏览器历史记录栈的信息</strong>，进行各种跳转操作。</p>
-</blockquote>
-<blockquote>
-<p>window.history.pushState(stateObject, title, URL)<br />
-window.history.replaceState(stateObject, title, URL)</p>
-</blockquote>
-<p>以上两个方法有个共同的特点：当调用他们修改浏览器历史记录栈后，虽然当前URL改变了，但<strong>浏览器不会立即发送请求该URL</strong>（the browser won't attempt to load this URL after a call to pushState()），这就为单页应用前端路由“更新视图但不重新请求页面”提供了基础。</p>
-<h2><a id="%E5%8F%82%E8%80%83%EF%BC%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考：</h2>
-<p><a href="https://zhuanlan.zhihu.com/p/27588422">origin</a></p>
+<h2><a id="cvte" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>CVTE</h2>
+<h3><a id="node%E4%B8%AD%E9%97%B4%E4%BB%B6%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>node中间件？</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/106853407">中间件</a></p>
+<p>Express框架中一个非常重要的概念——中间件。在Express框架中，允许通过中间件的使用来调用各种第三方类库，这让我们的开发工作变得更为方便，也使得我们可以开发出各种更为强大的应用程序。</p>
 
 
 </div>
@@ -295,15 +239,13 @@ window.history.replaceState(stateObject, title, URL)</p>
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16401638058072.html"  title="Previous Post: vue cli">&laquo; vue cli</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16393591389076.html" 
-	        title="Next Post: 函数">函数 &raquo;</a>
+	        <a href="16460176233572.html" 
+	        title="Next Post: notes">notes &raquo;</a>
 	    
 	</div>
   </div>
@@ -316,7 +258,7 @@ window.history.replaceState(stateObject, title, URL)</p>
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16400576847027.html';
+		var currentURL = '16462320184228.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
@@ -362,8 +304,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
-
-<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
