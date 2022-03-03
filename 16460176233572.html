@@ -363,6 +363,9 @@ C. Node.js的Buffer类型对象在创建时内存会分配到V8堆上<br />
 D. 代码正确的情况下，垃圾回收也会导致有内存无法回收</p>
 <p>answer: ABD<br />
 C: Buffer 所占用的内存不是通过 V8 分配的，属于堆外内存。</p>
+<h2><a id="%E5%AF%BB%E6%89%BE%E8%BF%9E%E7%BB%AD%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寻找连续重复字符串</h2>
+<pre class="line-numbers"><code class="language-js">str.match(/(.)\1*/g)
+</code></pre>
 
 
 </div>
