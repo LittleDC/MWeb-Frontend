@@ -229,6 +229,31 @@
 <p>非标准: 该特性是非标准的，请尽量不要在生产环境中使用它！</p>
 <p>目前只有最新版本的 Internet Explorer 和Node.js 0.10+实现了该方法</p>
 <p>该方法可以用来替代 <code>setTimeout(0)</code> 方法来滞后完成一些需要占用大量cpu时间的操作</p>
+<pre class="line-numbers"><code class="language-js">以下代码输出顺序是：
+setImmediate(() =&gt; {
+  console.log(1);
+  Promise.resolve().then(() =&gt; {
+    console.log(2);
+  });
+}, 0);
+new Promise((resolve) =&gt; {
+  console.log(3);
+  resolve();
+}).then(() =&gt; {
+  console.log(4);
+  process.nextTick(() =&gt; {
+    console.log(5)
+  });
+  setTimeout(() =&gt; {
+    console.log(6);
+  }, 0);
+}).then(() =&gt; {
+  console.log(7);
+});
+console.log(8);
+
+// 3,8,4,7,5,1,2,6
+</code></pre>
 <h2><a id="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AF%B9%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>操作系统内核对线程的调度算法</h2>
 <p><a href="https://zhuanlan.zhihu.com/p/97071815">调度算法</a></p>
 <p><strong>进程</strong>是操作系统进行”资源分配“的基本单位，<strong>线程</strong>是操作系统进行“调度”的基本单位.</p>
@@ -271,6 +296,73 @@ re2.test('123def') //true
 字符串字面量中反斜杠是转义字符。所以为了在模式中添加一个反斜杠，需要在字符串字面量中转义它</p>
 <h2><a id="%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>回流与重绘</h2>
 <p><a href="https://zhuanlan.zhihu.com/p/52076790">reflow &amp; repaint</a></p>
+<h2><a id="%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>快速排序</h2>
+<p>递归实现</p>
+<p>25、84、21、47、15、27、68、35、20</p>
+<p>20、15、21、<code>25</code>、47、27、68、35、84<br />
+15、<code>20</code>、21、<code>25</code>、35、27、<code>47</code>、68、84<br />
+15、<code>20</code>、21、<code>25</code>、27、35、<code>47</code>、68、84</p>
+<h2><a id="cache-control%E8%A2%AB%E7%94%A8%E4%BA%8E%E5%9C%A8-http%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94%E4%B8%AD%EF%BC%8C%E9%80%9A%E8%BF%87%E6%8C%87%E5%AE%9A%E6%8C%87%E4%BB%A4%E6%9D%A5%E5%AE%9E%E7%8E%B0%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E3%80%82%E4%BB%A5%E4%B8%8B%E5%93%AA%E4%B8%AA%E8%AF%B4%E6%B3%95%E6%98%AF%E9%94%99%E7%9A%84%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cache-Control 被用于在http请求和响应中，通过指定指令来实现缓存机制。以下哪个说法是错的？</h2>
+<p>A. 如果指定 max-age 值为 0，那么每次请求都需要重新发到服务器。<br />
+B. 如果设置了no-cache，表示每次请求，缓存会将此请求发到服务器验证是否过期，若未过期，则缓存才使用本地缓存副本。<br />
+C. public指令表明响应可以被任何中间人缓存，即使是通常不可缓存的内容。<br />
+D. must-revalidate指令表明即使未超过max-age，也必须与服务器重新校验之后才能使用缓存。</p>
+<p>answer:D (must-revalidate 表示缓存过期后必须重新向服务器验证)</p>
+<h2><a id="%E4%BB%A5%E4%B8%8B%E5%93%AA%E4%BA%9B%E5%B1%9E%E4%BA%8E%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9Fdom%E7%9A%84%E5%A5%BD%E5%A4%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>以下哪些属于使用虚拟DOM的好处</h2>
+<p>A. 比直接操作DOM性能更高<br />
+B. 跨平台<br />
+C. 只需要操作数据，开发效率更高<br />
+D. 通过DOM diff算法，可减少不必要的DOM操作</p>
+<p>answer: BCD<br />
+A: 保证性能下限： 框架的虚拟 DOM 需要适配任何上层 API 可能产生的操作，它的一些 DOM 操作的实现必须是普适的，所以它的性能并不是最优的；但是比起粗暴的 DOM 操作性能要好很多，因此框架的虚拟 DOM 至少可以保证在你不需要手动优化的情况下，依然可以提供还不错的性能，即保证性能的下限；</p>
+<h2><a id="position" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>position</h2>
+<p>absolute 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位(position默认值为static）</p>
+<h2><a id="%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>线程&amp;进程</h2>
+<p>一个线程可创建多个线程</p>
+<h2><a id="%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>浏览器前缀</h2>
+<table>
+<thead>
+<tr>
+<th>浏览器名称</th>
+<th>内核</th>
+<th>简称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mozilla firefox</td>
+<td>gecko</td>
+<td>-moz</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>presto</td>
+<td>-o</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>webkit</td>
+<td>-webkit</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>webkit</td>
+<td>-webkit</td>
+</tr>
+<tr>
+<td>IE</td>
+<td>trient</td>
+<td>-ms</td>
+</tr>
+</tbody>
+</table>
+<h2><a id="%E5%85%B3%E4%BA%8Ejavascript%E6%89%A7%E8%A1%8C%E5%BC%95%E6%93%8E%E6%8F%8F%E8%BF%B0%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>关于Javascript执行引擎描述正确的是?</h2>
+<p>A. Node.js通过libuv抽象封装层不同平台使用不同方法实现异步I/O，windows是IOCP，*nix是自定义线程池<br />
+B. V8作为最先进的Javascript执行引擎, 执行阶段先生成字节码，再在运行过程中逐步将高频函数转化成优化后的机器码<br />
+C. Node.js的Buffer类型对象在创建时内存会分配到V8堆上<br />
+D. 代码正确的情况下，垃圾回收也会导致有内存无法回收</p>
+<p>answer: ABD<br />
+C: Buffer 所占用的内存不是通过 V8 分配的，属于堆外内存。</p>
 
 
 </div>
