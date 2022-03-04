@@ -366,6 +366,16 @@ C: Buffer 所占用的内存不是通过 V8 分配的，属于堆外内存。</p
 <h2><a id="%E5%AF%BB%E6%89%BE%E8%BF%9E%E7%BB%AD%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寻找连续重复字符串</h2>
 <pre class="line-numbers"><code class="language-js">str.match(/(.)\1*/g)
 </code></pre>
+<h2><a id="object-defineproperty%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E9%99%B7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.defineProperty 有什么缺陷?</h2>
+<p><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/90">Object.defineProperty question?</a></p>
+<ol>
+<li>Object.defineProperty无法监控到数组下标的变化，导致通过数组下标添加元素，不能实时响应；(Object.defineProperty本身是可以监控到数组下标的变化的，但是在 Vue 中，从性能/体验的性价比考虑，尤大大就弃用了这个特性。)</li>
+<li>Object.defineProperty只能劫持对象的属性，从而需要对每个对象，每个属性进行遍历，如果，属性值是对象，还需要深度遍历。Proxy可以劫持整个对象，并返回一个新的对象。</li>
+<li>Proxy不仅可以代理对象，还可以代理数组。还可以代理动态增加的属性。</li>
+</ol>
+<p>Proxy: 指针？ 捕获器：捕获get&amp;set操作</p>
+<h2><a id="%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>快速排序/冒泡排序</h2>
+<h2><a id="cors%E8%B7%A8%E5%9F%9F%E7%9A%84%E8%BF%87%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>CORS跨域的过程</h2>
 
 
 </div>
