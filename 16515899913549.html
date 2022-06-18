@@ -310,13 +310,16 @@ tar zxvf etsme.tar.gz
 cd etsme.bak/
 influxd restore -metadir /var/lib/influxdb/meta/ ./etsme.bak
 influxd restore -database etsme -datadir /var/lib/influxdb/data ./etsme.bak
-#重启
+
+#重启(ubuntu系统)
 service restart influxdb
 
 docker restart influxdb
 
 </code></pre>
 <h2><a id="done%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>done？</h2>
+<pre class="line-numbers"><code class="language-shell">nohup java -jar ./aglaia-1.0.0.jar &amp;
+</code></pre>
 
 
 </div>
