@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  paper - 
+  Electron - 
   
   </title>
  <meta name="description" content="">
@@ -188,50 +188,9 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>paper</h1>
+<h1>Electron</h1>
 
-<pre class="line-numbers"><code class="language-bash"># 全局安装vue-cli
-npm install -g @vue/cli
-
-# 初始化项目
-vue create operator-font 
-</code></pre>
-<p><img src="media/16515899913549/16515905401388.jpg" alt="" /></p>
-<p>influxdb:</p>
-<pre class="line-numbers"><code class="language-mysql">show databases;
-use etsme
-show measurements
-select * from event limit 20
-
-</code></pre>
-<p>service influxdb start 失败：</p>
-<pre class="line-numbers"><code class="language-plain_text">chown -R influxdb:influxdb /var/lib/influxdb
-</code></pre>
-<p><a href="https://www.w3cschool.cn/article/27675766.html">https://www.w3cschool.cn/article/27675766.html</a></p>
-<pre class="line-numbers"><code class="language-shell">
-#启动influxdb
-docker run -d -p 8086:8086 -p 8083:8083 --name influxdb influxdb:1.8
-#复制备份文件到容器
-docker cp etsme.tar.gz influxdb:/
-#进入容器
-docker exec -it influxdb bash
-
-#解压
-tar zxvf etsme.tar.gz
-#恢复
-cd etsme.bak/
-influxd restore -metadir /var/lib/influxdb/meta/ ./etsme.bak
-influxd restore -database etsme -datadir /var/lib/influxdb/data ./etsme.bak
-
-#重启(ubuntu系统)
-service restart influxdb
-
-docker restart influxdb
-
-</code></pre>
-<h2><a id="done%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>done？</h2>
-<pre class="line-numbers"><code class="language-shell">nohup java -jar ./aglaia-1.0.0.jar &amp;
-</code></pre>
+<p>electron的文档是真的烂，，，</p>
 
 
 </div>
@@ -243,15 +202,13 @@ docker restart influxdb
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16558224788573.html"  title="Previous Post: Electron">&laquo; Electron</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16512220640052.html" 
-	        title="Next Post: Begin">Begin &raquo;</a>
+	        <a href="16515899913549.html" 
+	        title="Next Post: paper">paper &raquo;</a>
 	    
 	</div>
   </div>
@@ -264,7 +221,7 @@ docker restart influxdb
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16515899913549.html';
+		var currentURL = '16558224788573.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
@@ -310,8 +267,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
-
-<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
