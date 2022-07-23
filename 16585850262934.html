@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  notes - 
+  TypeScript - 
   
   </title>
  <meta name="description" content="">
@@ -228,160 +228,13 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>notes</h1>
+<h1>TypeScript</h1>
 
-<h2><a id="setimmediate" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>setImmediate</h2>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setImmediate">window.setImmediate</a></p>
-<p>非标准: 该特性是非标准的，请尽量不要在生产环境中使用它！</p>
-<p>目前只有最新版本的 Internet Explorer 和Node.js 0.10+实现了该方法</p>
-<p>该方法可以用来替代 <code>setTimeout(0)</code> 方法来滞后完成一些需要占用大量cpu时间的操作</p>
-<pre class="line-numbers"><code class="language-js">以下代码输出顺序是：
-setImmediate(() =&gt; {
-  console.log(1);
-  Promise.resolve().then(() =&gt; {
-    console.log(2);
-  });
-}, 0);
-new Promise((resolve) =&gt; {
-  console.log(3);
-  resolve();
-}).then(() =&gt; {
-  console.log(4);
-  process.nextTick(() =&gt; {
-    console.log(5)
-  });
-  setTimeout(() =&gt; {
-    console.log(6);
-  }, 0);
-}).then(() =&gt; {
-  console.log(7);
-});
-console.log(8);
-
-// 3,8,4,7,5,1,2,6
-</code></pre>
-<h2><a id="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AF%B9%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>操作系统内核对线程的调度算法</h2>
-<p><a href="https://zhuanlan.zhihu.com/p/97071815">调度算法</a></p>
-<p><strong>进程</strong>是操作系统进行”资源分配“的基本单位，<strong>线程</strong>是操作系统进行“调度”的基本单位.</p>
-<h2><a id="json-stringify" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>JSON.stringify()</h2>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify">JSON.stringify()</a></p>
-<p>将一个 JavaScript 对象或值转换为 <code>JSON 字符串</code></p>
-<ol>
-<li>undefined、任意的函数以及 symbol 值，在序列化过程中会被忽略（出现在非数组对象的属性值中时）或者被转换成 null（出现在数组中时）。</li>
-<li>函数、undefined 被单独转换时，会返回<code>undefined</code>，如JSON.stringify(function(){}) or JSON.stringify(undefined).</li>
-<li>NaN 和 Infinity 格式的数值及 null 都会被当做 <code>null</code>。</li>
-</ol>
-<h2><a id="%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数组去重的几种方法</h2>
-<p>以下都不会改变原数组</p>
-<pre class="line-numbers"><code class="language-js">// (1)
-const newNums = Array.from(new Set(nums))
-
-// (2)
-const newNums = nums.filter((n, i) =&gt; {
-    return nums.indexOf(n) === i
-})
-
-// (3)
-const newNums = nums.reduce((acc, n, i) =&gt; {
-    return [].concat(acc, nums.indexOf(n) === i ? n : [])
-})
-</code></pre>
-<h2><a id="%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>正则表达式</h2>
-<p>正则表达式 ^d+[^d]+ 能匹配下列哪个字符串？<br />
-A. 123<br />
-B. 123a<br />
-C. d123<br />
-D. 123def</p>
-<p>answer: C</p>
-<pre class="line-numbers"><code class="language-js">var re = new RegExp(&quot;^d+[^d]+&quot;);
-var re2 = new RegExp(&quot;^\\d+[^\\d]+&quot;);
-re.test('d123') // true
-re2.test('123def') //true
-</code></pre>
-<p><code>/[a-z]\s/i</code> 和 <code>new RegExp(&quot;[a-z]\\s&quot;, &quot;i&quot;)</code> 创建了相同的正则表达式<br />
-字符串字面量中反斜杠是转义字符。所以为了在模式中添加一个反斜杠，需要在字符串字面量中转义它</p>
-<h2><a id="%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>回流与重绘</h2>
-<p><a href="https://zhuanlan.zhihu.com/p/52076790">reflow &amp; repaint</a></p>
-<h2><a id="%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>快速排序</h2>
-<p>递归实现</p>
-<p>25、84、21、47、15、27、68、35、20</p>
-<p>20、15、21、<code>25</code>、47、27、68、35、84<br />
-15、<code>20</code>、21、<code>25</code>、35、27、<code>47</code>、68、84<br />
-15、<code>20</code>、21、<code>25</code>、27、35、<code>47</code>、68、84</p>
-<h2><a id="cache-control%E8%A2%AB%E7%94%A8%E4%BA%8E%E5%9C%A8-http%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94%E4%B8%AD%EF%BC%8C%E9%80%9A%E8%BF%87%E6%8C%87%E5%AE%9A%E6%8C%87%E4%BB%A4%E6%9D%A5%E5%AE%9E%E7%8E%B0%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E3%80%82%E4%BB%A5%E4%B8%8B%E5%93%AA%E4%B8%AA%E8%AF%B4%E6%B3%95%E6%98%AF%E9%94%99%E7%9A%84%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cache-Control 被用于在http请求和响应中，通过指定指令来实现缓存机制。以下哪个说法是错的？</h2>
-<p>A. 如果指定 max-age 值为 0，那么每次请求都需要重新发到服务器。<br />
-B. 如果设置了no-cache，表示每次请求，缓存会将此请求发到服务器验证是否过期，若未过期，则缓存才使用本地缓存副本。<br />
-C. public指令表明响应可以被任何中间人缓存，即使是通常不可缓存的内容。<br />
-D. must-revalidate指令表明即使未超过max-age，也必须与服务器重新校验之后才能使用缓存。</p>
-<p>answer:D (must-revalidate 表示缓存过期后必须重新向服务器验证)</p>
-<h2><a id="%E4%BB%A5%E4%B8%8B%E5%93%AA%E4%BA%9B%E5%B1%9E%E4%BA%8E%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9Fdom%E7%9A%84%E5%A5%BD%E5%A4%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>以下哪些属于使用虚拟DOM的好处</h2>
-<p>A. 比直接操作DOM性能更高<br />
-B. 跨平台<br />
-C. 只需要操作数据，开发效率更高<br />
-D. 通过DOM diff算法，可减少不必要的DOM操作</p>
-<p>answer: BCD<br />
-A: 保证性能下限： 框架的虚拟 DOM 需要适配任何上层 API 可能产生的操作，它的一些 DOM 操作的实现必须是普适的，所以它的性能并不是最优的；但是比起粗暴的 DOM 操作性能要好很多，因此框架的虚拟 DOM 至少可以保证在你不需要手动优化的情况下，依然可以提供还不错的性能，即保证性能的下限；</p>
-<h2><a id="position" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>position</h2>
-<p>absolute 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位(position默认值为static）</p>
-<h2><a id="%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>线程&amp;进程</h2>
-<p>一个线程可创建多个线程</p>
-<h2><a id="%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>浏览器前缀</h2>
-<table>
-<thead>
-<tr>
-<th>浏览器名称</th>
-<th>内核</th>
-<th>简称</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mozilla firefox</td>
-<td>gecko</td>
-<td>-moz</td>
-</tr>
-<tr>
-<td>Opera</td>
-<td>presto</td>
-<td>-o</td>
-</tr>
-<tr>
-<td>Chrome</td>
-<td>webkit</td>
-<td>-webkit</td>
-</tr>
-<tr>
-<td>Safari</td>
-<td>webkit</td>
-<td>-webkit</td>
-</tr>
-<tr>
-<td>IE</td>
-<td>trient</td>
-<td>-ms</td>
-</tr>
-</tbody>
-</table>
-<h2><a id="%E5%85%B3%E4%BA%8Ejavascript%E6%89%A7%E8%A1%8C%E5%BC%95%E6%93%8E%E6%8F%8F%E8%BF%B0%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>关于Javascript执行引擎描述正确的是?</h2>
-<p>A. Node.js通过libuv抽象封装层不同平台使用不同方法实现异步I/O，windows是IOCP，*nix是自定义线程池<br />
-B. V8作为最先进的Javascript执行引擎, 执行阶段先生成字节码，再在运行过程中逐步将高频函数转化成优化后的机器码<br />
-C. Node.js的Buffer类型对象在创建时内存会分配到V8堆上<br />
-D. 代码正确的情况下，垃圾回收也会导致有内存无法回收</p>
-<p>answer: ABD<br />
-C: Buffer 所占用的内存不是通过 V8 分配的，属于堆外内存。</p>
-<h2><a id="%E5%AF%BB%E6%89%BE%E8%BF%9E%E7%BB%AD%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寻找连续重复字符串</h2>
-<pre class="line-numbers"><code class="language-js">str.match(/(.)\1*/g)
-</code></pre>
-<h2><a id="object-defineproperty%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E9%99%B7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.defineProperty 有什么缺陷?</h2>
-<p><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/90">Object.defineProperty question?</a></p>
-<ol>
-<li>Object.defineProperty无法监控到数组下标的变化，导致通过数组下标添加元素，不能实时响应；(Object.defineProperty本身是可以监控到数组下标的变化的，但是在 Vue 中，从性能/体验的性价比考虑，尤大大就弃用了这个特性。)</li>
-<li>Object.defineProperty只能劫持对象的属性，从而需要对每个对象，每个属性进行遍历，如果，属性值是对象，还需要深度遍历。Proxy可以劫持整个对象，并返回一个新的对象。</li>
-<li>Proxy不仅可以代理对象，还可以代理数组。还可以代理动态增加的属性。</li>
-</ol>
-<p>Proxy: 指针？ 捕获器：捕获get&amp;set操作</p>
-<h2><a id="%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>快速排序/冒泡排序</h2>
-<h2><a id="cors%E8%B7%A8%E5%9F%9F%E7%9A%84%E8%BF%87%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>CORS跨域的过程</h2>
+<p>TypeScript = Type + JavaScript（在JS基础之上，为JS添加了类型支持）</p>
+<p>TS属于静态类型编程语言（JS则属于动态类型）<br />
+静态类型：<strong>编译期</strong>做类型检查 在代码编译的时候（代码执行前）就可以发现错误（早）。<br />
+动态类型：<strong>执行期</strong>做类型检查 需要等到代码真正去执行的时候才能发现错误（晚）。</p>
+<p><img src="media/16585850262934/16585854850231.jpg" alt="TS" /></p>
 
 
 </div>
@@ -393,15 +246,13 @@ C: Buffer 所占用的内存不是通过 V8 分配的，属于堆外内存。</p
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16462320184228.html"  title="Previous Post: 🤯面试记录2">&laquo; 🤯面试记录2</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16445062695977.html" 
-	        title="Next Post: catalogue">catalogue &raquo;</a>
+	        <a href="16582426754547.html" 
+	        title="Next Post: Trick">Trick &raquo;</a>
 	    
 	</div>
   </div>
@@ -414,7 +265,7 @@ C: Buffer 所占用的内存不是通过 V8 分配的，属于堆外内存。</p
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16460176233572.html';
+		var currentURL = '16585850262934.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
@@ -460,8 +311,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
-
-<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
