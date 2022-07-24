@@ -235,6 +235,35 @@
 静态类型：<strong>编译期</strong>做类型检查 在代码编译的时候（代码执行前）就可以发现错误（早）。<br />
 动态类型：<strong>执行期</strong>做类型检查 需要等到代码真正去执行的时候才能发现错误（晚）。</p>
 <p><img src="media/16585850262934/16585854850231.jpg" alt="TS" /></p>
+<h2><a id="%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>类型注解</h2>
+<p>为变量添加类型约束</p>
+<p>常用基础类型：</p>
+<ol>
+<li>JS已有类型：
+<ul>
+<li>原始类型：number/string/boolean/null/undefined/symbol。</li>
+<li>对象类型：object（包括，数组、对象、函数等对象）。</li>
+</ul>
+</li>
+<li>TS新增类型：
+<ul>
+<li>联合类型(<code>|</code>)、自定义类型（类型别名）、接口、元组、字面量类型、枚举、void、any等。</li>
+</ul>
+</li>
+</ol>
+<h3><a id="%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>类型别名</h3>
+<p>类型别名（自定义类型）：为任意<strong>类型</strong>起别名。<br />
+使用场景：当同一类型（复杂）被多次使用时，可以通过类型别名，简化该类型的使用。<br />
+使用ts关键字<code>type</code></p>
+<p><img src="media/16585850262934/16586548052934.jpg" alt="type" /></p>
+<h3><a id="%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数类型</h3>
+<p>函数的类型实际上指的是：函数<strong>参数</strong>和<strong>返回值</strong>的类型。<br />
+为函数指定类型的两种方式：</p>
+<ol>
+<li>单独指定参数、返回值的类型</li>
+<li>同时指定参数、返回值的类型。(只适用于函数表达式）<br />
+<img src="media/16585850262934/16586554016737.jpg" alt="fuction" /></li>
+</ol>
 
 
 </div>
