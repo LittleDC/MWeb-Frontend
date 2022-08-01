@@ -252,7 +252,7 @@
 </ul>
 </li>
 </ol>
-<h3><a id="%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>类型别名</h3>
+<h3><a id="%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8Dtype" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>类型别名 type</h3>
 <p>类型别名（自定义类型）：为任意<strong>类型</strong>起别名。<br />
 使用场景：当同一类型（复杂）被多次使用时，可以通过类型别名，简化该类型的使用。<br />
 使用ts关键字<code>type</code></p>
@@ -277,14 +277,14 @@
 <li>对象的属性或方法，也可以是可选的，此时就用到<strong>可选属性</strong>了。<br />
 <img src="media/16585850262934/16586571623441.jpg" alt="？object" /></li>
 </ul>
-<h3><a id="%E6%8E%A5%E5%8F%A3" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>接口</h3>
+<h3><a id="%E6%8E%A5%E5%8F%A3interface" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>接口 interface</h3>
 <p>当一个<strong>对象类型</strong>被多次使用时，一般会使用<strong>接口</strong><code>interface</code>来描述对象的类型，达到<strong>复用</strong>的目的。<br />
 <img src="media/16585850262934/16586575731513.jpg" alt="interface" /></p>
 <p><img src="media/16585850262934/16586577907842.jpg" alt="difference" /></p>
 <ul>
 <li>如果两个接口之间有相同的属性或方法，可以将公共的属性或方法抽离出来，通过<strong>继承</strong><code>extends</code>来实现复用。</li>
 </ul>
-<h3><a id="%E5%85%83%E7%BB%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>元组</h3>
+<h3><a id="%E5%85%83%E7%BB%84tuple" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>元组 Tuple</h3>
 <p>元组类型（Tuple）是另一种类型的<strong>数组</strong>，它确切地知道包含多少个元素，以及特定索引对应的类型。</p>
 <pre class="line-numbers"><code class="language-typescript">let position: [number, string] = [39, '114']
 </code></pre>
@@ -296,7 +296,7 @@
 <li>决定函数返回值时。</li>
 </ol>
 <p><img src="media/16585850262934/16586587113204.jpg" alt="" /></p>
-<h3><a id="%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>类型断言</h3>
+<h3><a id="%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80as" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>类型断言 as</h3>
 <p>有时候你会比TS更加明确一个值的类型，此时，可以使用<strong>类型断言</strong><code>as</code>来指定更具体的类型。<br />
 <img src="media/16585850262934/16586588738963.jpg" alt="" /><br />
 解决方法：<br />
@@ -306,7 +306,7 @@
 <p>使用模式：字面量类型配合联合类型一起使用。<br />
 使用场景：用来表示一组明确的可选值列表。<br />
 <img src="media/16585850262934/16586687768819.jpg" alt="" /></p>
-<h3><a id="%E6%9E%9A%E4%B8%BE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>枚举</h3>
+<h3><a id="%E6%9E%9A%E4%B8%BEenum" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>枚举 enum</h3>
 <p>枚举<code>enum</code>的功能类似于字面量类型+联合类型组合的功能，也可以表示<strong>一组明确的可选值</strong>。</p>
 <p><img src="media/16585850262934/16586688199223.jpg" alt="enum" /><br />
 <img src="media/16585850262934/16586693405977.jpg" alt="" /></p>
@@ -342,6 +342,10 @@
 <p><img src="media/16585850262934/16592801000331.jpg" alt="more" /></p>
 <p><img src="media/16585850262934/16592805581017.jpg" alt="interface" /></p>
 <h4><a id="%E5%87%BD%E6%95%B0%E5%85%BC%E5%AE%B9%E6%80%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数兼容性</h4>
+<p><img src="media/16585850262934/16593627309205.jpg" alt="参数个数" /><br />
+<img src="media/16585850262934/16593634218728.jpg" alt="参数类型" /><br />
+<img src="media/16585850262934/16593640512319.jpg" alt="返回值类型" /></p>
+<h3><a id="%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>交叉类型</h3>
 
 
 </div>
