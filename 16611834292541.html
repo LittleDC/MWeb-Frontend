@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  HTTP - 
+  借GitHub/云生成一个小型静态blog？ - 
   
   </title>
  <meta name="description" content="">
@@ -302,232 +302,8 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>HTTP</h1>
+<h1>借GitHub/云生成一个小型静态blog？</h1>
 
-<h2><a id="base" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>base</h2>
-<p><a href="https://www.runoob.com/http/http-tutorial.html">HTTP runoob</a></p>
-<p>超文本传输协议【HyperText Transfer Protocol】</p>
-<blockquote>
-<p>用于从万维网（WWW:World Wide Web）服务器传输超文本到本地浏览器的传送协议</p>
-</blockquote>
-<p>HTTP默认端口号为<code>80</code></p>
-<p><img src="media/16434685816689/16445032192377.jpg" alt="work principle" /></p>
-<p>特点：</p>
-<ol>
-<li>HTTP是<strong>无连接</strong>：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
-<li>HTTP是<strong>媒体独立</strong>的：这意味着，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。客户端以及服务器指定使用适合的MIME-type内容类型。</li>
-<li>HTTP是<strong>无状态</strong>：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
-</ol>
-<h3><a id="%E6%B6%88%E6%81%AF%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>消息结构</h3>
-<h4><a id="%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>客户端请求消息</h4>
-<p><img src="media/16434685816689/16445039148457.jpg" alt="send" /></p>
-<pre class="line-numbers"><code class="language-json">GET /hello.txt HTTP/1.1
-User-Agent: curl/7.16.3 libcurl/7.16.3 OpenSSL/0.9.7l zlib/1.2.3
-Host: www.example.com
-Accept-Language: en, mi
-</code></pre>
-<h4><a id="%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%93%8D%E5%BA%94%E6%B6%88%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务器响应消息</h4>
-<p><img src="media/16434685816689/16445039324868.jpg" alt="receive" /></p>
-<pre class="line-numbers"><code class="language-json">HTTP/1.1 200 OK
-Date: Mon, 27 Jul 2009 12:28:53 GMT
-Server: Apache
-Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT
-ETag: &quot;34aa387-d-1568eb00&quot;
-Accept-Ranges: bytes
-Content-Length: 51
-Vary: Accept-Encoding
-Content-Type: text/plain
-</code></pre>
-<h3><a id="%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>请求方法</h3>
-<p>HTTP1.0 定义了三种请求方法： <strong>GET</strong>, <strong>POST</strong> 和 HEAD 方法。<br />
-HTTP1.1 新增了六种请求方法：OPTIONS、<strong>PUT</strong>、PATCH、<strong>DELETE</strong>、TRACE 和 CONNECT 方法。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center">序号</th>
-<th style="text-align: center">方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center">1</td>
-<td style="text-align: center"><strong>GET</strong></td>
-<td>请求指定的页面信息，并返回实体主体。</td>
-</tr>
-<tr>
-<td style="text-align: center">2</td>
-<td style="text-align: center">HEAD</td>
-<td>类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
-</tr>
-<tr>
-<td style="text-align: center">3</td>
-<td style="text-align: center"><strong>POST</strong></td>
-<td>向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和/或已有资源的修改。</td>
-</tr>
-<tr>
-<td style="text-align: center">4</td>
-<td style="text-align: center"><strong>PUT</strong></td>
-<td>从客户端向服务器传送的数据取代指定的文档的内容。</td>
-</tr>
-<tr>
-<td style="text-align: center">5</td>
-<td style="text-align: center"><strong>DELETE</strong></td>
-<td>请求服务器删除指定的页面。</td>
-</tr>
-<tr>
-<td style="text-align: center">6</td>
-<td style="text-align: center">CONNECT</td>
-<td>HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。</td>
-</tr>
-<tr>
-<td style="text-align: center">7</td>
-<td style="text-align: center">OPTIONS</td>
-<td>允许客户端查看服务器的性能。</td>
-</tr>
-<tr>
-<td style="text-align: center">8</td>
-<td style="text-align: center">TRACE</td>
-<td>回显服务器收到的请求，主要用于测试或诊断。</td>
-</tr>
-<tr>
-<td style="text-align: center">9</td>
-<td style="text-align: center">PATCH</td>
-<td>是对 PUT 方法的补充，用来对已知资源进行局部更新 。</td>
-</tr>
-</tbody>
-</table>
-<h3><a id="%E5%93%8D%E5%BA%94%E5%A4%B4%E4%BF%A1%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>响应头信息</h3>
-<p>HTTP请求头提供了关于请求，响应或者其他的发送实体的信息。</p>
-<p>部分常用请求头：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center">应答头</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center">Allow</td>
-<td>服务器支持哪些请求方法（如GET、POST等）。</td>
-</tr>
-<tr>
-<td style="text-align: center">Content-Encoding</td>
-<td>文档的编码（Encode）方法。只有在解码之后才可以得到Content-Type头指定的内容类型。</td>
-</tr>
-<tr>
-<td style="text-align: center">Content-Length</td>
-<td>表示内容长度。只有当浏览器使用持久HTTP连接时才需要这个数据。</td>
-</tr>
-<tr>
-<td style="text-align: center"><strong>Content-Type</strong></td>
-<td>表示后面的文档属于什么MIME类型。(详情见后)</td>
-</tr>
-<tr>
-<td style="text-align: center">Date</td>
-<td>当前的GMT时间。你可以用setDateHeader来设置这个头以避免转换时间格式的麻烦。</td>
-</tr>
-<tr>
-<td style="text-align: center">Expires</td>
-<td>应该在什么时候认为文档已经过期，从而不再缓存它</td>
-</tr>
-<tr>
-<td style="text-align: center">Last-Modified</td>
-<td>文档的最后改动时间。</td>
-</tr>
-<tr>
-<td style="text-align: center">Location</td>
-<td>表示客户应当到哪里去提取文档。Location通常不是直接设置的，而是通过HttpServletResponse的sendRedirect方法，该方法同时设置状态代码为302。</td>
-</tr>
-<tr>
-<td style="text-align: center">Refresh</td>
-<td>表示浏览器应该在多少时间之后刷新文档，以秒计。</td>
-</tr>
-<tr>
-<td style="text-align: center">Server</td>
-<td>服务器名字。Servlet一般不设置这个值，而是由Web服务器自己设置。</td>
-</tr>
-<tr>
-<td style="text-align: center"><strong>Set-Cookie</strong></td>
-<td>设置和页面关联的Cookie。</td>
-</tr>
-<tr>
-<td style="text-align: center">WWW-Authenticate</td>
-<td>客户应该在Authorization头中提供什么类型的授权信息</td>
-</tr>
-</tbody>
-</table>
-<h3><a id="%E7%8A%B6%E6%80%81%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>状态码</h3>
-<p>当浏览者访问一个网页时，浏览者的浏览器会向网页所在服务器发出请求。当浏览器接收并显示网页前，此网页所在的服务器会返回一个包含 HTTP 状态码【HTTP Status Code】的信息头（server header）用以响应浏览器的请求。</p>
-<p><code>200</code> - 请求成功<br />
-<code>301</code> - 资源（网页等）被永久转移到其它URL<br />
-<code>404</code> - 请求的资源（网页等）不存在<br />
-<code>500</code> - 内部服务器错误</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center">分类</th>
-<th>分类描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center">1**</td>
-<td>信息，服务器收到请求，需要请求者继续执行操作</td>
-</tr>
-<tr>
-<td style="text-align: center">2**</td>
-<td>成功，操作被成功接收并处理</td>
-</tr>
-<tr>
-<td style="text-align: center">3**</td>
-<td>重定向，需要进一步的操作以完成请求</td>
-</tr>
-<tr>
-<td style="text-align: center">4**</td>
-<td>客户端错误，请求包含语法错误或无法完成请求</td>
-</tr>
-<tr>
-<td style="text-align: center">5**</td>
-<td>服务器错误，服务器在处理请求的过程中发生了错误</td>
-</tr>
-</tbody>
-</table>
-<h3><a id="content-type" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>content-type</h3>
-<p>Content-Type（内容类型），一般是指网页中存在的 Content-Type，用于定义网络文件的类型和网页的编码，决定浏览器将以什么形式、什么编码读取这个文件。<br />
-Content-Type 标头告诉客户端实际返回的内容的内容类型。</p>
-<p><img src="media/16434685816689/16445057168125.jpg" alt="content-type" /></p>
-<ol>
-<li>
-<p>常见的媒体格式类型如下：<br />
-<strong>text/html</strong> ： HTML格式<br />
-<strong>text/plain</strong> ：纯文本格式<br />
-text/xml ： XML格式<br />
-image/gif ：gif图片格式<br />
-image/jpeg ：jpg图片格式<br />
-image/png：png图片格式</p>
-</li>
-<li>
-<p>以application开头的媒体格式类型：<br />
-application/xhtml+xml ：XHTML格式<br />
-application/xml： XML数据格式<br />
-application/atom+xml ：Atom XML聚合格式<br />
-<strong>application/json</strong>： JSON数据格式<br />
-application/pdf：pdf格式<br />
-application/msword ： Word文档格式<br />
-application/octet-stream ： 二进制流数据（如常见的文件下载）<br />
-application/x-www-form-urlencoded ： <code>&lt;form encType=&quot;&quot;&gt;</code>中默认的encType，form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）</p>
-</li>
-<li>
-<p>另外一种常见的媒体格式是上传文件之时使用的：<br />
-multipart/form-data ： 需要在表单中进行文件上传时，就需要使用该格式</p>
-</li>
-</ol>
-<h2><a id="advance" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>advance</h2>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP">HTTP MDN</a></p>
-<h2><a id="%E5%8F%82%E8%80%83" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考</h2>
-<p><a href="https://nodejs.org/zh-cn/docs/guides/anatomy-of-an-http-transaction/">nodejs http</a></p>
 
 
 </div>
@@ -539,15 +315,13 @@ multipart/form-data ： 需要在表单中进行文件上传时，就需要使�
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="16445059759610.html"  title="Previous Post: HTTPS">&laquo; HTTPS</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="16429345213468.html" 
-	        title="Next Post: 应用层">应用层 &raquo;</a>
+	        <a href="16585850262934.html" 
+	        title="Next Post: TypeScript">TypeScript &raquo;</a>
 	    
 	</div>
   </div>
@@ -560,7 +334,7 @@ multipart/form-data ： 需要在表单中进行文件上传时，就需要使�
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '16434685816689.html';
+		var currentURL = '16611834292541.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
@@ -606,8 +380,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
-
-<script src="asset/prism.js"></script>
 
 
 <style type="text/css">
