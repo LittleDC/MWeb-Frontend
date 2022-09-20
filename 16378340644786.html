@@ -336,7 +336,7 @@ vscode配置eslint自动格式化代码</p>
 <h2><a id="3-eslint%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.eslint配置文件</h2>
 <p>在根目录下生成.eslintrc.js文件<br />
 个人配置如下：</p>
-<pre class="line-numbers"><code class="language-JavaScript">// .eslintrc.js
+<pre><code class="language-JavaScript">// .eslintrc.js
 module.exports = {
   root: true,
   parserOptions: {
@@ -538,7 +538,7 @@ module.exports = {
 
 </code></pre>
 <p>不需要eslint检测可添加至根目录下的另一个.eslintignore文件中：</p>
-<pre class="line-numbers"><code class="language-plain_text">build/*.js
+<pre><code class="language-plain_text">build/*.js
 src/assets
 public
 dist
@@ -546,7 +546,7 @@ dist
 <h2><a id="4-vscode-setting" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.vscode setting</h2>
 <p>配置一下vscode的配置文件.vscode/settings.json<br />
 实现ctrl + s保存文件时自动格式化代码</p>
-<pre class="line-numbers"><code class="language-json">// .vscode/settings.json
+<pre><code class="language-json">// .vscode/settings.json
 {
     &quot;eslint.validate&quot;: [&quot;javascript&quot;, &quot;javascriptreact&quot;, &quot;vue&quot;],
     &quot;editor.codeActionsOnSave&quot;: {

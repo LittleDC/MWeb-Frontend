@@ -321,28 +321,28 @@
 <ol>
 <li>函数声明</li>
 </ol>
-<pre class="line-numbers"><code class="language-js">function sum (num1, num2) {
+<pre><code class="language-js">function sum (num1, num2) {
     return num1 + num2
 }
 </code></pre>
 <ol start="2">
 <li>函数表达式</li>
 </ol>
-<pre class="line-numbers"><code class="language-js">let sum = function(num1, num2) {
+<pre><code class="language-js">let sum = function(num1, num2) {
     return num1 + num2
 };
 </code></pre>
 <ol start="3">
 <li>箭头函数（arrow function）</li>
 </ol>
-<pre class="line-numbers"><code class="language-js">let sum = (num1, num2) =&gt; {
+<pre><code class="language-js">let sum = (num1, num2) =&gt; {
     return num1 + num2
 }
 </code></pre>
 <ol start="4">
 <li>构造函数(不推荐)</li>
 </ol>
-<pre class="line-numbers"><code class="language-js">let sum = new Function('num1', 'num2', 'return num1 + num2')
+<pre><code class="language-js">let sum = new Function('num1', 'num2', 'return num1 + num2')
 </code></pre>
 <h2><a id="%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>箭头函数</h2>
 <p>ES6新增语法糖</p>
@@ -352,7 +352,7 @@
 </ul>
 <h2><a id="%E5%87%BD%E6%95%B0%E5%90%8D%E6%8C%87%E5%90%91%E5%87%BD%E6%95%B0%E7%9A%84%E6%8C%87%E9%92%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数名 --- 指向函数的指针</h2>
 <p>ES6的所有函数对象都会暴露一个只读的<code>name</code>属性。多数情况下，这个属性中保存的就是一个函数表示符，或者说是函数创建时的变量名字符串。</p>
-<pre class="line-numbers"><code class="language-js">function foo() {}
+<pre><code class="language-js">function foo() {}
 let bar = function() {}
 let baz = () =&gt; {}
 
@@ -363,7 +363,7 @@ console.log((() =&gt; {}).name) // (空字符串)
 console.log((new Function()).name) // anonymous(匿名)
 </code></pre>
 <p>如果函数是一个获取函数，设置函数，或者使用bind()实例化，那么表示符前面会加上一个前缀：</p>
-<pre class="line-numbers"><code class="language-js">function foo() {}
+<pre><code class="language-js">function foo() {}
 console.log(foo.bind(null).name) // bound foo
 </code></pre>
 <h2><a id="%E7%90%86%E8%A7%A3%E5%8F%82%E6%95%B0%E6%95%B0%E7%BB%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>理解参数 --- 数组</h2>
@@ -371,13 +371,13 @@ console.log(foo.bind(null).name) // bound foo
 <p>argument对象是一个伪数组对象（不是Array实例）。具有<code>arguments.length</code>属性</p>
 <h3><a id="%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>箭头函数中的参数</h3>
 <p>如果函数是使用箭头语法定义的，那么传给函数的参数将不能使用arguments关键字访问，而只能通过定义的<strong>命名参数</strong>访问。</p>
-<pre class="line-numbers"><code class="language-js">let bar = () =&gt; {
+<pre><code class="language-js">let bar = () =&gt; {
     console.log(arguments[0])
 }
 bar(5) // ReferenceError
 </code></pre>
 <p>tips:</p>
-<pre class="line-numbers"><code class="language-js">function foo() {
+<pre><code class="language-js">function foo() {
     let bar = () =&gt; {
         console.log(arguments[0])
     }
@@ -395,15 +395,15 @@ ES6:支持显示定义默认参数。箭头函数也支持</p>
 <ul>
 <li>在<strong>使用默认参数时</strong>，arguments对象的值不反映参数的默认值，只反映传给函数的参数。设定初始值后便同ES5严格模式，修改命名参数也不会影响arguments对象。</li>
 </ul>
-<pre class="line-numbers"><code class="language-js">function makeKing(name = 'Henry') {
+<pre><code class="language-js">function makeKing(name = 'Henry') {
     name = 'Louis'
-    return `King ${arguments[0]} Queen ${name}`
+    return `King ``{arguments[0]} Queen ``{name}`
 }
 console.log(makeKing()) // 'King undefined Queen Louis'
 console.log(makeKing('DC')) // 'King DC Queen Louis'
 </code></pre>
 <p>ES5普通模式:</p>
-<pre class="line-numbers"><code class="language-js">function makeKing(name) {
+<pre><code class="language-js">function makeKing(name) {
     name = 'Louis'
     return `King ${arguments[0]}`
 }
@@ -416,8 +416,8 @@ console.log(makeKing('DC')) // 'King Louis'
 </ul>
 <h4><a id="%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>默认参数作用域与暂时性死区</h4>
 <p>给多个参数定义默认值实际上跟使用let关键字<strong>顺序声明</strong>变量一样。</p>
-<pre class="line-numbers"><code class="language-js">function makeKing(name = 'Henry', numerals = name) {
-    return `King ${name} ${numerals}`
+<pre><code class="language-js">function makeKing(name = 'Henry', numerals = name) {
+    return `King ``{name} ``{numerals}`
 }
 
 console.log(makeKing()) // King Henry Henry
@@ -429,7 +429,7 @@ console.log(makeKing()) // King Henry Henry
 <h3><a id="%E5%8F%82%E6%95%B0%E6%89%A9%E5%B1%95%E4%B8%8E%E6%94%B6%E9%9B%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参数扩展与收集</h3>
 <p>ES6新增了<code>...</code>扩展运算符</p>
 <h4><a id="%E6%89%A9%E5%B1%95%E5%8F%82%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>扩展参数</h4>
-<pre class="line-numbers"><code class="language-js">let values = [1, 2, 3, 4]
+<pre><code class="language-js">let values = [1, 2, 3, 4]
 
 function countArguments() {
     console.log(arguments.length)
@@ -440,7 +440,7 @@ countArguments(1, 2, 3, 4, 5, 6, 7) // 7
 </code></pre>
 <h4><a id="%E6%94%B6%E9%9B%86%E5%8F%82%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>收集参数</h4>
 <p>因为收集参数的结果可变，所以只能把它作为最后一个参数：</p>
-<pre class="line-numbers"><code class="language-js">function ignoreFirst(firstValue, ...values) {
+<pre><code class="language-js">function ignoreFirst(firstValue, ...values) {
     console.log(values)
 }
 
@@ -451,13 +451,13 @@ ignoreFirst(1, 2, 3) // [1, 2]
 </code></pre>
 <h2><a id="%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数声明与函数表达式</h2>
 <p>函数声明提升：<strong>函数声明</strong>会在任何代码执行之前先被读取并添加到执行上下文中。而函数表达式只会进行变量提升，函数不会提升</p>
-<pre class="line-numbers"><code class="language-js">// 没问题但不推荐，严格模式会报错
+<pre><code class="language-js">// 没问题但不推荐，严格模式会报错
 console.log(sum(10, 10)) // 20
 function sum(num1, num2) {
     return num1 + num2
 }
 </code></pre>
-<pre class="line-numbers"><code class="language-js">console.log(sum(10, 10)) // ReferenceError
+<pre><code class="language-js">console.log(sum(10, 10)) // ReferenceError
 let sum = function(num1, num2) {
     return num1 + num2
 }
@@ -465,7 +465,7 @@ let sum = function(num1, num2) {
 <h2><a id="%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%80%BC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>函数作为值</h2>
 <p><strong>函数名也是变量</strong></p>
 <h3><a id="1%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.函数作为参数</h3>
-<pre class="line-numbers"><code class="language-js">function callSomeFunction(someFunction, someArgument) {
+<pre><code class="language-js">function callSomeFunction(someFunction, someArgument) {
     return someFunction(someArgument)
 }
 
@@ -476,7 +476,7 @@ let result = callSomeFunction(add10, 10)
 console.log(result) // 20
 </code></pre>
 <h3><a id="2%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E8%BF%94%E5%9B%9E%E5%80%BC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.函数作为返回值</h3>
-<pre class="line-numbers"><code class="language-js">function createComparisonFunction(propertyName) {
+<pre><code class="language-js">function createComparisonFunction(propertyName) {
     return function(object1, object2) {
         let value1 = object1[propertyName]
         let value2 = object2[propertyName]
@@ -506,7 +506,7 @@ ES6新增:<code>new.target</code>属性</p>
 <li>包含调用函数时传入的所有参数，同上</li>
 <li><code>callee</code>属性，是一个指向arguments对象所在函数的指针 <code>不推荐使用</code></li>
 </ol>
-<pre class="line-numbers"><code class="language-js">// 解耦递归
+<pre><code class="language-js">// 解耦递归
 function factorial(num) {
     if (num &lt;= 1) {
         return 1
@@ -521,7 +521,7 @@ function factorial(num) {
 <blockquote>
 <p>标准函数中，this引用的是把函数当成方法<strong>调用</strong>的上下文对象</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">window.color = 'red'
+<pre><code class="language-js">window.color = 'red'
 let o = {
 	color: 'blur'
 }
@@ -539,7 +539,7 @@ o.sayColor() // 'blue'
 <blockquote>
 <p>箭头函数中，this引用的是<strong>定义</strong>箭头函数的上下文</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">window.color = 'red'
+<pre><code class="language-js">window.color = 'red'
 let o = {
 	color: 'blur'
 }
@@ -557,7 +557,7 @@ o.sayColor() // 'red'
 <blockquote>
 <p>事件回调或定时回调时，其上下文为<code>window</code>对象 --- 箭头函数解决this指向</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">function King() {
+<pre><code class="language-js">function King() {
 	this.royaltyName = 'Henry'
 	// this引用King实例
 	window.setTimeout(() =&gt; { console.log(this.royaltyName) }, 1000)
@@ -576,7 +576,7 @@ new Queen() // undefined (this指向window对象)
 <blockquote>
 <p>该属性引用的是调用当前函数的函数，或者如果是在全局作用域中调用的则为<code>null</code></p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">function outer() {
+<pre><code class="language-js">function outer() {
     inner()
 }
 
@@ -610,7 +610,7 @@ new关键字调用：被调用的构造函数</p>
 <blockquote>
 <p>bind：创建一个新的函数实例，其this值会被<strong>绑定</strong>到传给bind()的对象。【不会调用函数】</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">window.color = 'red'
+<pre><code class="language-js">window.color = 'red'
 let o = { color: 'blue' }
 function sayColor() {
     console.log(this.color)
@@ -623,7 +623,7 @@ objectSayColor() // blue
 <blockquote>
 <p>递归函数通常的形式是一个函数通过名称调用自己</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">// 正常
+<pre><code class="language-js">// 正常
 function factorial(num) {
     if (num &lt;= 1) {
         return 1
@@ -632,7 +632,7 @@ function factorial(num) {
     }
 }
 </code></pre>
-<pre class="line-numbers"><code class="language-js">let anotherFactorial = factorial
+<pre><code class="language-js">let anotherFactorial = factorial
 factorial = null
 console.log(anotherFactorial(4)) // Error: ...
 </code></pre>
@@ -640,7 +640,7 @@ console.log(anotherFactorial(4)) // Error: ...
 <li>如果吧这个函数<code>factorial</code>赋值给别的变量，就会出现问题.</li>
 </ul>
 <hr />
-<pre class="line-numbers"><code class="language-js">// 优化1:通过arguments.callee
+<pre><code class="language-js">// 优化1:通过arguments.callee
 function factorial(num) {
     if (num &lt;= 1) {
         return 1
@@ -652,7 +652,7 @@ function factorial(num) {
 <ul>
 <li>Warn：<strong>严格模式</strong>下运行的代码是不能访问arguments.callee的，因为访问会出错。</li>
 </ul>
-<pre class="line-numbers"><code class="language-js">// 优化2:使用命名函数表达式(named function expression)达到目的
+<pre><code class="language-js">// 优化2:使用命名函数表达式(named function expression)达到目的
 const factorial = (function f(num) {
     if (num &lt;= 1) {
         return 1
@@ -682,7 +682,7 @@ const factorial = (function f(num) {
 <blockquote>
 <p>立即调用的匿名函数，又被称为立即调用的函数表达式。它类似函数声明，但由于被包含在括号中，所以会被解释为<strong>函数表达式</strong>。 --- 不会函数提升</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">;(function() {
+<pre><code class="language-js">;(function() {
     // 块级作用域
 })()
 </code></pre>
@@ -693,7 +693,7 @@ const factorial = (function f(num) {
 <ul>
 <li>var定义的变量没有块级作用域：</li>
 </ul>
-<pre class="line-numbers"><code class="language-js">let divs = document.querySelectorAll('div')
+<pre><code class="language-js">let divs = document.querySelectorAll('div')
 
 // 达不到目的
 for (var i = 0; i &lt; divs.length; i++) {
@@ -705,14 +705,14 @@ for (var i = 0; i &lt; divs.length; i++) {
 console.log(i) // divs.length
 </code></pre>
 <p><code>通过闭包改进</code>：</p>
-<pre class="line-numbers"><code class="language-js">for (var i = 0; i &lt; divs.length; i++) {
+<pre><code class="language-js">for (var i = 0; i &lt; divs.length; i++) {
     divs[i].addEventListener('click', (function(frozenCounter) {
         return function() { console.log(frozenCounter) }
     })(i))
 }
 </code></pre>
 <p><code>使用ES6 let定义块级作用域变量改进</code>：</p>
-<pre class="line-numbers"><code class="language-js">for (let i = 0; i &lt; divs.length; i++) {
+<pre><code class="language-js">for (let i = 0; i &lt; divs.length; i++) {
     divs[i].addEventListener('click', function() {
         console.log(i)
     })
@@ -731,7 +731,7 @@ console.log(i) // ReferenceError: i is not defined
 <blockquote>
 <p>定义在构造函数中的特权方法其实是一个<strong>闭包</strong>，它具有访问构造函数中定义的所有变量和函数的能力。</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">function MyObject() {
+<pre><code class="language-js">function MyObject() {
     // 私有变量和私有函数
     let privateVariable = 10
     function privateFunction() {
@@ -759,7 +759,7 @@ console.log(test2.getMethod()) // 10
 <blockquote>
 <p>通过使用私有作用域定义私有变量和函数来实现</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">let MyObject
+<pre><code class="language-js">let MyObject
 (function() {
     // 私有变量和私有函数
     let privateVariable = 10
@@ -792,7 +792,7 @@ console.log(test2.getMethod()) // 11
 <p>在单例对象基础上加以扩展，使其通过作用域链来关联私有变量和特权方法。</p>
 </blockquote>
 <p>单例对象【singleton】：只有一个实例的对象。一般通过对象字面量来创建。</p>
-<pre class="line-numbers"><code class="language-js">let singleton = {
+<pre><code class="language-js">let singleton = {
     name: value,
     method() {
         // code...
@@ -800,7 +800,7 @@ console.log(test2.getMethod()) // 11
 }
 </code></pre>
 <p>模块模式样板：使用匿名函数返回一个对象</p>
-<pre class="line-numbers"><code class="language-js">let singleton = function() {
+<pre><code class="language-js">let singleton = function() {
     // 私有变量和私有函数
     let privateVariable = 10
     function privateFunction() {
@@ -821,7 +821,7 @@ console.log(test2.getMethod()) // 11
 <blockquote>
 <p>在返回对象之前先对其进行增强。这适合单例对象需要是某个特定类型的实例，但又必须给它添加额外属性或方法的场景。</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">// 需返回特定类型CustomType的实例
+<pre><code class="language-js">// 需返回特定类型CustomType的实例
 let singleton = function() {
     // 私有变量和私有函数
     let privateVariable = 10
@@ -906,6 +906,9 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
     
 
 
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
   
 

@@ -338,7 +338,7 @@
 <blockquote>
 <p>ES6新增的引用类型<code>Promise</code>，可以通过new操作符实例化。创建新期约时必须传入<strong>执行器(executor)函数</strong>作为参数。</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">let p = new Promise(() =&gt; {})
+<pre><code class="language-js">let p = new Promise(() =&gt; {})
 setTimeout(console.log, 0, p) // Promise &lt;pending&gt;
 </code></pre>
 <h4><a id="%E6%9C%9F%E7%BA%A6%E7%8A%B6%E6%80%81%E6%9C%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>期约状态机</h4>
@@ -365,7 +365,7 @@ setTimeout(console.log, 0, p) // Promise &lt;pending&gt;
 执行器函数是<strong>同步</strong>执行的。因为执行器函数是期约的初始化程序。<br />
 hint:setTimeout执行是同步的，但其中的回调函数<code>console.log</code>是在异步队列中的</li>
 </ol>
-<pre class="line-numbers"><code class="language-js">new Promise(() =&gt; setTimeout(console.log, 0, 'executor'))
+<pre><code class="language-js">new Promise(() =&gt; setTimeout(console.log, 0, 'executor'))
 console.log('sync test')
 setTimeout(console.log, 1000, 'setTimeout test')
 setTimeout(console.log, 0, 'promise initialized')
@@ -390,7 +390,7 @@ setTimeout(console.log, 0, 'promise initialized')
 <ul>
 <li><code>Promise.resolve()</code>如果传入的参数本身是一个期约，则该行为就类似一个空包装。 =&gt; 会<strong>保留传入期约的状态</strong>。可以说是<strong>幂等方法</strong>：执行多次产生的影响与执行一次相同。</li>
 </ul>
-<pre class="line-numbers"><code class="language-js">let p = new Promise(() =&gt; {})
+<pre><code class="language-js">let p = new Promise(() =&gt; {})
 setTimeout(console.log, 0, p) // Promise &lt;pending&gt;
 setTimeout(console.log, 0, Promise.resolve(p)) // Promise &lt;pending&gt;
 
@@ -403,7 +403,7 @@ setTimeout(console.log, 0, p === Promise.resolve(p)) // true
 <ul>
 <li><code>Promise.reject()</code>不是幂等逻辑。如果传一个期约对象，则这个期约对象会成为它返回拒绝期约的理由。</li>
 </ul>
-<pre class="line-numbers"><code class="language-js">setTimeout(console.log, 0, Promise.reject(Promise.resolve()))
+<pre><code class="language-js">setTimeout(console.log, 0, Promise.reject(Promise.resolve()))
 // Promise {status: &quot;rejected&quot;, result: Promise}
 // error: Unhandled Promise Rejection: [object Promise]
 </code></pre>
@@ -411,7 +411,7 @@ setTimeout(console.log, 0, p === Promise.resolve(p)) // true
 <blockquote>
 <p>期约真正的异步特性：是同步对象（在同步执行模式中使用），但也是异步执行模式的媒介。</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">try {
+<pre><code class="language-js">try {
     throw new Error('foo')
 } catch(e) {
     console.log(e) // Error: foo

@@ -324,7 +324,7 @@
 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy">Proxy</a></p>
 <h3><a id="%E6%8D%95%E8%8E%B7%E5%99%A8trap" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>捕获器 trap</h3>
 <p>每次在代理对象上调用这些基本操作时，代理可以在这些操作传播到目标对象之前先调用捕获器函数，从而拦截并修改相应的行为。</p>
-<pre class="line-numbers"><code class="language-js">const target = {
+<pre><code class="language-js">const target = {
 	foo: 'bar'
 }
 
@@ -344,7 +344,7 @@ console.log(proxy.foo) // handler override
 <p>目标对象，要查询的属性，代理对象</p>
 <h4><a id="%E5%8F%8D%E5%B0%84api-reflect" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>反射API --- Reflect</h4>
 <p>处理程序对象(handler)中所有可以捕获的方法都有对应的反射(Reflect)API方法。 -- 13个</p>
-<pre class="line-numbers"><code class="language-js">const target = {
+<pre><code class="language-js">const target = {
 	foo: 'bar'
 }
 
@@ -363,7 +363,7 @@ console.log(proxy.foo) // bar
 <code>eg. 如果目标对象有一个不可配置且不可写的数据属性，那么在捕获器返回一个与该属性不同的值时，会抛出TypeError</code></p>
 <h3><a id="%E5%8F%AF%E6%92%A4%E9%94%80%E4%BB%A3%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>可撤销代理</h3>
 <p>撤销代理操作是不可逆的。</p>
-<pre class="line-numbers"><code class="language-js">const target = {
+<pre><code class="language-js">const target = {
 	foo: 'bar'
 }
 
@@ -394,7 +394,7 @@ console.log(proxy.foo) //TypeError
 <h3><a id="%E4%BB%A3%E7%90%86%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E4%B8%8D%E8%B6%B3this" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>代理的问题与不足 --- this</h3>
 <p>代理中的this指向代理本身，不指向target</p>
 <p>问题：代理Date类型--Date类型方法的执行依赖this值上的内部插位[[NumberDate]]</p>
-<pre class="line-numbers"><code class="language-js">const target = new Date()
+<pre><code class="language-js">const target = new Date()
 const proxy = new Proxy(target, {})
 
 console.log(proxy instanceof Date) //true

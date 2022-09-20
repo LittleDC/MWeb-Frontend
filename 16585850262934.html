@@ -372,7 +372,7 @@
 </ul>
 <h3><a id="%E5%85%83%E7%BB%84tuple" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>元组 Tuple</h3>
 <p>元组类型（Tuple）是另一种类型的<strong>数组</strong>，它确切地知道包含多少个元素，以及特定索引对应的类型。</p>
-<pre class="line-numbers"><code class="language-typescript">let position: [number, string] = [39, '114']
+<pre><code class="language-typescript">let position: [number, string] = [39, '114']
 </code></pre>
 <h3><a id="%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>类型推论</h3>
 <p>在TS中，某些没有明确指出类型的地方，TS的<strong>类型推论机制</strong>会帮助提供类型。由于类型推论的存在，这些地方，类型注解可以<strong>省略</strong>不写！</p>
@@ -454,7 +454,7 @@
 <h4><a id="%E6%B3%9B%E5%9E%8B%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%9E%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>泛型工具类型</h4>
 <p>泛型工具类型：TS内置了一些常用的工具类型，来简化TS中的一些常见操作。<br />
 说明：它们都是基于泛型实现的（泛型适用于多种类型，更加通用），并且是内置的，可以直接在代码中使用。</p>
-<pre class="line-numbers"><code class="language-typescript">Partial&lt;Type&gt;
+<pre><code class="language-typescript">Partial&lt;Type&gt;
 Readonly&lt;Type&gt;
 Pick&lt;Type, Keys&gt;
 RecordcKeys, Type&gt;

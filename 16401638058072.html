@@ -320,7 +320,7 @@
 <h2><a id="vue-cli-service" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>vue-cli-service</h2>
 <h3><a id="preview" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preview</h3>
 <p><code>package.json</code>:</p>
-<pre class="line-numbers"><code class="language-json">{
+<pre><code class="language-json">{
   &quot;scripts&quot;: {
     &quot;serve&quot;: &quot;vue-cli-service serve&quot;,
     &quot;build&quot;: &quot;vue-cli-service build&quot;
@@ -331,7 +331,7 @@
 <blockquote>
 <p><code>vue-cli-service serve</code>命令会启动一个开发服务器 (基于 webpack-dev-server) 并附带开箱即用的模块热重载 (Hot-Module-Replacement)。</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">用法：vue-cli-service serve [options] [entry]
+<pre><code class="language-js">用法：vue-cli-service serve [options] [entry]
 
 选项：
 
@@ -346,7 +346,7 @@
 <blockquote>
 <p><code>vue-cli-service build</code>命令会在 <code>dist/</code> 目录产生一个可用于生产环境的包，带有 JS/CSS/HTML 的压缩，和为更好的缓存而做的自动的 vendor chunk splitting。它的 chunk manifest 会内联在 HTML 里。</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">用法：vue-cli-service build [options] [entry|pattern]
+<pre><code class="language-js">用法：vue-cli-service build [options] [entry|pattern]
 
 选项：
 
@@ -364,7 +364,7 @@
 <blockquote>
 <p>你可以使用 <code>vue-cli-service inspect</code> 来审查一个 Vue CLI 项目的 webpack config。</p>
 </blockquote>
-<pre class="line-numbers"><code class="language-js">用法：vue-cli-service inspect [options] [...paths]
+<pre><code class="language-js">用法：vue-cli-service inspect [options] [...paths]
 
 选项：
 
@@ -384,7 +384,7 @@
 <li><code>&lt;% expression %&gt;</code> 用来描述 JavaScript 流程控制。</li>
 </ul>
 <p>除了<a href="https://github.com/jantimon/html-webpack-plugin#writing-your-own-templates">被 <code>html-webpack-plugin</code> 暴露的默认值</a>之外，所有<a href="./mode-and-env.md#using-env-variables-in-client-side-code">客户端环境变量</a>也可以直接使用。例如，<code>BASE_URL</code> 的用法：</p>
-<pre class="line-numbers"><code class="language-html">&lt;link rel=&quot;icon&quot; href=&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;&gt;
+<pre><code class="language-html">&lt;link rel=&quot;icon&quot; href=&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;&gt;
 </code></pre>
 <p>更多内容可以查阅：<code>publicpath</code></p>
 <h4><a id="%E5%A4%84%E7%90%86%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>处理静态资源</h4>

@@ -355,7 +355,7 @@ ES5新增<code>Array.prototype.forEach()</code>方法，向通用迭代需求迈
 <li>数组的迭代器时不能关闭的（迭代器没有关闭，则还可以继续从上次离开的地方继续迭代</li>
 </ul>
 <h3><a id="%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%AD%E4%BB%A3%E5%99%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>自定义迭代器</h3>
-<pre class="line-numbers"><code class="language-JavaScript">class Counter {
+<pre><code class="language-JavaScript">class Counter {
     constructor(limit) {
         this.limit = limit
     }
@@ -393,7 +393,7 @@ yield关键字只能在生成器函数内部使用，用在其他地方会抛出
 <li>yield作为函数的中间参数使用<br />
 上一次生成器暂停的yield关键字会接收传给next()方法的第一个值。但第一次调用next()传入的值不会被使用，因为这一次调用是为了开始执行生成器函数</li>
 </ul>
-<pre class="line-numbers"><code class="language-JavaScript">function* generatorFn(initial) {
+<pre><code class="language-JavaScript">function* generatorFn(initial) {
     console.log(initial)
     console.log(yield)
     console.log(yield)

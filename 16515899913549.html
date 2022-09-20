@@ -316,7 +316,7 @@
  <div class="markdown-body">
 <h1>paper</h1>
 
-<pre class="line-numbers"><code class="language-bash"># 全局安装vue-cli
+<pre><code class="language-bash"># 全局安装vue-cli
 npm install -g @vue/cli
 
 # 初始化项目
@@ -324,17 +324,17 @@ vue create operator-font
 </code></pre>
 <p><img src="media/16515899913549/16515905401388.jpg" alt="" /></p>
 <p>influxdb:</p>
-<pre class="line-numbers"><code class="language-mysql">show databases;
+<pre><code class="language-mysql">show databases;
 use etsme
 show measurements
 select * from event limit 20
 
 </code></pre>
 <p>service influxdb start 失败：</p>
-<pre class="line-numbers"><code class="language-plain_text">chown -R influxdb:influxdb /var/lib/influxdb
+<pre><code class="language-plain_text">chown -R influxdb:influxdb /var/lib/influxdb
 </code></pre>
 <p><a href="https://www.w3cschool.cn/article/27675766.html">https://www.w3cschool.cn/article/27675766.html</a></p>
-<pre class="line-numbers"><code class="language-shell">
+<pre><code class="language-shell">
 #启动influxdb
 docker run -d -p 8086:8086 -p 8083:8083 --name influxdb influxdb:1.8
 #复制备份文件到容器
@@ -356,7 +356,7 @@ docker restart influxdb
 
 </code></pre>
 <h2><a id="done%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>done？</h2>
-<pre class="line-numbers"><code class="language-shell">nohup java -jar ./aglaia-1.0.0.jar &amp;
+<pre><code class="language-shell">nohup java -jar ./aglaia-1.0.0.jar &amp;
 </code></pre>
 
 

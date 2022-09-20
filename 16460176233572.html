@@ -321,7 +321,7 @@
 <p>非标准: 该特性是非标准的，请尽量不要在生产环境中使用它！</p>
 <p>目前只有最新版本的 Internet Explorer 和Node.js 0.10+实现了该方法</p>
 <p>该方法可以用来替代 <code>setTimeout(0)</code> 方法来滞后完成一些需要占用大量cpu时间的操作</p>
-<pre class="line-numbers"><code class="language-js">以下代码输出顺序是：
+<pre><code class="language-js">以下代码输出顺序是：
 setImmediate(() =&gt; {
   console.log(1);
   Promise.resolve().then(() =&gt; {
@@ -359,7 +359,7 @@ console.log(8);
 </ol>
 <h2><a id="%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数组去重的几种方法</h2>
 <p>以下都不会改变原数组</p>
-<pre class="line-numbers"><code class="language-js">// (1)
+<pre><code class="language-js">// (1)
 const newNums = Array.from(new Set(nums))
 
 // (2)
@@ -379,7 +379,7 @@ B. 123a<br />
 C. d123<br />
 D. 123def</p>
 <p>answer: C</p>
-<pre class="line-numbers"><code class="language-js">var re = new RegExp(&quot;^d+[^d]+&quot;);
+<pre><code class="language-js">var re = new RegExp(&quot;^d+[^d]+&quot;);
 var re2 = new RegExp(&quot;^\\d+[^\\d]+&quot;);
 re.test('d123') // true
 re2.test('123def') //true
@@ -456,7 +456,7 @@ D. 代码正确的情况下，垃圾回收也会导致有内存无法回收</p>
 <p>answer: ABD<br />
 C: Buffer 所占用的内存不是通过 V8 分配的，属于堆外内存。</p>
 <h2><a id="%E5%AF%BB%E6%89%BE%E8%BF%9E%E7%BB%AD%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>寻找连续重复字符串</h2>
-<pre class="line-numbers"><code class="language-js">str.match(/(.)\1*/g)
+<pre><code class="language-js">str.match(/(.)\1*/g)
 </code></pre>
 <h2><a id="object-defineproperty%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E9%99%B7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.defineProperty 有什么缺陷?</h2>
 <p><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/90">Object.defineProperty question?</a></p>

@@ -327,7 +327,7 @@
 <li>利用URL中的<code>hash</code>（“#”）</li>
 <li>利用<code>History</code> interface在 HTML5中新增的方法</li>
 </ol>
-<pre class="line-numbers"><code class="language-js">// 根据mode确定history实际的类并实例化
+<pre><code class="language-js">// 根据mode确定history实际的类并实例化
 switch (mode) {
   case 'history':
     this.history = new HTML5History(this, options.base)
@@ -353,7 +353,7 @@ switch (mode) {
 <p><img src="media/16400576847027/16400664765699.jpg" alt="replace" /></p>
 <p>从设置路由改变到视图更新的流程：<br />
 <code>$router.push() --&gt; HashHistory.push() --&gt; History.transitionTo() --&gt; History.updateRoute() --&gt; {app._route = route} --&gt; vm.render()</code></p>
-<pre class="line-numbers"><code class="language-js">1 $router.push() //调用方法
+<pre><code class="language-js">1 $router.push() //调用方法
 
 2 HashHistory.push() //根据hash模式调用,设置hash并添加到浏览器历史记录（添加到栈顶）（window.location.hash= XXX）
 
